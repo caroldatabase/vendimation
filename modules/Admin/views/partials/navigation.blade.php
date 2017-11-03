@@ -12,7 +12,7 @@
 ">
                        <!--  <img src="http://webpedialab.com/ytasker/public/in/layouts/layout4/img/new-logo.jpg" alt="logo" class="logo-default"  style="width: 170px" />  -->
                            
-                           YelloTasker
+                           Admin
                        </a>
                     <div class="menu-toggler sidebar-toggler">
                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->

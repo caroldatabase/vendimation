@@ -26,6 +26,52 @@
                             </ul>
                         </li>
 
+
+
+                        
+                        
+
+                         <li class="nav-item  start active  {{ (isset($page_title) && $page_title=='Category')?'open':'' }}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                 <i class="glyphicon glyphicon-user"></i>
+                                <span class="title">Manage User</span>
+                                <span class="arrow {{ (isset($page_title) && $page_title=='User')?'open':'' }}"></span>
+                            </a>
+
+                           <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='User')?'block':'none' }}">
+
+                                <li class="nav-item  {{ (isset($page_title) && $page_title=='User')?'open':'' }}">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="icon-user"></i>
+                                    <span class="title">Manage User</span>
+                                    <span class="arrow {{ (isset($page_title) && $page_title=='User')?'open':'' }}"></span>
+                                </a>
+                                    <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='User')?'block':'none' }}">
+                                        <li class="nav-item  {{ (isset($page_title) && $page_action=='Create User')?'active':'' }}">
+                                            <a href="{{ route('user.create') }}" class="nav-link ">
+                                                <i class="glyphicon glyphicon-plus-sign"></i> 
+                                                <span class="title">
+                                                    Create User
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item  {{ (isset($page_title) && $page_action=='View User')?'active':'' }}">
+                                            <a href="{{ route('user') }}" class="nav-link ">
+                                                 <i class="glyphicon glyphicon-eye-open"></i> 
+                                                <span class="title">
+                                                    View Users
+                                                </span>
+                                            </a>
+                                        </li>
+                                      
+                                     
+                                    </ul>
+                                </li>
+                            </ul>  
+                        </li>
+
+                        
                          <li class="nav-item start active">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="glyphicon glyphicon-globe"></i>
@@ -90,51 +136,7 @@
                             </ul>
                         </li>
  
-
-
-                        
-                        
-
-                         <li class="nav-item  start active  {{ (isset($page_title) && $page_title=='Category')?'open':'' }}">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                 <i class="glyphicon glyphicon-user"></i>
-                                <span class="title">Manage User</span>
-                                <span class="arrow {{ (isset($page_title) && $page_title=='User')?'open':'' }}"></span>
-                            </a>
-
-                           <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='User')?'block':'none' }}">
-
-                                <li class="nav-item  {{ (isset($page_title) && $page_title=='User')?'open':'' }}">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-user"></i>
-                                    <span class="title">Manage User</span>
-                                    <span class="arrow {{ (isset($page_title) && $page_title=='User')?'open':'' }}"></span>
-                                </a>
-                                    <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='User')?'block':'none' }}">
-                                        <li class="nav-item  {{ (isset($page_title) && $page_action=='Create User')?'active':'' }}">
-                                            <a href="{{ route('user.create') }}" class="nav-link ">
-                                                <i class="glyphicon glyphicon-plus-sign"></i> 
-                                                <span class="title">
-                                                    Create User
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item  {{ (isset($page_title) && $page_action=='View User')?'active':'' }}">
-                                            <a href="{{ route('user') }}" class="nav-link ">
-                                                 <i class="glyphicon glyphicon-eye-open"></i> 
-                                                <span class="title">
-                                                    View Users
-                                                </span>
-                                            </a>
-                                        </li>
-                                      
-                                     
-                                    </ul>
-                                </li>
-                            </ul>  
-                        </li>
-                       
+                      <!-- 
                          <li class="nav-item  start active {{ (isset($page_title) && $page_title=='Category')?'open':'' }}">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="fa fa-folder-open-o"></i>
@@ -206,6 +208,7 @@
                                 
                             </ul>
                         </li>
+                        -->
                         
                     </ul>
                     <!-- END SIDEBAR MENU -->
