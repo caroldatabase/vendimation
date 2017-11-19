@@ -9,7 +9,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>CMS Login</title>
+        <title>Admin Login</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #4 for " name="description" />
@@ -42,7 +42,7 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             
-               <img src="{{ URL::asset('assets/global/logo.png') }}"> 
+            <h3 style="color:#fff ">  <b> Admin </b></h3>
         </div>
 
         <!-- END LOGO -->
@@ -65,7 +65,7 @@
            
             <!-- END REGISTRATION FORM -->
         </div>
-        <div class="copyright"> {{date('Y')}} © Yellotasker. All rights reserved </div>
+        <div class="copyright"> {{date('Y')}} © Admin. All rights reserved </div>
         <!-- END LOGIN -->
         <!--[if lt IE 9]>
 <script src="{{ URL::asset('assets/global/plugins/respond.min.js') }}"></script>

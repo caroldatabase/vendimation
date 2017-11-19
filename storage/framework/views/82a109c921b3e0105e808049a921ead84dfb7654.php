@@ -6,6 +6,7 @@
       <?php echo $__env->make('packages::partials.navigation', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
       <!-- Left side column. contains the logo and sidebar -->
       <?php echo $__env->make('packages::partials.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-      <?php echo $__env->make('packages::users.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>   
+      <?php echo $__env->make('packages::partials.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>   
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('packages::layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

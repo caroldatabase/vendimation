@@ -5,8 +5,8 @@
             <div class="page-header-inner ">
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
-                    <a href="{{url('admin')}}" >
-                      <!--  <img src="{{ URL::asset('assets/global/logo.png') }}" alt="logo" class="logo"  style="width: 170px" /> -->
+                    <a href="<?php echo e(url('admin')); ?>" >
+                      <!--  <img src="<?php echo e(URL::asset('assets/global/logo.png')); ?>" alt="logo" class="logo"  style="width: 170px" /> -->
                       Admin
                        </a>
                     <div class="menu-toggler sidebar-toggler">
@@ -27,7 +27,7 @@
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ route('user')}}">
+                                <a href="<?php echo e(route('user')); ?>">
                                     <i class="icon-user"></i> View Users </a>
                             </li>
                             
@@ -68,10 +68,10 @@
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <span class="username username-hide-on-mobile"> Admin </span>
                                     <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                                    <img alt="" class="img-circle" src="{{URL::asset('assets/layouts/layout4/img/avatar9.jpg') }}" /> </a>
+                                    <img alt="" class="img-circle" src="<?php echo e(URL::asset('assets/layouts/layout4/img/avatar9.jpg')); ?>" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="{{ url('admin/profile') }}">
+                                        <a href="<?php echo e(url('admin/profile')); ?>">
                                             <i class="icon-user"></i> My Profile </a>
                                     </li>
                                     
@@ -81,7 +81,7 @@
                                             <i class="icon-lock"></i> Lock Screen </a>
                                     </li> -->
                                     <li>
-                                        <a href="{{ url('admin/logout') }}">
+                                        <a href="<?php echo e(url('admin/logout')); ?>">
                                             <i class="icon-key"></i> Log Out </a>
                                     </li>
                                 </ul>
