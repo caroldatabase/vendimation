@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -31,7 +31,8 @@
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
 
-        <link href="{{ URL::asset('assets/pages/css/login.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ URL::asset('public/css/login.min.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ URL::asset('public/css/login.css') }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
@@ -40,9 +41,8 @@
 
     <body class=" login">
         <!-- BEGIN LOGO -->
-        <div class="logo">
-            
-                <p style="font-size: 30px; font-family: inherit; color:#fff; margin: 0px; padding: 0px"> <b style="color:yellow">Admin</p>
+        <div class="logo img-circle">
+            <img src="{{ URL::asset('public/images/avatar.png') }}">
         </div>
 
         <!-- END LOGO -->

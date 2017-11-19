@@ -12,14 +12,14 @@
     </div>
      @endif
     <div class="form-group{{ $errors->first('email', ' has-error') }}">
-        <label class="control-label visible-ie8 visible-ie9"> email <span class="error">*</span></label>
+        <label class="control-label"> email <span class="error">*</span></label>
         <div class="input-icon">
           
              {!! Form::email('email',null, ['class' => 'form-control placeholder-no-fix', 'placeholder'=>'Email' ])  !!} 
         </div>
     </div>
    <div class="form-group{{ $errors->first('password', ' has-error') }}">
-        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <label class="control-label">Password</label>
         <div class="input-icon">
             
             
