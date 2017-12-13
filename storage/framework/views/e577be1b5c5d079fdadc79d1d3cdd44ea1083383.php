@@ -4,10 +4,10 @@
         <button class="close" data-close="alert"></button>
         <span> 
             
-                    <?php foreach($errors->all() as $error): ?>
-                    <?php echo e($error); ?>
+            <?php foreach($errors->all() as $error): ?>
+            <?php echo e($error); ?>
 
-                    <?php endforeach; ?>
+            <?php endforeach; ?>
                 
         </span>
     </div>
@@ -29,17 +29,17 @@
             </div>
     </div>
   
-       <div class="form-actions">
-                    <button type="submit" class="btn green uppercase">Login</button>
-                    <label class="rememberme check mt-checkbox mt-checkbox-outline">
-                        <input type="checkbox" name="remember" value="1" />Remember
-                        <span></span>
-                    </label>
-                    <a href="<?php echo e(url('admin/forgot-password')); ?>" id="forget-password" class="forget-password">Forgot Password?</a>
-                </div>
-                
-                <div class="create-account">
-                    <p>
-                        <a href="javascript:;"  class="uppercase"></a>
-                    </p>
-                </div>
+    <div class="form-actions">
+        <button type="submit" class="btn green uppercase">Login</button>
+        <label class="rememberme check mt-checkbox mt-checkbox-outline">
+            <input type="checkbox" name="remember" value="1" />Remember
+            <span></span>
+        </label>
+        <a href="<?php echo e(url('admin/forgot-password')); ?>" id="forget-password" class="forget-password">Forgot Password?</a>
+    </div>
+
+    <div class="create-account">
+        <p>
+            <a href="javascript:;"  class="uppercase"></a>
+        </p>
+    </div>

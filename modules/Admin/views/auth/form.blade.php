@@ -4,9 +4,9 @@
         <button class="close" data-close="alert"></button>
         <span> 
             
-                    @foreach ($errors->all() as $error)
-                    {{ $error }}
-                    @endforeach
+            @foreach ($errors->all() as $error)
+            {{ $error }}
+            @endforeach
                 
         </span>
     </div>
@@ -28,17 +28,17 @@
             </div>
     </div>
   
-       <div class="form-actions">
-                    <button type="submit" class="btn green uppercase">Login</button>
-                    <label class="rememberme check mt-checkbox mt-checkbox-outline">
-                        <input type="checkbox" name="remember" value="1" />Remember
-                        <span></span>
-                    </label>
-                    <a href="{{url('admin/forgot-password')}}" id="forget-password" class="forget-password">Forgot Password?</a>
-                </div>
-                
-                <div class="create-account">
-                    <p>
-                        <a href="javascript:;"  class="uppercase"></a>
-                    </p>
-                </div>
+    <div class="form-actions">
+        <button type="submit" class="btn green uppercase">Login</button>
+        <label class="rememberme check mt-checkbox mt-checkbox-outline">
+            <input type="checkbox" name="remember" value="1" />Remember
+            <span></span>
+        </label>
+        <a href="{{url('admin/forgot-password')}}" id="forget-password" class="forget-password">Forgot Password?</a>
+    </div>
+
+    <div class="create-account">
+        <p>
+            <a href="javascript:;"  class="uppercase"></a>
+        </p>
+    </div>

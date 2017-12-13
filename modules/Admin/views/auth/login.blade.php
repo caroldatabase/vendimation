@@ -9,7 +9,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>CMS Login</title>
+        <title>ERP Login</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #4 for " name="description" />
@@ -40,14 +40,14 @@
 
     <body class=" login">
         <!-- BEGIN LOGO -->
-        <div class="logo">
-            
-               <img src="{{ URL::asset('assets/global/logo.png') }}"> 
-        </div>
+        
 
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
         <div class="content">
+
+        <h1><center>Vendimation</center></h1>
+        <hr>
         
             <!-- BEGIN LOGIN FORM -->
         
@@ -65,7 +65,7 @@
            
             <!-- END REGISTRATION FORM -->
         </div>
-        <div class="copyright"> {{date('Y')}} © Yellotasker. All rights reserved </div>
+        <div class="copyright"> {{date('Y')}} © Vendimation. All rights reserved </div>
         <!-- END LOGIN -->
         <!--[if lt IE 9]>
 <script src="{{ URL::asset('assets/global/plugins/respond.min.js') }}"></script>

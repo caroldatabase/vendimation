@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -9,7 +8,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>ERP Login</title>
+        <title>CMS Login</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #4 for " name="description" />
@@ -40,25 +39,46 @@
 
     <body class=" login">
         <!-- BEGIN LOGO -->
-        
+        <div class="logo">
+            
+                <p style="font-size: 30px; font-family: inherit; color:#fff; margin: 0px; padding: 0px"> <b style="color:yellow">Vendimation </b> </p>
+        </div>
 
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
         <div class="content">
-
-        <h1><center>Vendimation</center></h1>
-        <hr>
         
             <!-- BEGIN LOGIN FORM -->
         
-    <?php echo Form::model($user, ['url' => ['admin/login'],'class'=>'form-horizontal login-form','files' => true]); ?>
+         <!-- END LOGIN FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+           <form class="form-horizontal login-form " role="form"  style="display: visible"  method="POST" action="<?php echo e(url('/password/email')); ?>">
+                 
+                        <?php echo e(csrf_field()); ?>
 
-              
-       <?php echo $__env->make('packages::auth.form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-    <?php echo Form::close(); ?>
+                <h3>Forget Password ?</h3>
+                <p> Enter your e-mail address below to reset your password. </p>
+                <div class="form-group">
+                 <div align="center">
+                        <?php if($errors->first('message')): ?>
+                        <div class="alert alert-<?php echo e($errors->first('alert')); ?>">
+                            <?php echo e($errors->first('message')); ?> 
+                        </div>    
+                        <?php endif; ?>  
+                    </div>
+                    <div class="input-icon">
+                       <input id="email" type="email" class="form-control placeholder-no-fix" name="email" value="<?php echo e(old('email')); ?>" autocomplete="off" placeholder="Email">
+                       
 
-            <!-- END LOGIN FORM -->
-            
+
+                         </div>
+                </div>
+                <div class="form-actions"> <a href="<?php echo e(url('admin/login')); ?>"
+                    <button type="button" id="back-btn" class="btn grey-salsa btn-outline"> Back </button> </a>
+                 <button type="submit" class="btn green pull-right forget-password-form"> Reset Password </button>
+ 
+                   </div>   
+            </form>
 
               
            
@@ -67,7 +87,7 @@
            
             <!-- END REGISTRATION FORM -->
         </div>
-        <div class="copyright"> <?php echo e(date('Y')); ?> © Vendimation. All rights reserved </div>
+        <div class="copyright"> <?php echo e(date('Y')); ?> © Yellotasker. All rights reserved </div>
         <!-- END LOGIN -->
         <!--[if lt IE 9]>
 <script src="<?php echo e(URL::asset('assets/global/plugins/respond.min.js')); ?>"></script>
