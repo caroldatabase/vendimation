@@ -5,9 +5,12 @@
             <div class="page-header-inner ">
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
-                    <a href="{{url('admin')}}" >
-                      <!--  <img src="{{ URL::asset('assets/global/logo.png') }}" alt="logo" class="logo"  style="width: 170px" /> -->
-                      Admin
+                    <a href="{{url('admin')}}" style="
+    font-size: 20px;
+    margin-top: 20px;
+    color: #fff;
+" >
+                        Vendimation
                        </a>
                     <div class="menu-toggler sidebar-toggler">
                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
