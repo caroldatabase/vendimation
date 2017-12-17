@@ -68,7 +68,7 @@
                             </ul>  
                         </li>
                        
-                         <li class="nav-item  start active {{ (isset($page_title) && $page_title=='Category')?'open':'' }}">
+                       <!--  <li class="nav-item  start active {{ (isset($page_title) && $page_title=='Category')?'open':'' }}">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="fa fa-folder-open-o"></i>
                                 <span class="title">Manage Category</span>
@@ -138,11 +138,93 @@
                                 </li>
                                 
                             </ul>
+                        </li> --> 
+                        <!-- <li class="nav-item start active {{ (isset($page_title) && $page_title=='Program')?'open':'' }}">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="glyphicon glyphicon-th"></i>
+                                    <span class="title">Program</span>
+                                    <span class="arrow {{ (isset($page_title) && $page_title=='Program')?'open':'' }}"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='Program')?'block':'none' }}">
+                                    <li class="nav-item  {{ (isset($page_title) && $page_action=='View Program')?'active':'' }}">
+                                        <a href="{{ route('program') }}" class="nav-link ">
+                                           <i class="glyphicon glyphicon-eye-open"></i> 
+                                            <span class="title">
+                                                View Program 
+                                            </span>
+                                        </a>
+                                    </li> 
+                                    <li class="nav-item  {{ (isset($page_title) && $page_action=='Create Program')?'active':'' }}">
+                                        <a href="{{ route('program.create') }}" class="nav-link ">
+                                           <i class="glyphicon glyphicon-plus-sign"></i> 
+                                            <span class="title">
+                                                Create Program 
+                                            </span>
+                                        </a>
+                                    </li> 
+                                 
+                                </ul>
+                                     
+                        </li> 
+ -->
+                        <li class="nav-item start active {{ (isset($page_title) && $page_title=='Target Market')?'open':'' }}">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                    <i class="glyphicon glyphicon-th"></i>
+                                    <span class="title">Target Market</span>
+                                    <span class="arrow {{ (isset($page_title) && $page_title=='Target Market')?'open':'' }}"></span>
+                                </a>
+                                <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='Target Market')?'block':'none' }}">
+                                    <li class="nav-item  {{ (isset($page_title) && $page_action=='View Target Market')?'active':'' }}">
+                                        <a href="{{ route('targetMarket') }}" class="nav-link ">
+                                           <i class="glyphicon glyphicon-eye-open"></i> 
+                                            <span class="title">
+                                                View Target Market 
+                                            </span>
+                                        </a>
+                                    </li> 
+                                    <li class="nav-item  {{ (isset($page_title) && $page_action=='Create Target Market')?'active':'' }}">
+                                        <a href="{{ route('targetMarket.create') }}" class="nav-link ">
+                                           <i class="glyphicon glyphicon-plus-sign"></i> 
+                                            <span class="title">
+                                               Add Target Market
+                                            </span>
+                                        </a>
+                                    </li> 
+                                 
+                                </ul>
+                                     
+                        </li> 
+
+                        <li class="nav-item start active {{ (isset($page_title) && $page_title=='Business Nature')?'open':'' }}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="glyphicon glyphicon-th"></i>
+                                <span class="title">Business Nature</span>
+                                <span class="arrow {{ (isset($page_title) && $page_title=='Business Nature')?'open':'' }}"></span>
+                            </a>
+                            <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='Business Nature')?'block':'none' }}">
+                                <li class="nav-item  {{ (isset($page_title) && $page_action=='View Business Nature')?'active':'' }}">
+                                    <a href="{{ route('businessNature') }}" class="nav-link ">
+                                       <i class="glyphicon glyphicon-eye-open"></i> 
+                                        <span class="title">
+                                            View Target Market 
+                                        </span>
+                                    </a>
+                                </li> 
+                                <li class="nav-item  {{ (isset($page_title) && $page_action=='Create Business Nature')?'active':'' }}">
+                                    <a href="{{ route('businessNature.create') }}" class="nav-link ">
+                                       <i class="glyphicon glyphicon-plus-sign"></i> 
+                                        <span class="title">
+                                           Add Business Nature
+                                        </span>
+                                    </a>
+                                </li> 
+                             
+                            </ul>    
                         </li>
-                        <li class="nav-item start active">
+                          <li class="nav-item start active">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="glyphicon glyphicon-globe"></i>
-                                <span class="title"> Manage Contact </span>
+                                <span class="title"> Manage Contacts </span>
                                 <span class=""></span>
                                 <span class="arrow"></span>
                             </a>
@@ -150,7 +232,7 @@
                                  <li class="nav-item  {{ (isset($page_title) && $page_title=='Contact')?'open':'' }}">
                                     <a href="javascript:;" class="nav-link nav-toggle">
                                         <i class="icon-user"></i>
-                                        <span class="title">Contacts</span>
+                                        <span class="title">Contacts Gallery</span>
                                         <span class="arrow {{ (isset($page_title) && $page_title=='User')?'open':'' }}"></span>
                                     </a>
                                     <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='Contact')?'block':'none' }}">
@@ -190,42 +272,9 @@
                                         </li> 
                                      
                                     </ul>
-                                </li> 
-
-
-                               
-                            </ul>
-                             
-                        </li>
-                         <li class="nav-item start active {{ (isset($page_title) && $page_title=='Program')?'open':'' }}">
-                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                        <i class="glyphicon glyphicon-th"></i>
-                                        <span class="title">Program</span>
-                                        <span class="arrow {{ (isset($page_title) && $page_title=='Program')?'open':'' }}"></span>
-                                    </a>
-                                    <ul class="sub-menu" style="display: {{ (isset($page_title) && $page_title=='Program')?'block':'none' }}">
-                                        <li class="nav-item  {{ (isset($page_title) && $page_action=='View Program')?'active':'' }}">
-                                            <a href="{{ route('program') }}" class="nav-link ">
-                                               <i class="glyphicon glyphicon-eye-open"></i> 
-                                                <span class="title">
-                                                    View Program 
-                                                </span>
-                                            </a>
-                                        </li> 
-                                        <li class="nav-item  {{ (isset($page_title) && $page_action=='Create Program')?'active':'' }}">
-                                            <a href="{{ route('program.create') }}" class="nav-link ">
-                                               <i class="glyphicon glyphicon-plus-sign"></i> 
-                                                <span class="title">
-                                                    Create Program 
-                                                </span>
-                                            </a>
-                                        </li> 
-                                     
-                                    </ul>
-                                     
-                            </li> 
-                            <!-- Post task ------>
-                     
+                                </li>  
+                            </ul> 
+                        </li>  
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>

@@ -13,12 +13,8 @@
              <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
-                    <!-- BEGIN PAGE HEAD-->
-                    
-                    <!-- END PAGE HEAD-->
-                    <!-- BEGIN PAGE BREADCRUMB -->
-                    @include('packages::partials.breadcrumb')
-
+                    <!-- BEGIN PAGE HEAD-->  
+                    @include('packages::partials.breadcrumb') 
                     <div class="row">
                         <div class="col-md-12">
                             <!-- BEGIN PROFILE SIDEBAR -->
@@ -31,8 +27,8 @@
                                     <!-- END SIDEBAR USERPIC -->
                                     <!-- SIDEBAR USER TITLE -->
                                     <div class="profile-usertitle">
-                                        <div class="profile-usertitle-name"> Marcus Doe </div>
-                                        <div class="profile-usertitle-job"> Developer </div>
+                                        <div class="profile-usertitle-name"> {{$user->first_name}} </div>
+                                        <div class="profile-usertitle-job"> {{$user->position}} </div>
                                     </div>
                                     <!-- END SIDEBAR USER TITLE -->
                                     <!-- SIDEBAR BUTTONS -->
@@ -80,20 +76,20 @@
                                     </div>
                                     <!-- END STAT -->
                                     <div>
-                                        <h4 class="profile-desc-title">About Marcus Doe</h4>
-                                        <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+                                        <h4 class="profile-desc-title">About {{$user->first_name}}</h4>
+                                        <span class="profile-desc-text">{{$user->about_me}}</span>
                                         <div class="margin-top-20 profile-desc-link">
                                             <i class="fa fa-globe"></i>
-                                            <a href="http://www.keenthemes.com">www.keenthemes.com</a>
+                                            {{$user->companyName}}
                                         </div>
-                                        <div class="margin-top-20 profile-desc-link">
+                                       <!--  <div class="margin-top-20 profile-desc-link">
                                             <i class="fa fa-twitter"></i>
                                             <a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
                                         </div>
                                         <div class="margin-top-20 profile-desc-link">
                                             <i class="fa fa-facebook"></i>
                                             <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <!-- END PORTLET MAIN -->
@@ -124,37 +120,49 @@
                                                     </li>
                                                 </ul>
                                             </div>
+                                    {!! Form::model($user, ['route' => ['user.store'],'class'=>'','id'=>'users_form']) !!}
                                     <div class="portlet-body">
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB --> 
-                                         
+                                                <div class="margin-top-10">
+                                                    @if (count($errors) > 0)
+                                                      <div class="alert alert-danger">
+                                                          <ul>
+                                                              @foreach ($errors->all() as $error)
+                                                                  <li>{!! $error !!}</li>
+                                                              @endforeach
+                                                          </ul>
+                                                      </div>
+                                                    @endif
+                                                </div>
 
                                             @include('packages::users.formTab1', compact('user'))
- 
+
+                                            {!! Form::close() !!} 
                                             <!-- END PERSONAL INFO TAB --> 
                                             @include('packages::users.formTab2', compact('user'))
-
-
                                             <!-- END CHANGE AVATAR TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
                                             @include('packages::users.formTab3', compact('user'))
                                             <!-- END CHANGE PASSWORD TAB -->
                                             <!-- PRIVACY SETTINGS TAB --> 
                                             @include('packages::users.formTab4', compact('user')) 
-                                            <!-- END PRIVACY SETTINGS TAB --> 
+                                            <!-- END PRIVACY SETTINGS TAB -->  
                                         </div>
 
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- END PROFILE CONTENT -->
+                    <!-- END PAGE BASE CONTENT -->
                 </div>
+                <!-- END CONTENT BODY -->
             </div>
-        </div>
-        <!-- END CONTENT BODY -->
-    </div> 
-    <!-- END QUICK SIDEBAR -->
-</div> 
+            
+            
+            <!-- END QUICK SIDEBAR -->
+        </div> 
+        
 @stop

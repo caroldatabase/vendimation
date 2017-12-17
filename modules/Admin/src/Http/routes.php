@@ -49,7 +49,10 @@
         );
 
 
-         Route::bind('targetMarket', function($value, $route) {
+        
+
+
+        Route::bind('targetMarket', function($value, $route) {
             return Modules\Admin\Models\TargetMarketType::find($value);
         });
 

@@ -60,7 +60,7 @@ class BusinessNatureTypeController extends Controller {
     public function index(BusinessNatureType $businessNature, Request $request) 
     { 
         $page_title = 'Business Nature';
-        $sub_page_title = 'Business Nature Type';
+        $sub_page_title = 'Business Nature';
         $page_action = 'View Business Nature'; 
 
 
@@ -100,8 +100,8 @@ class BusinessNatureTypeController extends Controller {
 
     public function create(BusinessNatureType $businessNature) 
     {
-        $page_title     = 'Target Market';
-        $page_action    = 'Create Target Market';
+        $page_title     = 'Business Nature';
+        $page_action    = 'Create Business Nature';
         $program       = BusinessNatureType::all(); 
         $status         = [
                             'last_15_days'=>'inactive from last 15 days',
@@ -134,8 +134,8 @@ class BusinessNatureTypeController extends Controller {
      * */
 
     public function edit(BusinessNatureType $businessNature) {
-        $page_title     = 'Target Market';
-        $page_action    = 'Edit Ttarget Market'; 
+        $page_title     = 'Business Nature';
+        $page_action    = 'Edit Business Nature'; 
         $status         = [
                             'last_15_days'=>'inactive from last 15 days',
                             'last_30_days'=>'inactive from last 30 days',

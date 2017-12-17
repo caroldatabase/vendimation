@@ -44,10 +44,10 @@ class TargetMarketTypeController extends Controller {
      */
     public function __construct(TargetMarketType $targetMarket) { 
         $this->middleware('admin');
-        View::share('viewPage', 'Target Market Type');
-        View::share('sub_page_title', 'Target Markets');
+        View::share('viewPage', 'Target Market');
+        View::share('sub_page_title', 'Target Market');
         View::share('helper',new Helper);
-        View::share('heading','Target Markets');
+        View::share('heading','Target Market');
         View::share('route_url',route('targetMarket')); 
         $this->record_per_page = Config::get('app.record_per_page'); 
     }
@@ -59,9 +59,9 @@ class TargetMarketTypeController extends Controller {
 
     public function index(TargetMarketType $targetMarket, Request $request) 
     { 
-        $page_title = 'Target Markets';
-        $sub_page_title = 'Target Markets';
-        $page_action = 'View Target Markets'; 
+        $page_title = 'Target Market';
+        $sub_page_title = 'Target Market';
+        $page_action = 'View Target Market'; 
 
 
         if ($request->ajax()) {
