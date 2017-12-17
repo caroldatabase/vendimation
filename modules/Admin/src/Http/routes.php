@@ -49,6 +49,46 @@
         );
 
 
+         Route::bind('targetMarket', function($value, $route) {
+            return Modules\Admin\Models\TargetMarketType::find($value);
+        });
+
+        Route::resource('admin/targetMarket', 'Modules\Admin\Http\Controllers\TargetMarketTypeController', [
+            'names' => [
+                'edit' => 'targetMarket.edit',
+                'show' => 'targetMarket.show',
+                'destroy' => 'targetMarket.destroy',
+                'update' => 'targetMarket.update',
+                'store' => 'targetMarket.store',
+                'index' => 'targetMarket',
+                'create' => 'targetMarket.create',
+            ]
+                ]
+        );
+
+         Route::bind('businessNature', function($value, $route) {
+            return Modules\Admin\Models\BusinessNatureType::find($value);
+        });
+
+        Route::resource('admin/businessNature', 'Modules\Admin\Http\Controllers\BusinessNatureTypeController', [
+            'names' => [
+                'edit' => 'businessNature.edit',
+                'show' => 'businessNature.show',
+                'destroy' => 'businessNature.destroy',
+                'update' => 'businessNature.update',
+                'store' => 'businessNature.store',
+                'index' => 'businessNature',
+                'create' => 'businessNature.create',
+            ]
+                ]
+        );
+
+
+
+
+        
+
+
        
         /*------------User Category and controller---------*/
 

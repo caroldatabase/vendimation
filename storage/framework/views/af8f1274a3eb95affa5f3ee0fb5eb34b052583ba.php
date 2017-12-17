@@ -62,29 +62,40 @@
 
 
         <script src="<?php echo e(URL::asset('assets/pages/scripts/ui-buttons.min.js')); ?>" type="text/javascript"></script>
-        <script src="<?php echo e(URL::asset('assets/js/bootstrap-multiselect.js')); ?>" type="text/javascript"></script>
+        <script src="<?php echo e(URL::asset('assets/js/bootstrap-multiselect.js')); ?>" type="text/javascript"></script> 
+
+         <script src="<?php echo e(URL::asset('assets/js/components-select2.min.js')); ?>" type="text/javascript"></script>
+
 
         <script src="<?php echo e(URL::asset('assets/js/components-bootstrap-multiselect.min.js')); ?>" type="text/javascript"></script>
 
         <!-- END THEME LAYOUT SCRIPTS -->
-      <?php if(isset($js_file)): ?>
+  <?php if(isset($js_file)): ?>
 
-        <?php foreach($js_file as $key => $js ): ?>
-              <script src="<?php echo e(URL::asset('assets/js/'.$js)); ?>" type="text/javascript"></script>
-        <?php endforeach; ?>
-        <?php else: ?>
-         <script src="<?php echo e(URL::asset('assets/js/common.js')); ?>" type="text/javascript"></script>
-         <script src="<?php echo e(URL::asset('assets/js/bootbox.js')); ?>" type="text/javascript"></script>
-          <script src="<?php echo e(URL::asset('assets/js/formValidate.js')); ?>" type="text/javascript"></script>
-      <?php endif; ?>
+    <?php foreach($js_file as $key => $js ): ?>
+        <script src="<?php echo e(URL::asset('assets/js/'.$js)); ?>" type="text/javascript"></script>
+    <?php endforeach; ?>
+    <?php else: ?>
+      <script src="<?php echo e(URL::asset('assets/js/common.js')); ?>" type="text/javascript"></script>
+      <script src="<?php echo e(URL::asset('assets/js/bootbox.js')); ?>" type="text/javascript"></script>
+      <script src="<?php echo e(URL::asset('assets/js/formValidate.js')); ?>" type="text/javascript"></script>
+  <?php endif; ?>
 
-      <script type="text/javascript">
-          
-          var   email_req = "Please enter email";
-          var  password_req = "Please enter password";
-          var url = "<?php echo e(url::to('/')); ?>";
-      </script>
+   
+    <?php if(isset($js)): ?>
 
+      <?php foreach($userJs as $key => $jsfile ): ?>
+            <script src="<?php echo e(URL::asset($jsfile)); ?>" type="text/javascript"></script>
+      <?php endforeach; ?>
+       
+    <?php endif; ?> 
+
+    <script type="text/javascript">
+        
+        var   email_req = "Please enter email";
+        var  password_req = "Please enter password";
+        var url = "<?php echo e(url::to('/')); ?>";
+    </script> 
 
     </body>
 

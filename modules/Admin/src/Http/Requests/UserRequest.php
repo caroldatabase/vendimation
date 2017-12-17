@@ -22,8 +22,10 @@ class UserRequest extends Request {
                 case 'POST': {
                         return [
                             'email'     => "required|email|unique:users,email" ,  
-                            'name'      => 'required|min:3', 
-                            'password'  => 'required|min:6',
+                            'first_name'      => 'required|min:3', 
+                            'last_name'      => 'required|min:2', 
+                            'password'  => 'required|min:6', 
+                            'address' => 'required',
                         //    'phone' =>  'required|number|min:10',
                              'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric'
                              //size:10
@@ -36,9 +38,11 @@ class UserRequest extends Request {
                     if ( $user = $this->user ) {
 
                         return [
-                            'email'   => "required|email" ,  
-                            'name' => 'required|min:3',
-                            'phone' => 'regex:/^([0-9\s\-\+\(\)]*)$/|numeric'
+                            'email'      => "required|email" ,  
+                            'first_name' => 'required|min:3', 
+                            'last_name'  => 'required|min:2', 
+                            'phone'      => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
+                            'address'    => 'required',
                            // 'role'  => 'required'
                         ];
                     }

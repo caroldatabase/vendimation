@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Admin\Models\Group;
 use Modules\Admin\Models\Position;
 use Auth;
+use URL;
 
 class User extends Authenticatable {
 
@@ -35,11 +36,30 @@ class User extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-                            'name',
+                            'first_name','last_name','about_me','profile_image',
                             'phone',
                             'mobile',
                             'email', 
                             'role_type',
+                            'password',
+                            'status',
+                            'tagLine',
+                            'address',
+                            'birthday',
+                            'skills',
+                            'modeOfreach',
+                            'language',
+                            'qualification',
+                            'workExperience',
+                            'percentageCompletion',
+                            'rating',
+                            'companyName',
+                            'position',
+                            'extension',
+                            'dateOfBirth',
+                            'companyLogo',
+                            'occupation',
+                            'interests',
                             'remember_token'
                         ];  // All field of user table here    
 
@@ -64,5 +84,26 @@ class User extends Authenticatable {
         return User::all();
     }
 
+    public static function createImage($request, $fielName)
+    {
+        try{
+           
+            if ($request->file($fielName)) {
+                $photo = $request->file($fielName);
+
+                $destinationPath = storage_path('uploads/profile/');
+                $photo->move($destinationPath, time().$photo->getClientOriginalName());
+                $photo_name = time().$photo->getClientOriginalName();
+                return  URL::asset('storage/uploads/profile/'.$photo_name);
+                //$request->merge(['photo'=>$photo_name]);
+            }else{
+                 return false;
+            }  
+            
+        }catch(Exception $e){
+            return false;
+        }
+        
+    }
 
 }

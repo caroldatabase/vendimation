@@ -13,45 +13,150 @@
                 <div class="page-content">
                     <!-- BEGIN PAGE HEAD-->
                     
-                    <!-- END PAGE HEAD-->
-                    <!-- BEGIN PAGE BREADCRUMB -->
-                    <ul class="page-breadcrumb breadcrumb">
-                        <li>
-                            <a href="index.html">Home</a>
-                            <i class="fa fa-circle"></i>
-                        </li>
-                        <li>
-                            <a href="#">User</a>
-                            <i class="fa fa-circle"></i>
-                        </li>
-                        <li>
-                            <span class="active">Create</span>
-                        </li>
-                    </ul>
-                    <!-- END PAGE BREADCRUMB -->
-                    <!-- BEGIN PAGE BASE CONTENT -->
-                      <div class="row">
+                      <?php echo $__env->make('packages::partials.breadcrumb', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                    <div class="row">
                         <div class="col-md-12">
-                            <!-- BEGIN VALIDATION STATES-->
-                            <div class="portlet light portlet-fit portlet-form bordered">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="icon-settings font-dark"></i>
-                                        <span class="caption-subject font-dark sbold uppercase">Create User</span>
+                            <!-- BEGIN PROFILE SIDEBAR -->
+                            <div class="profile-sidebar">
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light profile-sidebar-portlet bordered">
+                                    <!-- SIDEBAR USERPIC -->
+                                    <div class="profile-userpic">
+                                        <img src="<?php echo e(URL::asset('assets/img/user.png')); ?>" class="img-responsive" alt=""> </div>
+                                    <!-- END SIDEBAR USERPIC -->
+                                    <!-- SIDEBAR USER TITLE -->
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name"> <?php echo e($user->first_name); ?> </div>
+                                        <div class="profile-usertitle-job"> <?php echo e($user->position); ?> </div>
                                     </div>
-                                    
+                                    <!-- END SIDEBAR USER TITLE -->
+                                    <!-- SIDEBAR BUTTONS -->
+                                    <div class="profile-userbuttons">
+                                        <button type="button" class="btn btn-circle green btn-sm">Email</button>
+                                        <button type="button" class="btn btn-circle red btn-sm">Message</button>
+                                    </div>
+                                    <!-- END SIDEBAR BUTTONS -->
+                                    <!-- SIDEBAR MENU -->
+                                    <div class="profile-usermenu">
+                                        <ul class="nav">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-home"></i> Overview </a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="#">
+                                                    <i class="icon-settings"></i> Account Settings </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-info"></i> Help </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- END MENU -->
                                 </div>
-                                <div class="portlet-body">
-                                    <!-- BEGIN FORM-->
-                                  
+                                <!-- END PORTLET MAIN -->
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light bordered">
+                                    <!-- STAT -->
+                                    <div class="row list-separated profile-stat">
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 37 </div>
+                                            <div class="uppercase profile-stat-text"> Projects </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 51 </div>
+                                            <div class="uppercase profile-stat-text"> Tasks </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 61 </div>
+                                            <div class="uppercase profile-stat-text"> Uploads </div>
+                                        </div>
+                                    </div>
+                                    <!-- END STAT -->
+                                    <div>
+                                        <h4 class="profile-desc-title">About <?php echo e($user->first_name); ?></h4>
+                                        <span class="profile-desc-text"><?php echo e($user->about_me); ?></span>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-globe"></i>
+                                            <?php echo e($user->companyName); ?>
 
-                                <?php echo Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', $user->id],'class'=>'form-horizontal user-form','id'=>'form_sample_3']); ?>
-
-                                    <?php echo $__env->make('packages::users.form', compact('user'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                                <?php echo Form::close(); ?> 
-                                    <!-- END FORM-->
+                                        </div>
+                                       <!--  <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-twitter"></i>
+                                            <a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
+                                        </div>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-facebook"></i>
+                                            <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
+                                        </div> -->
+                                    </div>
                                 </div>
-                                <!-- END VALIDATION STATES-->
+                                <!-- END PORTLET MAIN -->
+                            </div>
+                            <!-- END BEGIN PROFILE SIDEBAR -->
+                            <!-- BEGIN PROFILE CONTENT -->
+                            <div class="profile-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title tabbable-line">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-globe theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+                                                </div>
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active">
+                                                        <a href="#tab_1_1" data-toggle="tab">Personal Info</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#tab_1_3" data-toggle="tab"> Business Info</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#tab_1_4" data-toggle="tab">  Payment Info</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                   <?php echo Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', $user->id],'enctype'=>'multipart/form-data']); ?>
+
+                                    <div class="portlet-body">
+                                        <div class="tab-content">
+                                            <!-- PERSONAL INFO TAB --> 
+                                                <div class="margin-top-10">
+                                                    <?php if(count($errors) > 0): ?>
+                                                      <div class="alert alert-danger">
+                                                          <ul>
+                                                              <?php foreach($errors->all() as $error): ?>
+                                                                  <li><?php echo $error; ?></li>
+                                                              <?php endforeach; ?>
+                                                          </ul>
+                                                      </div>
+                                                    <?php endif; ?>
+                                                </div>
+
+                                            <?php echo $__env->make('packages::users.formTab1', compact('user'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                                            <?php echo Form::close(); ?> 
+                                            <!-- END PERSONAL INFO TAB --> 
+                                            <?php echo $__env->make('packages::users.formTab2', compact('user'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                                            <!-- END CHANGE AVATAR TAB -->
+                                            <!-- CHANGE PASSWORD TAB -->
+                                            <?php echo $__env->make('packages::users.formTab3', compact('user'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                                            <!-- END CHANGE PASSWORD TAB -->
+                                            <!-- PRIVACY SETTINGS TAB --> 
+                                            <?php echo $__env->make('packages::users.formTab4', compact('user'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
+                                            <!-- END PRIVACY SETTINGS TAB --> 
+
+                                           
+                                        </div>
+
+                                    </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

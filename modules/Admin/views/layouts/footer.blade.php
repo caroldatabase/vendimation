@@ -62,29 +62,40 @@
 
 
         <script src="{{ URL::asset('assets/pages/scripts/ui-buttons.min.js') }}" type="text/javascript"></script>
-        <script src="{{ URL::asset('assets/js/bootstrap-multiselect.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('assets/js/bootstrap-multiselect.js') }}" type="text/javascript"></script> 
+
+         <script src="{{ URL::asset('assets/js/components-select2.min.js') }}" type="text/javascript"></script>
+
 
         <script src="{{ URL::asset('assets/js/components-bootstrap-multiselect.min.js') }}" type="text/javascript"></script>
 
         <!-- END THEME LAYOUT SCRIPTS -->
-      @if(isset($js_file))
+  @if(isset($js_file))
 
-        @foreach($js_file as $key => $js )
-              <script src="{{ URL::asset('assets/js/'.$js) }}" type="text/javascript"></script>
-        @endforeach
-        @else
-         <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
-         <script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
-          <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script>
-      @endif
+    @foreach($js_file as $key => $js )
+        <script src="{{ URL::asset('assets/js/'.$js) }}" type="text/javascript"></script>
+    @endforeach
+    @else
+      <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
+      <script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
+      <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script>
+  @endif
 
-      <script type="text/javascript">
-          
-          var   email_req = "Please enter email";
-          var  password_req = "Please enter password";
-          var url = "{{ url::to('/')}}";
-      </script>
+   
+    @if(isset($js))
 
+      @foreach($userJs as $key => $jsfile )
+            <script src="{{ URL::asset($jsfile) }}" type="text/javascript"></script>
+      @endforeach
+       
+    @endif 
+
+    <script type="text/javascript">
+        
+        var   email_req = "Please enter email";
+        var  password_req = "Please enter password";
+        var url = "{{ url::to('/')}}";
+    </script> 
 
     </body>
 
