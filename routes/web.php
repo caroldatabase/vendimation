@@ -28,7 +28,9 @@ header('Access-Control-Allow-Credentials: true');
 |
 */
 
-Route::view('/','admin');
+Route::get('/', function(){
+	return \Redirect::to('admin');
+});
  
 /*
 |--------------------------------------------------------------------------
