@@ -28,7 +28,7 @@ header('Access-Control-Allow-Credentials: true');
 |
 */
 
-Route::view('/','welcome');
+Route::view('/','admin');
  
 /*
 |--------------------------------------------------------------------------
