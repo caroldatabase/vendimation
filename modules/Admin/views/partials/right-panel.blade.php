@@ -313,7 +313,7 @@
                     <h4>App revamp discussion</h4>
                         <p>Sat Mar 23, 2017, 04pm-05pm (IST)</p>
                         <div class="map-meeting">
-                        <img src="{{asset('assets/img/map.jpg')}}">
+                        <img src="{{asset('assets/img/map.jpg')}}"> 
                         </div>
                         <div class="la-am-es">
                         <img src="{{asset('assets/img/dummy-image.jpg')}}">
