@@ -52,27 +52,26 @@ class AdminController extends Controller {
         
         View::share('heading','dashboard');
         View::share('route_url','admin');
+
+        $js_file = [
+                'jquery.min.js', 
+                'bootstrap.min.js',
+                'jquery.flot.js',
+                'custom.js'
+                ];
+        View::share('js_file',$js_file);
     }
     /*
     * Dashboard
     **/
     public function index(Request $request) 
     { 
-       // dd(Session::getId());
         $page_title = "";
         $page_action = "";
         $professor = User::where('role_type',1)->count();
-         
-        $user = User::count();
         $viewPage = "Admin";
 
-        $users_count        =  User::count();
-        $category_grp_count =  Category::where('parent_id',0)->count();
-        $category_count     =  Category::where('parent_id','!=',0)->count();
-        $category_dashboard_count = CategoryDashboard::count();
-
-
-        return view('packages::dashboard.index',compact('category_count','users_count','category_grp_count','page_title','page_action','viewPage','category_dashboard_count'));
+        return view('packages::dashboard.index');
     }
 
    public function profile(Request $request,Admin $users)
