@@ -40,6 +40,12 @@ class AuthController extends Controller
         return view('packages::auth.login', compact('user'));
 	}
 
+	public function signup( Request $request, $step=null){
+
+		$user = new User;
+		 return view('packages::auth.signup_'.$step, compact('user'));
+	}
+
 	public function forgetPassword	()
 	{	 
 		return view('packages::auth.passwords.email');

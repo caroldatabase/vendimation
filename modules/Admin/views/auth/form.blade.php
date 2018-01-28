@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <p class="signup"><span></span><a href="#">Create an account?</a></p>
+                <p class="signup"><span></span><a href="{{url('admin/signup/step_1')}}">Create an account?</a></p>
                
             </form>
            

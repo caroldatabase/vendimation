@@ -6,6 +6,12 @@
     Route::get('admin/password/reset','Modules\Admin\Http\Controllers\AuthController@resetPassword');  
     Route::get('admin/logout','Modules\Admin\Http\Controllers\AuthController@logout');  
 
+
+    Route::match(['get','post'],'admin/signup/{step}','Modules\Admin\Http\Controllers\AuthController@signup');
+
+    Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
+    Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
+
     Route::post('admin/login',function(App\Admin $user, \Illuminate\Http\Request $request){
    
     $credentials = ['email' => Input::get('email'), 'password' => Input::get('password')]; 
