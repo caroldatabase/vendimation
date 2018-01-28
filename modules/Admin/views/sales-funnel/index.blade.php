@@ -11,7 +11,7 @@
 			<div class="row">
 				<!--main menu start-->
 					@include('packages::partials.sidebar')
-					 @include('packages::contactGroup.home')   
+					 @include('packages::sales-funnel.home')   
 				<!--main menu end-->
 			</div>
 		</div>

@@ -339,6 +339,62 @@
         );
 
 
+         Route::bind('funnels', function($value, $route) {
+            return Modules\Admin\Models\Funnels::find($value);    
+        });
+        // Routes for Tag added by Ocean
+        Route::resource('admin/funnels', 'Modules\Admin\Http\Controllers\FunnelsController', [
+            'names' => [
+                'edit' => 'funnels.edit',
+                'show' => 'funnels.show',
+                'destroy' => 'funnels.destroy',
+                'update' => 'funnels.update',
+                'store' => 'funnels.store',
+                'index' => 'funnels',
+                'create' => 'funnels.create',
+            ]
+                ]
+        );
+
+
+        
+         Route::bind('consumer', function($value, $route) {
+            return Modules\Admin\Models\Consumer::find($value);    
+        });
+        // Routes for Tag added by Ocean
+        Route::resource('admin/consumer', 'Modules\Admin\Http\Controllers\ConsumerController', [
+            'names' => [
+                'edit' => 'consumer.edit',
+                'show' => 'consumer.show',
+                'destroy' => 'consumer.destroy',
+                'update' => 'consumer.update',
+                'store' => 'consumer.store',
+                'index' => 'consumer',
+                'create' => 'consumer.create',
+            ]
+                ]
+        );
+
+
+        
+         Route::bind('sales-funnel', function($value, $route) {
+            return Modules\Admin\Models\SalesFunnel::find($value);    
+        });
+        // Routes for Tag added by Ocean
+        Route::resource('admin/sales-funnel', 'Modules\Admin\Http\Controllers\SalesFunnelController', [
+            'names' => [
+                'edit' => 'sales-funnel.edit',
+                'show' => 'sales-funnel.show',
+                'destroy' => 'sales-funnel.destroy',
+                'update' => 'sales-funnel.update',
+                'store' => 'sales-funnel.store',
+                'index' => 'sales-funnel',
+                'create' => 'sales-funnel.create',
+            ]
+                ]
+        );
+
+
         /*----------End---------*/    
         
         Route::match(['get','post'],'admin/profile', 'Modules\Admin\Http\Controllers\AdminController@profile'); 
