@@ -260,29 +260,85 @@
                             <div id="calendar_content"></div>
                           </div>
                     </div>
+                    
                     <div class="today-meeting">
-                        <p class="today-meeting-head">
-                            <span>TODAY'S MEETING</span> <a href="#">ADD EVENT</a>
-                        </p>
-                        <div class="step-meeting">
-                            <img src="{{asset('assets/img/step-bullet.jpg')}}">
-                        </div>
-                        <div class="slide-meeting">
-                            <h4>App revamp discussion</h4>
-                            <p>Sat Mar 23, 2017, 04pm-05pm (IST)</p>
-                        </div>
-                            <div class="map-meeting">
-                            <img src="{{asset('assets/img/map.jpg')}}">
+                    <p class="today-meeting-head">
+                        <span>TODAY'S MEETING</span> <a href="#">ADD EVENT</a>
+                    </p>
+                    <div class="step-meeting">
+                        <img src="{{asset('assets/img/step-bullet.jpg')}}">
+                    </div>
+                    <div class="slide-meeting">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+   
+
+    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+
+                    <div class="item active">
+                        <h4>App revamp discussion</h4>
+                        <p>Sat Mar 23, 2017, 04pm-05pm (IST)</p>
+                        <div class="map-meeting">
+                        <img src="{{asset('assets/img/map.jpg')}}">
                         </div>
                         <div class="la-am-es">
-                            <img src="{{asset('assets/img/dummy-image.jpg')}}">
-                        </div>
-                        <div class="reminder-btn">
-                            <span style="float:left; margin-top:10px;">
-                                <img src="{{asset('assets/img/nex-pre.jpg')}}"></span>
-                                <a href="#" style="float:right">Set Reminder</a>
+                        <img src="{{asset('assets/img/dummy-image.jpg')}}">
                         </div>
                     </div>
+
+                  <div class="item">
+                    <h4>App revamp discussion</h4>
+                        <p>Sat Mar 23, 2017, 04pm-05pm (IST)</p>
+                        <div class="map-meeting">
+                        <img src="{{asset('assets/img/map.jpg')}}">
+                        </div>
+                        <div class="la-am-es">
+                        <img src="{{asset('assets/img/dummy-image.jpg')}}">
+                        </div>
+                </div>
+    
+                <div class="item">
+                <h4>App revamp discussion</h4>
+                    <p>Sat Mar 23, 2017, 04pm-05pm (IST)</p>
+                    <div class="map-meeting">
+                        <img src="{{asset('assets/img/map.jpg')}}">
+                    </div>
+                    <div class="la-am-es">
+                        <img src="{{asset('assets/img/dummy-image.jpg')}}">
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h4>App revamp discussion</h4>
+                        <p>Sat Mar 23, 2017, 04pm-05pm (IST)</p>
+                        <div class="map-meeting">
+                        <img src="{{asset('assets/img/map.jpg')}}">
+                        </div>
+                        <div class="la-am-es">
+                        <img src="{{asset('assets/img/dummy-image.jpg')}}">
+                        </div>
+                </div>
+            </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                                                
+            </div>
+                                            
+                                            
+                                            <div class="reminder-btn">
+                                                <a href="#" style="float:right">Set Reminder</a>
+                                            </div>
+                                        </div>
                 </div>
             </div>
             

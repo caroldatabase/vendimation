@@ -3,7 +3,7 @@ body
 {
 margin:0;
 padding:0;
-font-family: 'Open Sans', sans-serif;
+font-family: 'Muli', sans-serif;
 font-size:16px;
 box-sizing:border-box;
 color:#989ca6 !important;
@@ -820,4 +820,40 @@ li.notification {
     position: absolute;
     top: 22px;
     right: -14px;
+}
+.carousel-control.left, .carousel-control.right {
+    background: none !important;
+}
+.carousel-control {
+    position: absolute;
+    top: 115%;
+    bottom: 0;
+    left: 0;
+    width: 15%;
+    font-size: 11px;
+    color: #ccc;
+    text-align: center;
+    text-shadow: none !important;
+    opacity: 1;
+    height: auto !important;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {
+    width: 15px;
+    height: 15px;
+    margin-top: 0;
+    font-size: 15px;
+}
+span.glyphicon.glyphicon-chevron-left:hover {
+    color: #00a2eb;
+}
+span.glyphicon.glyphicon-chevron-right:hover {
+    color: #00a2eb;
+}
+.carousel-control.left  {
+    background: none !important;
+    left: 0px;
+}
+.carousel-control.right {
+    background: none !important;
+    left: 30px;
 }
