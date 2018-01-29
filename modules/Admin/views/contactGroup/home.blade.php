@@ -1,14 +1,15 @@
+
 <!-- END SIDEBAR -->
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
 <!-- BEGIN CONTENT BODY -->
 <div class="page-content">
-<!-- BEGIN PAGE HEAD-->
-
-<!-- END PAGE HEAD-->
-<!-- BEGIN PAGE BREADCRUMB -->
-@include('packages::partials.breadcrumb')
-
+    <!-- BEGIN PAGE HEAD-->
+    
+    <!-- END PAGE HEAD-->
+    <!-- BEGIN PAGE BREADCRUMB -->
+   @include('packages::partials.breadcrumb')
+   
 <!-- END PAGE BREADCRUMB -->
 <!-- BEGIN PAGE BASE CONTENT -->
 <div class="row">

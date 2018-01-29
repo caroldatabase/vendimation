@@ -4,7 +4,7 @@ Login page
 ***/
 /* bg color */
 html,body { 
-	background: url(/assets/ven/img/bg.jpg) no-repeat center center fixed; 
+	background: url('../../assets/img/bg.jpg') no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -394,7 +394,7 @@ html,body {
 }
 .form-group .tickRight a{
 	padding-right:35px;
-	background: url(/assets/ven/img/tick.png) no-repeat center center fixed; 
+	background:url(../../assets/img/tick.png) no-repeat -2px -2px;
 }
 .form-group .dob {
     position: absolute;
@@ -403,7 +403,7 @@ html,body {
 }
 .form-group .dob a{
 	padding-right:35px;
-	background:url(/assets/ven/img/dob.png) no-repeat -2px 0;
+	background:url(../../assets/img/dob.png) no-repeat -2px 0;
 	padding:6px 11px;
 	text-decoration:none;
 }
@@ -615,13 +615,13 @@ html,body {
   color: #433e36;
   opacity: 0.5;
   padding: 20px;
-background: url(/assets/ven/img/location.png) no-repeat center center fixed; 
+background: url(../../assets/img/location.png) no-repeat -3px 15px;
 }
 .natureBusiness{
 	margin-top:10px;
 }
 .plusMinus span{
-	background: url(/assets/ven/img/plus-minus.png) no-repeat center center fixed; 
+	background: url(../../assets/img/plus-minus.png) no-repeat 0px 4px;
 	padding: 9px 15px;
 }
 .natureBusiness{
@@ -874,28 +874,28 @@ padding-right: 10px;
     }
 }
 .item:nth-child(1) {
-    background: url(/assets/ven/img/1.jpg) no-repeat center center fixed; 
+    background: url(../../assets/img/1.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 .item:nth-child(2) {
-    background: url(/assets/ven/img/2.jpg) no-repeat center center fixed; 
+    background: url(../../assets/img/2.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 .item:nth-child(3) {
-    background: url(/assets/ven/img/3.jpg) no-repeat center center fixed; 
+    background: url(../../assets/img/3.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 .item:nth-child(4) {
-    background: url(/assets/ven/img/4.jpg) no-repeat center center fixed; 
+    background: url(../../assets/img/4.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

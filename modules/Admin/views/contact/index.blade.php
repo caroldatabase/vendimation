@@ -6,6 +6,14 @@
     @section('content') 
       @include('packages::partials.navigation')
       <!-- Left side column. contains the logo and sidebar -->
-      @include('packages::partials.sidebar')
-      @include('packages::contact.home')   
+      <div class="main-section">
+		<div class="container-fluid">
+			<div class="row">
+				<!--main menu start-->
+					@include('packages::partials.sidebar')
+					 @include('packages::contact.home')   
+				<!--main menu end-->
+			</div>
+		</div>
+	</div>
 @stop

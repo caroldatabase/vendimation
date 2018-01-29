@@ -77,7 +77,8 @@ class Helper {
         $contacts = ContactGroup::with('contact')->where('parent_id',$id)->get();
         $gname = ContactGroup::find($id)->groupName;
         
-        $contact_list = ContactGroup::where('parent_id',$id)->lists('contactId');
+        $contact_list = ContactGroup::where('parent_id',$id)->get(['contactId'])->toArray();
+
         $contact_not_id = Contact::whereNotIn('id',$contact_list)->get();
 
         $html = view::make('packages::contactGroup.group_pop',compact('contacts','contact_not_id','gname'));

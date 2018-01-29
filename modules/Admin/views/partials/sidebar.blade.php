@@ -1,10 +1,10 @@
 <div class="col-sm-2 main-menu">
 <div class="left-navigation">
     <ul>
-        <li class="active"><a href="#"><i class="fa fa-list" aria-hidden="true"></i> Funnels</a></li>
-        <li><a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i> My Contact</a></li>
-        <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Consumer</a></li>
-        <li><a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Sales Funnel</a></li>
+        <li class="active"><a href="{{route('funnels')}}"><i class="fa fa-list" aria-hidden="true"></i> Funnels</a></li>
+        <li><a href="{{route('contacts')}}"><i class="fa fa-address-book-o" aria-hidden="true"></i> My Contact</a></li>
+        <li><a href="{{route('consumer')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Consumer</a></li>
+        <li><a href="{{route('sales-funnel')}}"><i class="fa fa-line-chart" aria-hidden="true"></i> Sales Funnel</a></li>
     </ul>
     <p class="graps-head"><span>Graps Tips</span></p>
     <ul class="grap-list">

@@ -62,6 +62,7 @@ class ContactGroupController extends Controller {
 
     public function index(ContactGroup $contactGroup, Request $request) 
     { 
+       
         $page_title = 'Contact';
         $sub_page_title = 'contactGroup';
         $page_action = 'View contactGroup'; 

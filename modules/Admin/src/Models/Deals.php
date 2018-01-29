@@ -4,7 +4,7 @@ namespace Modules\Admin\Models;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Contact extends Model {
+class Deals extends Model {
 
    
     /**
@@ -12,7 +12,7 @@ class Contact extends Model {
      *
      * @var string
      */
-    protected $table = 'contacts';
+    protected $table = 'deals';
     /**
      * The attributes that are mass assignable.
      *
@@ -40,16 +40,12 @@ class Contact extends Model {
      *
      * @var array
      */
-    protected $fillable = ['firstName','lastName','name','email','phone'];  // All field of user table here    
-    public function contactGroup()
-    {
-        return $this->hasMany('Modules\Admin\Models\ContactGroup','contactId','id')->groupBy('contactId');
-    }
     
     public function user()
     {
-        return $this->hasMany('Modules\Admin\Models\User','user_id','id');
+        return $this->hasOne('Modules\Admin\Models\User','user_id','id');
     }
+    
     
   
 }

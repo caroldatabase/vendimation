@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-sm-2 text-center main-logo">
                         <div class="logo">
-                            <a href="#"><img src="{{URL::asset('assets/img/main-logo.jpg')}}"></a>
+                            <a href="{{url('admin')}}"><img src="{{URL::asset('assets/img/main-logo.jpg')}}"></a>
                         </div>
                     </div>
                     <div class="col-sm-10">
