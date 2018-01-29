@@ -23,15 +23,14 @@ use Validator;
 use App\Http\Requests;
 use App\Helpers\Helper as Helper;
 //use Modules\Admin\Models\User; 
-use Modules\Admin\Models\Category;
-use Modules\Admin\Models\CategoryDashboard;
+use Modules\Admin\Models\Contact;
+use Modules\Admin\Models\Deals;
+use Modules\Admin\Models\Notification;
+use Modules\Admin\Models\ContactGroup;
+use Modules\Admin\Models\User;
 use App\Admin;
 use Illuminate\Http\Request;
 use Session;
-
-use App\User;
-use App\ProfessorProfile;
-use App\StudentProfile;
  
 /**
  * Class : AdminController
@@ -48,8 +47,8 @@ class AdminController extends Controller {
     protected $guard = 'admin';
     public function __construct()
     {  
-        $this->middleware('admin');  
-        
+        $a =  $this->middleware('admin');  
+        //dd($a);
         View::share('heading','dashboard');
         View::share('route_url','admin');
 
@@ -68,10 +67,29 @@ class AdminController extends Controller {
     { 
         $page_title = "";
         $page_action = "";
-        $professor = User::where('role_type',1)->count();
         $viewPage = "Admin";
 
-        return view('packages::dashboard.index');
+        $contact = Contact::all();
+        $notification = Notification::all();
+
+        $contact_count          = ($contact)?$contact->count():0;
+        $notification_count     = ($notification)?$notification->count():0;
+
+        $admin = Auth::guard('admin')->user();
+        if($admin){
+            $user = Auth::guard('admin')->user(); 
+        }else{
+            $user = Auth::guard('web')->user(); 
+        }
+        $deals = Deals::where('user_id',$user->id)->orderBy('id','desc')->first();
+        $close_deals = Deals::where('user_id',$user->id)->count();
+
+         $contactGroup =   ContactGroup::with(['contactGroup' => function ($query) {
+                $query->with('contact');
+            }])->where('parent_id',0)->orderBy('id','desc')->get();
+
+                
+        return view('packages::dashboard.index',compact('contact_count','deals','notification_count','close_deals','contactGroup'));
     }
 
    public function profile(Request $request,Admin $users)
