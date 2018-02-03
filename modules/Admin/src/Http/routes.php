@@ -3,11 +3,16 @@
     Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
     Route::get('admin/forgot-password','Modules\Admin\Http\Controllers\AuthController@forgetPassword');
     Route::post('password/email','Modules\Admin\Http\Controllers\AuthController@sendResetPasswordLink');
-    Route::get('admin/password/reset','Modules\Admin\Http\Controllers\AuthController@resetPassword');  
+    Route::match(['get','post'],'admin/password/reset','Modules\Admin\Http\Controllers\AuthController@resetPassword'); 
+
     Route::get('admin/logout','Modules\Admin\Http\Controllers\AuthController@logout');  
 
 
     Route::match(['get','post'],'admin/signup/{step}','Modules\Admin\Http\Controllers\AuthController@signup');
+    Route::match(['post','get'],'admin/email_verification','Modules\Admin\Http\Controllers\AuthController@emailVerification');   
+
+
+
     Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
 
     Route::post('admin/login',function(App\Admin $user, \Illuminate\Http\Request $request){

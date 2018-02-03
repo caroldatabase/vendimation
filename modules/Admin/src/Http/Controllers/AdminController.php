@@ -47,9 +47,8 @@ class AdminController extends Controller {
     protected $guard = 'admin';
     public function __construct()
     {  
-        $a =  $this->middleware('admin');  
-        //dd($a);
-        View::share('heading','dashboard');
+        $this->middleware('admin');  
+         View::share('heading','dashboard');
         View::share('route_url','admin');
 
         $js_file = [

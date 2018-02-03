@@ -1,70 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <title>Vendimation Login</title>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta content="" name="author" />
-      <link href="https://fonts.googleapis.com/css?family=Muli:400,800" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets/css/components.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="{{asset('assets/css/login.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/login.min.css')}}" rel="stylesheet" type="text/css" />
-   </head>
-   </head>
-   <body class=" login">
-      <div class="backRight">
-         <div class="RectangleRight">
-            <a href="#">
-               <?xml version="1.0" encoding="UTF-8"?>
-               <svg width="182px" height="112px" viewBox="0 0 182 112" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-                  <title>logo</title>
-                  <desc>Created with Sketch.</desc>
-                  <defs></defs>
-                  <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                     <g id="logo" fill="#00A5EC" fill-rule="nonzero">
-                        <polygon id="Path-2" points="47.3383245 69.517337 19.1009343 102.349727 0.519143675 86.3685185 44.9405742 34.7184997 93.3707798 77.4450238 163.06381 0.130993072 181.268137 16.5408823 95.3397713 111.865598"></polygon>
-                     </g>
-                  </g>
-               </svg>
-            </a>
-         </div>
-         <div class="vendimation">
-            <div class="text">Powered by Vendimation</div>
-            <div class="logov">
-               <a href="#">
-               <img src="{{ asset('assets/img/logov.png')}}">
-               </a>
-            </div>
-         </div>
-         <div class="carousel slide carousel-fade hidden-xs" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-               <div class="item active"></div>
-               <div class="item"></div>
-               <div class="item"></div>
-            </div>
-         </div>
-         <!-- Remeber to put all the content you want on top of the slider below the slider code -->
-         <div class="title">
-            <p>We are designing for a global user base... [With InVision] we can get feedback not just from drivers we see in San Francisco but from all around the world.</p>
-            <p class="author"><span></span>MIKE DAVIDSON</p>
-         </div>
-         <div class="middleDivider">
-            <ul>
-               <li class="active"><span>&nbsp;</span></li>
-               <li></li>
-               <li class="last"></li>
-            </ul>
-         </div>
-      </div>
+@extends('packages::layouts.signupmaster')
+    @section('content') 
       <!-- BEGIN LOGIN -->
       <div class="content"> 
       <!-- BEGIN LOGIN FORM -->
-      <form class="login-form" action="{{url('admin/signup/step_2')}}" method="post">
+         {!! Form::open(['url' => url('admin/signup/step_2') ,'class'=>'form-horizontal ','id'=>'user-form','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
+ 
          <div class="index">
             <ul>
                <li>01</li>
@@ -77,11 +17,8 @@
                      </button>
                      <ul class="dropdown-menu">
                         <li>
-                           <a href="javascript:;"> Spanish </a>
-                        </li>
-                        <li>
-                           <a href="javascript:;"> German </a>
-                        </li>
+                           <a href="javascript:;"> English </a>
+                        </li> 
                      </ul>
                   </div>
                </li>
@@ -94,40 +31,48 @@
             <button class="close" data-close="alert"></button>
             <span> Enter any username and password. </span>
          </div>
-         <div class="form-group form-group-name">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Full Name" name="username" /> 
+         <div class="form-group form-group-name {{ $errors->first('name', ' has-error') }}">
+              {!! Form::text('name',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,'autocomplete'=>"off","placeholder"=>'Full Name'])  !!} 
+               <span class="help-block" style="color:red">{{ $errors->first('name', ':message') }} 
+         </div> 
+
+         <div class="form-group form-group-name {{ $errors->first('email', ' has-error') }}">
+            {!! Form::text('email',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address'])  !!} 
+            <span class="help-block" style="color:red">{{ $errors->first('email', ':message') }} 
          </div>
-         <div class="form-group">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label>Email address</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" /> 
+
+           <div class="form-group form-group-name {{ $errors->first('password', ' has-error') }}">
+            {!! Form::password('password', ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address'])  !!} 
+            <span class="help-block" style="color:red">{{ $errors->first('password', ':message') }} 
          </div>
-         <div class="form-group form-group-name">
-            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> 
+ 
+         <div class="form-group form-group-name {{ $errors->first('phone_or_mobile', ' has-error') }}"> 
+             {!! Form::text('phone_or_mobile',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"placeholder"=>'PHONE/MOBILE','value'=>old('phone_or_mobile')])  !!} 
+            <span class="help-block" style="color:red">{{ $errors->first('phone_or_mobile', ':message') }} </span>
          </div>
-         <div class="form-group">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="colorGrey">MOBILE PHONE</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="PHONE/MOBILE" name="username" /> 
-         </div>
-         <div class="date form-group" data-provide="datepicker">
-            <div class="input-group date form_datetime form_datetime bs-datetime">
-               <label>Date of Birth</label>
-               <input type="text"  id="dateofbday" class="form-control form-control-solid placeholder-no-fix" placeholder="Date of Birth">
-               <span class="input-group-addon">
+
+
+         <div class="form-group form-group-name"> 
+            
+             <div class="input-group  date date-picker" data-date="15 Mar,1988" data-date-format="dd M,yyyy" data-date-viewmode="years">
+            <input type="text" class="form-control" readonly="" value="{{ old('dateOfBirth') }}"   name="dateOfBirth" placeholder="Date of Birth">
+                  <span class="input-group-addon">
                <button type="button" style="border:0;background:transparent;">
                <img src="{{ asset('assets/img/dob.png')}}">
                </button>
                </span>
-            </div>
-         </div>
+             </div>
+             <span class="help-block" style="color:red">{{ $errors->first('dateOfBirth', ':message') }} </span>
+         </div> 
+          
          <div class="savePass">
             <div class="mt-checkbox-list" data-error-container="#form_2_services_error">
-               <label class="mt-checkbox" style="width:100%;">
-               <input type="checkbox" value="1" name="service"> By clicking here you confirm that you agree with our terms & conditions
+               <label class="mt-checkbox {{ $errors->first('phone_or_mobile', ' has-error') }}" style="width:100%;">
+               <input type="checkbox" value="1" name="tnc" > By clicking here you confirm that you agree with our terms & conditions
                <span></span>
                </label>
+                   <span class="help-block" style="color:red">{{ $errors->first('tnc', ':message') }} </span>
+            
             </div>
          </div>
          <div class="panelBtn">
@@ -142,30 +87,6 @@
          </div>
          <div class="clearfix"></div>
          <p class="signup"><span></span><a href="{{url('admin/login')}}">Login</a></p>
-      </form>
+      {!! Form::close() !!} 
 
-        <script src="{{ URL::asset('assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>
-
-        <script src="{{ URL::asset('assets/global/plugins/bootstrap.min.js')}}" type="text/javascript"></script>
-        <script src="{{ URL::asset('assets/global/plugins/bootstrap-switch.min.js')}}" type="text/javascript"></script>
-        <script src="{{ URL::asset('assets/global/plugins/jquery.validate.min.js')}}" type="text/javascript"></script>
-        <script src="{{ URL::asset('assets/pages/scripts/login.min.js')}}" type="text/javascript"></script>
-
-        <script src="{{ URL::asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-
-      <script type="text/javascript">
-         $(document).ready(function($) {
-            $(".form-control").focus(function(){
-            $(this).parent().removeClass("round");
-            $(this).parent().addClass("bluebg");
-         }).blur(function(){
-            $(this).parent().removeClass("bluebg");
-            $(this).parent().addClass("round");
-         })
-         $('.carousel').carousel();
-         });   
-           $("#dateofbday").datepicker();
-
-      </script>
-   </body>
-</html>
+       @stop

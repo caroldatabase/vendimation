@@ -186,12 +186,12 @@ class UsersController extends Controller {
             if ($request->file('profile_image')) {
                 $profile_image = User::createImage($request,'profile_image');
                 $request->merge(['profilePic'=> $profile_image]);
-               $user->profile_image = $request->get('profilePic'); 
+                $user->profile_image = $request->get('profilePic'); 
             }
             if ($request->file('companyLogo')) {
                 $companyLogo = User::createImage($request,'companyLogo');
                 $request->merge(['companyPic'=> $companyLogo]);
-                 $user->companyLogo = $request->get('companyPic');
+                $user->companyLogo = $request->get('companyPic');
             }
         }
         elseif($action=='businessInfo'){

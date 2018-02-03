@@ -66,7 +66,7 @@
                         @endif  
                     </div>
                     <div class="input-icon">
-                       <input id="email" type="email" class="form-control placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="Email">
+                       <input id="email" type="email" class="form-control placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="Enter Your Email">
                        
 
 

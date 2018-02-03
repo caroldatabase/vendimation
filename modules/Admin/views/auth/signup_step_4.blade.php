@@ -1,74 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <title>Vendimation Login</title>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta content="" name="author" />
-      <link href="https://fonts.googleapis.com/css?family=Muli:400,800" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets/css/components.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="{{asset('assets/css/login.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/css/login.min.css')}}" rel="stylesheet" type="text/css" />
-   </head>
-   </head>
-   <body class=" login">
-      <div class="backRight">
-         <div class="RectangleRight">
-            <a href="#">
-               <?xml version="1.0" encoding="UTF-8"?>
-               <svg width="182px" height="112px" viewBox="0 0 182 112" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-                  <title>logo</title>
-                  <desc>Created with Sketch.</desc>
-                  <defs></defs>
-                  <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                     <g id="logo" fill="#00A5EC" fill-rule="nonzero">
-                        <polygon id="Path-2" points="47.3383245 69.517337 19.1009343 102.349727 0.519143675 86.3685185 44.9405742 34.7184997 93.3707798 77.4450238 163.06381 0.130993072 181.268137 16.5408823 95.3397713 111.865598"></polygon>
-                     </g>
-                  </g>
-               </svg>
-            </a>
-         </div>
-         <div class="vendimation">
-            <div class="text">Powered by Vendimation</div>
-            <div class="logov">
-               <a href="#">
-               <img src="{{ asset('assets/img/logov.png')}}">
-               </a>
-            </div>
-         </div>
-         <div class="carousel slide carousel-fade hidden-xs" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-               <div class="item active"></div>
-               <div class="item"></div>
-               <div class="item"></div>
-            </div>
-         </div>
-         <!-- Remeber to put all the content you want on top of the slider below the slider code -->
-         <div class="title">
-            <p class="author"><span></span>MIKE DAVIDSON</p>
-         </div>
-         <div class="middleDivider">
-            <ul>
-               <li class="active"><span>&nbsp;</span></li>
-               <li></li>
-               <li class="last"></li>
-            </ul>
-         </div>
-      </div>
+ @extends('packages::layouts.signupmaster')
+    @section('content') 
       <!-- BEGIN LOGIN -->
-      <div class="content">
+    <div class="content">
       <!-- BEGIN LOGIN FORM -->
-          <form class="login-form" action="{{url('admin/signup/step_1')}}" method="post">
-                <div class="index">
-          <ul>
-            <li>03</li>
-            <li class="personalDetails"><span>&nbsp;</span>Additional Information</li>
-            
+        {!! Form::open(['url' => url('admin/signup/step_5') ,'class'=>'form-horizontal user-form','id'=>'user-form-final','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
+        <div class="index">
+            <ul>
+                <li>04</li>
+                <li class="personalDetails"><span>&nbsp;</span>Additional Information</li> 
             
           </ul>
           
@@ -76,98 +15,83 @@
         <div class="clearfix"></div>
         <h3 class="mt30">Enjoying your best time</h3>
         <p class="comment">Free forever. No credit card needed.</p>
-                <div class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button>
-                    <span> Enter any username and password. </span>
-                </div>
-        <div class="addInfoName">
+        <div class="alert alert-danger display-hide">
+            <button class="close" data-close="alert"></button>
+            <span> Enter any username and password. </span>
+        </div>
+        <div class="addInfoName form-group">
           <ul>
             <li class="partnerImg">
-              <img src="assets/img/partner.jpg" class="img-responsive center-block">
+                <img src="{{ url('assets/img/user1.png')}}"  width="120px" class="img-responsive center-block">
             </li>
             <li>
+             
               <ul>
-                <li class="name">Juan Brooks</li>
-                <li class="designation">Partner at Morgan &amp; Morgan</li>
-                <li class="location">Port Chester, New York</li>
+                <li class="name">{{ ucfirst($user->name) }}</li>
+                <li class="designation">{!! ucfirst($user->designation) !!}</li>
+                <li class="location">{!! $user->address !!}</li>
               </ul>
             </li>
           </ul>
+
         </div>
         
-        <div class="form-group natureBusiness">
-          <label>Nature of your business</label>
-                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-          <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Company Name" name="username"> 
-          <div class="forgot plusMinus"><a href="#"><span></span></a></div>
-          <ul>
-            <li><a href="#">MEDIACAL</a></li>
-            <li><a href="#">ACCOUNTS</a></li>
-            <li><a href="#">SALES</a></li>
-          </ul>
-          <div class="clearfix"></div>
-          </div>
-          <div class="clearfix"></div>
-        <div class="form-group natureBusiness targetMkt">
-          <h4>Targeting Markets</h4>
-                    <div class="forgot plusMinus"><a href="#"><span></span></a></div>
-          
-          </div>
-          <div class="form-group natureBusiness">
-          <h4>Targeting countries / cities / region</h4>
-                    <div class="forgot plusMinus"><a href="#"><span></span></a></div>
-          
-          </div>
-            
+        <div class="form-group form-group-name"> 
+            <label>Company Name</label>
+                <input class="form-control form-control-solid placeholder-no-fix" style="min-height:64px;" type="text" autocomplete="off" placeholder="Company Name"  value="{{ $user->companyName}}" readonly="readonly"> 
+                @if(!empty($user->companyLogo) && file_exists($user->companyLogo))
+                 <img src="{!! url($user->companyLogo) !!}" class="cLogo" width="50px">
+                @else
+                 <img src="{{ asset('assets/img/com-logo.png')}}" class="cLogo">
+                @endif 
+        </div> 
         
+
+        <div class="form-group natureBusiness targetMkt form-group-name">
+              <label>Nature of Your Business</label>   
+           <select id="multiple" class="form-control select2" multiple name="bussiness_nature"> 
+
+            <optgroup label="Nature of Business"> 
+                @foreach($businessNatureType as $result)
+                    <option value="{{ $result->id }}">{{ $result->title }}</option>
+                @endforeach
+            </optgroup> 
+            </select>
+
+            <div class="forgot plusMinus"><a href="#"><span></span></a></div>
+          <div class="clearfix"></div> 
+        </div>
+        <div class="form-group natureBusiness targetMkt form-group-name">
+              <label>Targeting Markets</label>   
+           <select id="multiple" class="form-control select2" multiple name="target_market_type"> 
+
+                <optgroup label="Targeting Markets"> 
+                     @foreach($targetMarketType as $result)
+                        <option value="{{ $result->id }}">{{ $result->title }}</option>
+                    @endforeach
+                </optgroup> 
+            </select>
+
+            <div class="forgot plusMinus"><a href="#"><span></span></a></div>
+          <div class="clearfix"></div> 
+        </div> 
+
           <div class="clearfix"></div>
-          <div class="savePass">
-            <div class="mt-checkbox-list" data-error-container="#form_2_services_error">
-               <label class="mt-checkbox" style="width:100%;">
-               <input type="checkbox" value="1" name="service"> By clicking here you confirm that you agree with our terms &amp; conditions
-               <span></span>
-               </label>
-            </div>
-         </div>
-          
-      <div class="panelBtn">
+           
+         <div class="panelBtn">
             <ul>
-               <li>
-                  <input type="submit" value="CONTINUE" class="btn-login">
-          </li>
-          <li>
-                  <input type="submit" value="SKIP" class="btn btn-circle btn-default btn-skip">
-               </li>
+                <li>
+                    <input type="submit" value="CONTINUE" class="btn-login">
+                </li>
+                <li>
+                <a href="{{url('admin/login')}}">   
+                    <input type="button" value="SKIP" class="btn btn-circle btn-default btn-skip">
+                </a>  
+                </li>
               
             </ul>
          </div>
         <div class="clearfix"></div>
         <p class="signup"><span></span><a href="{{url('admin/login')}}">Login</a></p>
-               
-            </form>
-           </div>  
-        <script src="{{ URL::asset('assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>
-
-        <script src="{{ URL::asset('assets/global/plugins/bootstrap.min.js')}}" type="text/javascript"></script>
-        <script src="{{ URL::asset('assets/global/plugins/bootstrap-switch.min.js')}}" type="text/javascript"></script>
-        <script src="{{ URL::asset('assets/global/plugins/jquery.validate.min.js')}}" type="text/javascript"></script>
-        <script src="{{ URL::asset('assets/pages/scripts/login.min.js')}}" type="text/javascript"></script>
-
-        <script src="{{ URL::asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-
-      <script type="text/javascript">
-         $(document).ready(function($) {
-            $(".form-control").focus(function(){
-            $(this).parent().removeClass("round");
-            $(this).parent().addClass("bluebg");
-         }).blur(function(){
-            $(this).parent().removeClass("bluebg");
-            $(this).parent().addClass("round");
-         })
-         $('.carousel').carousel();
-         });   
-           $("#dateofbday").datepicker();
-
-      </script>
-   </body>
-</html>
+    {!! Form::close()!!}
+@stop

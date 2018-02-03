@@ -8,29 +8,50 @@ use Illuminate\Http\Dispatcher;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use Auth;
 use Input;
-use Redirect; 
-use Response;	
-use Crypt; 
-use View;
-use Cookie;
-use Closure; 
-use Hash;
-use URL;
 use Validator;
+use Auth;
+use Paginate;
+use Grids;
+use HTML;
+use Form;
+use Hash;
+use View;
+use URL;
+use Lang;
 use Session;
+use DB;
+use Route;
+use Crypt;
+use Redirect;
 use App\Http\Requests;
 use App\Helpers\Helper as Helper;
 use Modules\Admin\Models\User;
 use Modules\Admin\Http\Requests\LoginRequest;
 use App\Admin;
+use Modules\Admin\Models\TargetLocation; 
+use Modules\Admin\Models\TargetMarket; 
+use Modules\Admin\Models\BusinessNature;
+use Modules\Admin\Models\TargetMarketType; 
+use Modules\Admin\Models\BusinessNatureType;
+use Illuminate\Http\UploadedFile;
+use Modules\Admin\Models\Country;
+use Modules\Admin\Models\State;
+use Modules\Admin\Models\City;
+ 
+
+
+
+ 
+
  
 class AuthController extends Controller
 {
      
     protected $redirectTo = 'admin';
 	protected $guard = 'web';
+
+	protected $file;
 	 
 	public function index(User $user, Request $request)
 	{  
@@ -40,15 +61,138 @@ class AuthController extends Controller
         return view('packages::auth.login', compact('user'));
 	}
 
-	public function signup( Request $request, $step=null){
+	 
+
+	public function signup(Request $request, $step=null){
 
 		$user = new User;
-		 return view('packages::auth.signup_'.$step, compact('user'));
+		$countries 			= '';//	Country::with('state')->get(); 
+        $targetMarketType 	=  	TargetMarketType::all();
+        $businessNatureType =  	BusinessNatureType::all();
+		$uid = null;
+	 	if ($request->session()->has('user_id')) {
+	 		$uid = $request->session()->get('user_id', null);
+
+	 		if($uid){
+	 			$user = User::find($uid); 
+	 			$step_id = $user->step;
+	 			$step_new = 'step_'.$step_id;  
+	 			if($request->method()=="GET"){
+	 				if($step_new!=$step){ 
+	 					return Redirect::to('admin/signup/'.$step_new);
+	 				}
+	 			} 
+	 		} 		
+		} 
+		$user = User::findOrNew($uid);
+
+		if($request->method()=="POST"){
+
+			switch ($step) {
+				case 'step_2':
+			       $validator = Validator::make($request->all(), [
+				                        'email' => "required|email|unique:users,email",
+				                        'password' => 'required',
+				                        'name' => 'required',
+				                        'phone_or_mobile' => 'required|numeric',
+				                        'dateOfBirth' => 'required'
+		            			]); 
+				    /** Return Error Message * */
+			        if (isset($validator) && $validator->fails()) {
+				        return  Redirect::back()->withInput()->withErrors($validator);    
+			        }
+
+			        if(!$request->get('tnc')){ 
+			        	 return  Redirect::back()->withInput()->withErrors(['tnc'=>'Please  check terms and condition']);
+			        }
+			        
+					$user->name  		= $request->get('name');
+					$user->email  		= $request->get('email');
+					$user->password  	= Hash::make($request->get('password'));
+					$user->phone  		= $request->get('phone_or_mobile');
+					$user->mobile  		= $request->get('phone_or_mobile');
+					$user->dateOfBirth  = $request->get('dateOfBirth');
+					$user->step  		=	2;
+					$user->save();
+					$request->session()->put('user_id', $user->id);  
+					break;
+					 
+				case 'step_3':
+
+					if ($request->file('companyLogo')) {
+		                $companyLogo = User::createImage($request,'companyLogo');
+		                $request->merge(['companyPic'=> $companyLogo]);
+		                $user->companyLogo = $request->get('companyPic');
+		            }
+		            $user->companyName 	= $request->get('companyName');
+					$user->designation 	= $request->get('designation');
+		            $user->address 		= $request->get('address');
+		            $user->office_number= $request->get('office_number');
+		            $user->extension 	= $request->get('extension');
+		            $user->step 		= 3;
+		            $user->save();
+		            $request->session()->put('user_id', $user->id);
+					break;
+				case 'step_4':
+				 	break;
+			 	case 'step_5':
+			 		$user->bussiness_nature 	= $request->get('bussiness_nature');
+		            $user->target_market 		= $request->get('target_market');
+		            $user->step 				= 5;
+		            $user->save();
+		            $user = User::find(131);
+		         	$helper = new Helper;
+		          	$subject = "Welcome to Vendimation! Verify your email address to get started";
+		          	$email_content = array(
+		          					'receipent_email'=> $user->email,
+		          					'subject'	=>	$subject,
+		          					'name'		=> 	$user->name
+		          				);
+
+		          	$verification_email = $helper->sendEmail($email_content,'verification_link');
+		          	dd($verification_email);
+				 	$request->session()->flush();
+					return view('packages::auth.thankyou');
+				 	break;
+				case 'skip':
+					$request->session()->flush();
+					return redirect::to('admin/login');
+					break;	
+				default:
+					$request->session()->flush();
+					return redirect::to('admin/signup/step_1');
+					break;
+			} 
+		}
+
+
+		return view('packages::auth.signup_'.$step, compact('user','countries','targetMarketType','businessNatureType'));
 	}
+
+   public function emailVerification(Request $request) {
+        $verification_code = $request->input('verification_code');
+        $email = $request->input('email');
+
+        if (Hash::check($email, $verification_code)) {
+            $user = User::where('email', $email)->get()->count();
+            if ($user > 0) {
+                User::where('email', $email)->update(['status' => 1]);
+              	$msg =  "Welcome to Vendimation!  Email verified successfully.";
+        		return view('packages::auth.email-verify', compact('msg'));	
+        	
+            } else {
+                $msg = "Verification link is Invalid or expire!";
+                return view('packages::auth.email-verify', compact('msg'));
+            }
+        } else {
+            	$msg = "Verification link is Invalid!";
+            	return view('packages::auth.email-verify', compact('msg'));
+    	}
+    }
 
 	public function forgetPassword	()
 	{	 
-		return view('packages::auth.passwords.email');
+		return view('packages::auth.forget-password');
 	}
 	
 	public function resetPassword(UserRequest $request)
@@ -63,7 +207,7 @@ class AuthController extends Controller
 			try {
 			    $email = Crypt::decrypt($encryptedValue);
 			    if (Hash::check($email, $token)) {
-			    	return view('packages::auth.passwords.reset',compact('token','email'));	
+			    	return view('packages::auth.reset',compact('token','email'));	
 			    }else{
 			    	return redirect()
 				 		->back()
@@ -73,7 +217,7 @@ class AuthController extends Controller
 			    
 			} catch (DecryptException $e) {
 				 	
-				return view('packages::auth.passwords.reset',compact('token','email')) 
+				return view('packages::auth.reset',compact('token','email')) 
 				 			->withErrors(['message'=>'Invalid reset password link!']); 		
 			}
 			
@@ -84,18 +228,22 @@ class AuthController extends Controller
 				 
 				$password =  Hash::make($request->get('password'));
 		        $user = User::where('email',$request->get('email'))->update(['password'=>$password]);
-		        echo "Password reset successfully.";
+		        $msg = "Password reset successfully.";
+
+		        return view('packages::auth.email-verify', compact('msg'));
+
+		        return redirect()
+				 		->back()
+				 		->withInput()  
+				 		->withErrors(['message'=>$msg]);
 			}else{
 				 
-				 //return Redirect::to(URL::previous())->with('message','Invalid token');
-				 return redirect()
+			 return redirect()
 				 		->back()
 				 		->withInput()  
 				 		->withErrors(['message'=>'Invalid reset password link!']);
 			}
-			
 		}
-		
 	}
 	
 	public function logout(){
@@ -119,28 +267,27 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email'
         ]); 
-        $user =   User::where('email',$email)->get(); 
-        if($user->count()==0){
+        $user =   User::where('email',$email)->first(); 
+        if(!$user){
         	 return redirect()
 				 		->back()
 				 		->withInput()  
 				 		->withErrors(['alert'=>'danger','message'=>'Oh no! The address you provided isn’t in our system']);
         }
-        $user_data = User::find($user[0]->id); 
+        $user_data = User::find($user->id); 
         $temp_password =  Hash::make($email);
  
         $email_content = array(
                         'receipent_email'   => $request->get('email'),
-                        'subject'           => 'Your Yellotasker Account Password',
-                        'name'              => $user_data->first_name,
+                        'subject'           => 'Your Vendimation Account Password',
+                        'name'              => $user_data->name,
                         'temp_password'     => $temp_password,
                         'encrypt_key'       => Crypt::encrypt($email),
-                        'greeting'          => 'Yellotasker Team',
-                        'name'              => $user[0]->name
+                        'greeting'          => 'Vendimation Team'
                     );
         //print_r($email_content);
         $helper = new Helper;
-        $email_response = $helper->sendMail(
+        $email_response = $helper->sendEmail(
                                 $email_content,
                                 'forgot_password_link'
                             ); 

@@ -11,7 +11,9 @@
 										        <div class="col-md-4"> 
 										            {!! Form::text('category_group_name',null, ['class' => 'form-control','data-required'=>1])  !!} 
 										            
-										            <span class="help-block" style="color:red">{{ $errors->first('category_group_name', ':message') }} @if(session('field_errors')) {{ 'The Group Category name already been taken!' }} @endif</span>
+										            <span class="help-block" style="color:red">{{ $errors->first('category_group_name', ':message') }} 
+
+                                                    @if(session('field_errors')) {{ 'The Group Category name already been taken!' }} @endif</span>
 										        </div>
 										    </div> 
                                             

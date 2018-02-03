@@ -94,7 +94,7 @@ class User extends Authenticatable {
                 $destinationPath = storage_path('uploads/profile/');
                 $photo->move($destinationPath, time().$photo->getClientOriginalName());
                 $photo_name = time().$photo->getClientOriginalName();
-                return  URL::asset('storage/uploads/profile/'.$photo_name);
+                return  'storage/uploads/profile/'.$photo_name;
                 //$request->merge(['photo'=>$photo_name]);
             }else{
                  return false;
