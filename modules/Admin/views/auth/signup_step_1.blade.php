@@ -32,7 +32,7 @@
             <span> Enter any username and password. </span>
          </div>
          <div class="form-group form-group-name {{ $errors->first('name', ' has-error') }}">
-              {!! Form::text('name',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,'autocomplete'=>"off","placeholder"=>'Full Name'])  !!} 
+              {!! Form::text('name',$user->name, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,'autocomplete'=>"off","placeholder"=>'Full Name'])  !!} 
                <span class="help-block" style="color:red">{{ $errors->first('name', ':message') }} 
          </div> 
 
