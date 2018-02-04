@@ -120,8 +120,6 @@ class AuthController extends Controller
 
 			        }
 
-			        'email' => "required|email|unique:users,email",
-				                        
 
 
 			        if(!$request->get('tnc')){ 
