@@ -29,29 +29,34 @@
                       <input type="file" class="upload up" id="up" name="companyLogo">
                     </span><!-- btn-orange -->
                  </div><!-- btn -->
+                 
                  </div><!-- group -->
-                               
+                     <span class="help-block" style="color:red">{{ $errors->first('companyLogo', ':message') }} </span>           
                </div> 
                 
                  <div class="form-group"> 
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Company Name" name="companyName"> 
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Company Name" name="companyName" value="{{old('companyName')}}"> 
+                     <span class="help-block" style="color:red">{{ $errors->first('companyName', ':message') }} </span>
                 </div>
 
 
                 <div class="form-group">
                    
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation"> 
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{old('designation')}}"> 
                 </div>
                 <div class="form-group form-group-name">  
                     
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Address" name="address"> 
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Address" name="address" value="{{old('address')}}"> 
                </div>
                <div class="col-md-8 col-xs-8">
                    <div class="row">
                     <div class="form-group">
                         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                         <label class="colorGrey">OFFICE NUMBER</label>
-                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="OFFICE NUMBER" name="office_number"> </div>
+                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"  value="{{old('office_number')}}" placeholder="OFFICE NUMBER" name="office_number">
+                         <span class="help-block" style="color:red">{{ $errors->first('office_number', ':message') }} </span>
+            
+                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-4">
@@ -61,6 +66,8 @@
                         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                         <label class="colorGrey">EXTENSION</label>
                         <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="EXTENSION" name="extension"> 
+                         <span class="help-block" style="color:red">{{ $errors->first('extension', ':message') }} </span>
+            
                    </div>
                    </div>
                </div>

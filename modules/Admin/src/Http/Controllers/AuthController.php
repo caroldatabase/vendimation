@@ -52,6 +52,7 @@ class AuthController extends Controller
 		if(Auth::guard($this->guard)->check()){  
     		return Redirect::to('admin');
     	}
+    	$request->session()->flush();
         return view('packages::auth.login', compact('user'));
 	}
 
@@ -80,8 +81,9 @@ class AuthController extends Controller
 		} 
 
 		$user = User::findOrNew($uid);
-		if($request->method()=="POST"){
+			if($request->method()=="POST"){
 
+			
 			switch ($step) {
 				case 'step_2':
 			      			        if($user->id){
@@ -130,6 +132,19 @@ class AuthController extends Controller
 					break;
 					 
 				case 'step_3':
+
+					$validator = Validator::make($request->all(), [
+				                        'companyName' => 'required',
+				                        'designation' => 'required',
+				                        'office_number' => 'numeric',
+				                        'extension' => 'numeric',
+				                        'companyLogo' => 'mimes:jpeg,bmp,png,jpg'
+		            			]); 
+			    /** Return Error Message * */
+		        if (isset($validator) && $validator->fails()) {
+			        return  Redirect::back()->withInput()->withErrors($validator);    
+		        }
+
 
 					if ($request->file('companyLogo')) {
 		                $companyLogo = User::createImage($request,'companyLogo');

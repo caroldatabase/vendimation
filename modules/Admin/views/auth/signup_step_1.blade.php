@@ -71,8 +71,8 @@
                <input type="checkbox" value="1" name="tnc" > By clicking here you confirm that you agree with our terms & conditions
                <span></span>
                </label>
-                   <span class="help-block" style="color:red">{{ $errors->first('tnc', ':message') }} </span>
-            
+                     <span class="help-block" style="color:red">{{ $errors->first('tnc', ':message') }} </span>
+              
             </div>
          </div>
          <div class="panelBtn">
