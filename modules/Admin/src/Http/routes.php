@@ -7,7 +7,7 @@
        
      });
 
-     Route::group(['middleware' => 'admin','namespace' => 'Modules\Admin\Http\Controllers'], function() {
+     Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {
 
         Route::get('admin/forgot-password','AuthController@forgetPassword');
         Route::post('password/email','AuthController@sendResetPasswordLink');
