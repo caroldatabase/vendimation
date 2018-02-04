@@ -149,8 +149,7 @@ class AuthController extends Controller
 		          				);
 
 		          	$verification_email = $helper->sendEmail($email_content,'verification_link');
-		          	dd($verification_email);
-				 	$request->session()->flush();
+		          	$request->session()->flush();
 					return view('packages::auth.thankyou');
 				 	break;
 				case 'skip':
