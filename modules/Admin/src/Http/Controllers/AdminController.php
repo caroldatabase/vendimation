@@ -88,7 +88,7 @@ class AdminController extends Controller {
             }])->where('parent_id',0)->orderBy('id','desc')->get();
 
                 
-        return view('packages::dashboard.index',compact('contact_count','deals','notification_count','close_deals','contactGroup'));
+        return view('packages::dashboard.admin',compact('contact_count','deals','notification_count','close_deals','contactGroup'));
     }
 
    public function profile(Request $request,Admin $users)

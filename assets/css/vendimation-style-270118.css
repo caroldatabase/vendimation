@@ -857,3 +857,878 @@ span.glyphicon.glyphicon-chevron-right:hover {
     background: none !important;
     left: 30px;
 }
+
+.login .logo {
+    margin: 60px auto 0;
+    padding: 15px;
+    text-align: center;
+}
+.login .content {
+    width: 50%;
+	/*margin: 40px auto 10px;*/
+	margin: 0;
+	padding: 40px 80px 0;
+	overflow: auto;
+	position: absolute;
+	background:#f9fbfc;
+	min-height:100%;
+}
+.login .content h3 {
+    color: #4db3a5;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500!important;
+}
+.login .content h4 {
+    color: #555;
+}
+.login .content .hint {
+    color: #999;
+    padding: 0;
+    margin: 15px 0 7px;
+}
+.login .content .forget-form, .login .content .login-form {
+    padding: 0;
+    margin: 0;
+}
+.login .content .form-control {
+    height: 34px;
+    font-size: 18px;
+	font-weight: 500;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: normal;
+	  letter-spacing: normal;
+	  text-align: left;
+	  color: #323c47;
+	  width:80%;
+}
+.login .content .form-control.width50{
+	width:50%;
+}
+.login .content .form-control:active, .login .content .form-control:focus {
+    border: 0px solid #c3ccda;
+}
+.login .content .form-control::-moz-placeholder {
+    color: #8290a3;
+    opacity: 1;
+}
+.login .content .form-control:-ms-input-placeholder {
+    color: #8290a3;
+}
+.login .content .form-control::-webkit-input-placeholder {
+    color: #8290a3;
+}
+.login .content select.form-control {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+.login .content .forget-form, .login .content .register-form {
+    display: none;
+}
+.login .content .form-title {
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+.login .content .form-actions {
+    clear: both;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    padding: 25px 30px;
+    margin-left: -30px;
+    margin-right: -30px;
+}
+.login .content .form-actions>.btn {
+    margin-top: -2px;
+}
+.login-options {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.login-options h4 {
+    float: left;
+    font-weight: 600;
+    font-size: 15px;
+    color: #7d91aa!important;
+}
+.login-options .social-icons {
+    float: right;
+    padding-top: 3px;
+}
+.login-options .social-icons li a {
+    border-radius: 15px!important;
+    -moz-border-radius: 15px!important;
+    -webkit-border-radius: 15px!important;
+}
+.login .content .form-actions .checkbox {
+    margin-left: 0;
+    padding-left: 0;
+}
+.login .content .forget-form .form-actions {
+    border: 0;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+.login .content .register-form .form-actions {
+    border: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.login .content .form-actions .btn {
+    margin-top: 1px;
+    font-weight: 600;
+    padding: 10px 20px!important;
+}
+.login .content .form-actions .btn-default {
+    font-weight: 600;
+    padding: 10px 25px!important;
+    color: #6c7a8d;
+    background-color: #fff;
+    border: none;
+}
+.login .content .form-actions .btn-default:hover {
+    background-color: #fafaff;
+    color: #45b6af;
+}
+.login .content .forget-password {
+    font-size: 14px;
+    float: right;
+    display: inline-block;
+    margin-top: 10px;
+}
+.login .content .check {
+    color: #8290a3;
+}
+.login .content .rememberme {
+    margin-left: 8px;
+}
+.login .content .create-account {
+    margin: 0 -40px -30px;
+    padding: 15px 0 17px;
+    text-align: center;
+    background-color: #6c7a8d;
+    -webkit-border-radius: 0 0 7px 7px;
+    -moz-border-radius: 0 0 7px 7px;
+    -ms-border-radius: 0 0 7px 7px;
+    -o-border-radius: 0 0 7px 7px;
+    border-radius: 0 0 7px 7px;
+}
+.login .content .create-account>p {
+    margin: 0;
+}
+.login .content .create-account p a {
+    font-weight: 600;
+    font-size: 14px;
+    color: #c3cedd;
+}
+.login .content .create-account a {
+    display: inline-block;
+    margin-top: 5px;
+}
+.login .copyright {
+    text-align: center;
+    margin: 0 auto 30px 0;
+    padding: 10px;
+    color: #7a8ca5;
+    font-size: 13px;
+}
+.form-group-name{
+	min-height:75px;
+	padding:10px 0 0;
+}
+.form-group-name .form-control{
+	min-height:60px!important;
+}
+.colorGrey{
+	color:#323c47!important;
+	opacity: 0.5!important;
+}
+.mt10{margin-top:10px!important;}
+.mt30{margin-top:30px!important;}
+.signup-form .login .content .form-control{
+	height: 20px!important;
+}
+.signup-form  .form-group{
+	padding:0!important;
+}
+.signup-form  .form-group label{
+	padding-top: 0px;
+}
+.signup-form .form-control{
+	padding: 0px 22px!important;
+}
+.index{
+	padding:0;
+	margin:0;
+}
+.index ul{
+	list-style:none;
+	padding:0;
+	margin;0;
+}
+.index ul li{
+	display:inline-block;
+	padding-right:10px;
+	color:#323c47;
+	font-size:18px;
+	position:relative;
+	padding:4px 10px;
+}
+.index ul li.personalDetails{
+	padding-left:90px;
+	font-size:14px;
+}
+.index ul li span {
+    position: absolute;
+    height: 2px;
+    background: #e6274b;
+    left: 0;
+    width: 35%;
+    margin-top: 10px;
+}
+.form-select {
+    width: 180px;
+	float:right;
+}
+.form-select select {
+    width: 100%;
+    height: 45px;
+    margin: -8px 0;
+    border: solid 1px #e9eff4;
+    background: #fff url('../img/drop-arrow.png') no-repeat;
+    background-size: 20px;
+    background-position:  right 10px center;
+    padding-left: 24px;
+    -webkit-appearance: none;
+    -moz-appearance: none;     
+	border-radius: 4px!important;
+	color:#323c47;
+	font-size:13px;
+}
+@media (max-width:440px) {
+    .login .content, .login .logo {
+    margin-top: 10px;
+}
+.login .content {
+    width: 280px;
+}
+.login .content h3 {
+    font-size: 22px;
+}
+.forget-password {
+    display: inline-block;
+    margin-top: 20px;
+}
+.login-options .social-icons {
+    float: left;
+    padding-top: 3px;
+}
+.login .checkbox {
+    font-size: 13px;
+}
+}
+
+/*profile page css*/
+.profile-right-main {
+    float: left;
+    width: 100%;
+}
+h3.cart-user-name
+{
+color: #323c47 !important;
+font-weight:700 !important;
+}
+p.cart-partner {
+    font-size: 14px;
+}
+p.cart-location {
+    font-size: 12px;
+    margin-top: 0px;
+}
+.profile-info {
+    text-align: center;
+}
+.col-sm-10.main-left-content.profile-page {
+    position: relative;
+}
+.profile-right-main {
+    background: #fff;
+    width: 100%;
+    right: 0px;
+    box-shadow: 0px 0px 5px #ccc;
+    padding: 20px;
+    z-index: 9;
+    margin-top: 4px;
+}
+.col-sm-5.profile-right-col {
+    padding-right: 0px;
+}
+.personal-detail-profile h4
+{
+font-family: Muli;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #474d60;
+}
+.personal-detail-profile {
+    margin-top: 10px;
+    padding: 20px;
+    float: left;
+    width: 100%;
+}
+.personal-box {
+    float: left;
+    width: 100%;
+}
+.personal-box {
+    
+    box-shadow: 0px 0px 5px #eee;
+    border-radius: 5px;
+    margin-top: 0px;
+	padding-bottom:0px;
+	margin-bottom:30px;
+}
+.personal-box ul li
+{
+font-size:13px;
+color: #474d60;
+font-weight:600;
+float:left;
+width:100%;
+}
+.personal-box ul li .box-info-icon {
+    float: left;
+    width: 18%;
+    text-align: center;
+    padding: 10px;
+}
+.personal-box ul li .personal-text-static {
+    float: left;
+    width: 82%;
+    text-align: left;
+    padding: 12px 0px;
+    border-bottom: 1px solid #eee;
+}
+.personal-box.work-detail label
+{
+  font-size: 13px;
+    color: #474d60;
+    font-weight: 600;
+    float: left;
+    width: 100%;
+	margin-bottom:10px;
+}
+.personal-box.work-detail
+{
+padding:15px;
+padding-top:0px;
+padding-bottom:0px;
+}
+.personal-box.work-detail p.pro-tags a
+{
+border-radius: 40px;
+  background-color: #f5f9fd;
+  border: solid 1px #d1e2f6;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #323c47;
+  padding:7px 15px;;
+}
+.personal-box.work-detail .row {
+    padding: 10px 0px;
+    border-bottom: 1px solid #eee;
+}
+.product-view h5
+{
+font-family: Muli;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323c47;
+  margin-top:0px;
+  margin-bottom:5px;
+}
+.product-view
+{
+padding-top:15px;
+}
+.product-view ul li
+{
+padding:5px 0px;
+color:#989ca6 !important
+}
+.product-view ul li img
+{
+margin-top:-2px;
+margin-right:10px;
+}
+p.price-pro
+{
+  font-family: Muli;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323c47;
+  margin-top:15px;
+
+}
+span.send-inv
+{
+font-family: Muli;
+  font-size: 11px;
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #00a5ec;
+  float:right;
+  margin-top:10px;
+}
+.personal-box.work-detail.product-view.wallet {
+    background: #f5f9fd;
+    padding-top: 5px;
+}
+p.wallet-in {
+    float: left;
+    width: 100%;
+}
+p.wallet-in a
+{
+float:left;
+width:40px;
+}
+span.nam-card
+{
+float:left;
+width:100px;
+font-size:11px;
+}
+span.nam-card span
+{
+display:block;
+}
+.wallet .col-sm-6.visa
+{
+padding-right:0px;
+}
+.wallet .col-sm-6.visa img {
+    float: left;
+    width: 50px;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.wallet input
+{
+width:80px;
+float:left;
+border:1px solid #eee;
+border-radius:5px;
+padding-left:10px;
+padding:5px 10px;
+}
+.wallet
+{
+margin-bottom:15px;
+}
+.personal-box.work-detail.product-view.wallet.add-new-card {
+    
+    text-align: center;
+    background: none;
+    box-shadow: none;
+	border:1px dashed #00a5ec;
+	padding:0px; !important;
+	    margin-bottom: 30px !important;
+}
+.personal-box.work-detail.product-view.wallet.add-new-card a
+{
+font-size:13px;
+color:#484848;
+padding:20px;
+display:block;
+}
+.personal-box.work-detail.product-view.wallet.add-new-card a:hover
+{
+background:#00a5ec;
+color:#fff;
+}
+.excel-iocn h3
+{
+  font-family: Muli;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #323c47;
+  margin-top:0px;
+}
+.excel-iocn p
+{
+opacity: 0.7;
+  font-family: Muli;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: center;
+  color: #323c47;
+  padding:0px 30px;
+}
+.col-sm-10.main-left-content.profile-page .row .col-sm-7.excel-sec {
+    padding-right: 0px;
+}
+.col-sm-10.main-left-content.profile-page .row .col-sm-7.excel-sec .profile-left-main {
+    background: #fff;
+    margin-top: 15px;
+    box-shadow: 0px 0px 5px #eee;
+    padding: 15px;
+}
+.left-excel-form h4
+{
+font-family: Muli;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323c47;
+}
+.profile-left-main {
+    float: left;
+    width: 100%;
+}
+.add-excel {
+    float: left;
+    width: 100%;
+}
+.excel-iocn.text-center {
+    float: left;
+    width: 100%;
+}
+.excel-form {
+    float: left;
+    width: 100%;
+}
+.left-excel-form {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
+.left-excel-form form input
+{
+font-size:14px;
+float:left;
+width:100%;
+height: 45px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #e0e5f0;
+  padding-left:15px;
+  margin-bottom:15px;
+}
+.excel-next input
+{
+    background-image: linear-gradient(to right, #00d1f7, #00a5ec);
+    -webkit-background-image: linear-gradient(to right, #00d1f7, #00a5ec);
+    -moz-background-image: linear-gradient(to right, #00d1f7, #00a5ec);
+    box-shadow: 0 8px 16px 0 rgba(0, 165, 236, 0.2);
+    border: 0;
+    height: 50px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    border-radius: 40px!important;
+    padding: 0 30px!important;
+    min-width: 150px;
+	margin-bottom:25px;
+}
+.input-card input
+{
+height:50px;
+border:none;
+width:100%;
+padding-left:15px;
+}
+.input-card input:focus 
+{
+border:none !important;
+}
+.input-card input:active
+{
+border:none !important;
+}
+.input-card
+{
+float:left;
+width:100%;
+margin-bottom:15px;
+position:relative;
+}
+.personal-box.work-detail.product-view.add-card-process
+{
+box-shadow:none !important;
+padding:0px !important;
+}
+.personal-box.work-detail.product-view.add-card-process input
+{
+border:1px solid #eee;
+border-radius:5px;
+
+}
+.input-card .row
+{
+padding:0px !important;
+border:none !important;
+}
+.input-card.check-click
+{
+font-size:13px;
+}
+.input-card.check-click input[type="checkbox"] {
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+	margin-top:1px;
+}
+.input-card.check-click {
+    margin-bottom: 0px;
+    margin-top: -5px;
+}
+.collect-para
+{
+  font-family: Muli;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: center;
+  color: #323c47;
+  padding:10px 20px;
+}
+.pro-social-icon {
+    margin: 0 auto;
+    text-align: center;
+    display: table;
+}
+.pro-social-icon li
+{
+float:left;
+}
+.pro-social-icon a.gplus {
+    border-radius: 24px!important;
+    background-color: #ffffff;
+    padding: 12px 10px;
+	box-shadow: 0 8px 16px 0 rgba(36, 39, 44, 0.05);
+	margin-right:15px;
+}
+.pro-social-icon a.fb
+{
+    border-radius: 24px!important;
+    background-color: #3b5998;
+    padding: 12px 10px;
+}
+.add-btn-card.drag-excel-btn
+{
+opacity: 0.7;
+  font-family: Muli;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #323c47;
+  line-height:72px;
+  
+}
+.personal-box.work-detail.product-view.wallet.add-new-card.add-excel-parameter {
+    width: 88%;
+    margin: 0 auto;
+    display: table;
+    float: none;
+	margin-top:40px;
+	margin-bottom:0px !important;
+}
+.master-excel-file
+{
+height: 48px;
+  border-radius: 3.3px;
+  background-color: #ffffff;
+  border: solid 1px #e0e5f0;
+  width:88%;
+  margin:20px auto;
+  line-height:48px;
+  padding-left:15px;
+  padding-right:15px;
+  box-shadow: 0 2px 4px 0 rgba(29, 37, 60, 0.06), 0 0 2px 0 rgba(0, 0, 0, 0.05);
+}
+.master-text
+{
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2c2c2c;
+  margin-left:5px;
+  font-weight:600;
+}
+.view-detail a
+{
+font-family: Muli;
+  font-size: 10px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #00a5ec;
+  margin-left:10px;
+}
+.min-ago
+{
+float:right;
+opacity: 0.6;
+  font-family: Muli;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2c2c2c;
+  line-height:48px;
+}
+.excel-dot
+{
+margin-left:20px;
+}
+.upload-text
+{
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2c2c2c;
+  font-weight:600;
+}
+.master-excel-file p
+{
+margin-bottom:0px;
+}
+.excel-dot a
+{
+color: #2c2c2c;
+}
+.team-contact-excel
+{
+width:88%;
+margin:0 auto;
+margin-top:30px;
+}
+.team-contact-excel h4 {
+    margin-top: 0px;
+    font-family: Muli;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+    color: #474d60;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.excel-product
+{
+width:88%;
+margin:0 auto;
+}
+.excel-product h4
+{
+    margin-top: 0px;
+    font-family: Muli;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0px;
+    color: #474d60;
+    text-align: left;
+    margin-bottom: 15px;
+
+}
+#drop{
+border: 2px dashed #bbb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold,"Vollkorn";
+    color: #bbb;
+}
+.uploader-progress
+{
+position:relative;
+}
+
+.progress {
+  width: 100%;
+  height: 5px;
+}
+
+.progress-wrap {
+    background: #00a5ec;
+    margin: 0px 0;
+    overflow: hidden;
+    position: relative;
+    top: -7px;
+}
+.progress-wrap .progress-bar {
+  background: #ddd;
+  left: 0;
+  position: absolute;
+  top: 0;
+}

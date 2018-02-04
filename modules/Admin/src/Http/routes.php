@@ -1,19 +1,22 @@
 <?php
 
-    Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
-    Route::get('admin/forgot-password','Modules\Admin\Http\Controllers\AuthController@forgetPassword');
-    Route::post('password/email','Modules\Admin\Http\Controllers\AuthController@sendResetPasswordLink');
-    Route::match(['get','post'],'admin/password/reset','Modules\Admin\Http\Controllers\AuthController@resetPassword'); 
+     Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {
 
-    Route::get('admin/logout','Modules\Admin\Http\Controllers\AuthController@logout');  
+        Route::get('admin/login','AuthController@index');
+        Route::get('admin/forgot-password','AuthController@forgetPassword');
+        Route::post('password/email','AuthController@sendResetPasswordLink');
+        Route::match(['get','post'],'AuthController@resetPassword'); 
+        Route::get('admin/logout','AuthController@logout');  
+        Route::match(['get','post'],'admin/signup/{step}','AuthController@signup');
+        Route::match(['post','get'],'admin/email_verification','AuthController@emailVerification');
+        Route::get('admin/login','AuthController@index');
+
+     });
+
+ 
 
 
-    Route::match(['get','post'],'admin/signup/{step}','Modules\Admin\Http\Controllers\AuthController@signup');
-    Route::match(['post','get'],'admin/email_verification','Modules\Admin\Http\Controllers\AuthController@emailVerification');   
 
-
-
-    Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
 
     Route::post('admin/login',function(App\Admin $user, \Illuminate\Http\Request $request){
    
@@ -29,6 +32,14 @@
                         ->withInput()  
                             ->withErrors(['message'=>'Invalid email or password. Try again!']);
             } 
+    });
+
+
+    Route::group(['middleware' => 'admin', 'namespace'=>'Modules\Admin\Http\Controllers' ], function () { 
+         Route::get('admin', 'AdminController@index');
+         Route::view('admin/drag-excel','packages::dashboard.drag-excel');
+         Route::view('admin/add-card','packages::dashboard.add-card');  
+         Route::view('admin/add-excel','packages::dashboard.add-excel');    
     }); 
       
     Route::group(['middleware' => ['admin']], function () { 
