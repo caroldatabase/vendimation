@@ -31,6 +31,8 @@ use Modules\Admin\Models\User;
 use App\Admin;
 use Illuminate\Http\Request;
 use Session;
+use Modules\Admin\Models\TargetMarketType; 
+use Modules\Admin\Models\BusinessNatureType;
  
 /**
  * Class : AdminController
@@ -86,9 +88,41 @@ class AdminController extends Controller {
          $contactGroup =   ContactGroup::with(['contactGroup' => function ($query) {
                 $query->with('contact');
             }])->where('parent_id',0)->orderBy('id','desc')->get();
-
+        $targetMarketType  =   TargetMarketType::all();
+        $businessNatureType =   BusinessNatureType::all();
                 
-        return view('packages::dashboard.admin',compact('contact_count','deals','notification_count','close_deals','contactGroup'));
+        return view('packages::dashboard.billing',compact('contact_count','deals','notification_count','close_deals','contactGroup','user','targetMarketType','businessNatureType'));
+    }
+
+    public function renderPage(Request $request,$myprofile=null) 
+    {
+        $page_title = "";
+        $page_action = "";
+        $viewPage = "billing";
+
+        $contact = Contact::all();
+        $notification = Notification::all();
+
+        $contact_count          = ($contact)?$contact->count():0;
+        $notification_count     = ($notification)?$notification->count():0;
+
+        $admin = Auth::guard('admin')->user();
+        if($admin){
+            $user = Auth::guard('admin')->user(); 
+        }else{
+            $user = Auth::guard('web')->user(); 
+        }
+        $deals = Deals::where('user_id',$user->id)->orderBy('id','desc')->first();
+        $close_deals = Deals::where('user_id',$user->id)->count();
+
+         $contactGroup =   ContactGroup::with(['contactGroup' => function ($query) {
+                $query->with('contact');
+            }])->where('parent_id',0)->orderBy('id','desc')->get();
+        $targetMarketType  =   TargetMarketType::all();
+        $businessNatureType =   BusinessNatureType::all();
+         
+                
+        return view('packages::dashboard.'.$myprofile,compact('contact_count','deals','notification_count','close_deals','contactGroup','user','targetMarketType','businessNatureType'));
     }
 
    public function profile(Request $request,Admin $users)

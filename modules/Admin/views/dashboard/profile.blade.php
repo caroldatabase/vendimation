@@ -13,6 +13,11 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/style.css')}}" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/vendimation-style-270118.css')}}" rel="stylesheet">
+        <script type="text/javascript">
+          var url = "{{url('/')}}";
+
+      	</script>
+    
     </head>
     <body>
       @include('packages::partials.navigation')
@@ -144,33 +149,36 @@
 										
 										<div class="personal-box work-detail product-view wallet add-new-card">
 											
-												<div class="add-btn-card">
-													<a href="#">Add New Card</a>
-												</div>
+										<div class="add-btn-card">
+											<a href="#">Add New Card</a>
+										</div>
 											
 										</div>
+									<form id="addCard" method="post">
 										<div class="personal-box work-detail product-view add-card-process">
 											<div class="input-card">
-												<input type="password" placeholder="Card number">
+												<input type="text" placeholder="Card number" name="card_number">
 												<img src="{{ asset('assets/img/visa.jpg')}}" style="position:absolute; right:15px; top:15px;">
 											</div>
 											<div class="input-card">
-												<input type="text" placeholder="Name on card">
+												<input type="text" placeholder="Name on card" name="card_name">
 											</div>
 											<div class="input-card">
 												<div class="row">
 													<div class="col-sm-8">
-														<input type="text" placeholder="MM/YY">
+														<input type="text" placeholder="MM/YY" name="expire_mm_yy">
 													</div>
 													<div class="col-sm-4">
-														<input type="text" placeholder="CVV">
+														<input type="text" placeholder="CVV" name="cvv">
 													</div>
 												</div>
 											</div>
 											<div class="input-card check-click">
-												<input type="checkbox"> Add card to wallet
+												<input type="checkbox" checked="true" name="saveCard" value="1" > Add card to wallet
 											</div>
+											
 										</div>
+									</form>
 										<!-- 
 										<h4>My Team</h4>
 										<div class="personal-box work-detail">
@@ -194,6 +202,9 @@
 										</div>
 									</div>
 										</div> -->
+										<div class="excel-next text-center">
+											<input type="button" value="PAY NOW" onclick="addCard()"  class="btn-login">
+										</div>
 									</div>
 								</div>
 								

@@ -46,6 +46,11 @@
     <link href="{{ URL::asset('assets/pages/css/profile.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('assets/css/style.css')}}" rel="stylesheet">
       <link href="{{ URL::asset('assets/css/vendimation-style-270118.css.css')}}" rel="stylesheet">
+
+      <script type="text/javascript">
+          var url = "{{url('/')}}";
+
+      </script>
     
         
     </head>

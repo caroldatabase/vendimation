@@ -10,10 +10,11 @@
         Route::match(['get','post'],'admin/signup/{step}','AuthController@signup');
         Route::match(['post','get'],'admin/email_verification','AuthController@emailVerification');
         Route::get('admin/login','AuthController@index');
-
      });
 
- 
+    Route::match(['post'],'admin/user/addCard','PaymentController@addCard');
+    Route::match(['get'],'admin/user/cardList','PaymentController@cardList');
+
 
 
 
@@ -39,7 +40,9 @@
          Route::get('admin', 'AdminController@index');
          Route::view('admin/drag-excel','packages::dashboard.drag-excel');
          Route::view('admin/add-card','packages::dashboard.add-card');  
-         Route::view('admin/add-excel','packages::dashboard.add-excel');    
+         Route::view('admin/add-excel','packages::dashboard.add-excel'); 
+         Route::get('admin/billing','AdminController@billing'); 
+        Route::get('admin/account/{myprofile}','AdminController@renderPage');      
     }); 
       
     Route::group(['middleware' => ['admin']], function () { 

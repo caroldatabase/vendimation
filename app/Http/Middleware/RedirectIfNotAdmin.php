@@ -9,6 +9,7 @@ use App\User;
 use App\Admin;
 use Request;
 use Session;
+use View;
 
 class RedirectIfNotAdmin
 {
@@ -32,6 +33,9 @@ class RedirectIfNotAdmin
         }
 
         $user= Auth::guard($guard)->user();
+        if($user){
+            View::share('user',$user);
+        }
 
         if($user && $user->step<5){ 
             $step = $user->step;

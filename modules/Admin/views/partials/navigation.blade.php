@@ -27,12 +27,22 @@
                         <div class="invite-pro-pic">
                             <ul>
                                 <li class="invite"><a href="#">INVITE</a></li>
-                                <li class="dropdown"><a href="#" class="dropdown-toggle"  data-toggle="dropdown"><img src="{{URL::asset('assets/img/pro-pic.jpg')}}"></a>
+                                <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"  data-toggle="dropdown">
+                                    @if(file_exists($user->profile_image))
+                                    <img src="{{ url($user->profile_image)}}" width="35px">
+                                    @else
+                                    <img src="{{ asset('assets/img/user1.png')}}" width="35px">
+                                    @endif
+                                      <img src="{{ asset('assets/img/down-arrow.png')}}" >
+                                </a>
 
-                                     <ul class="dropdown-menu">
-                                        <li><a href="{{url('admin/logout')}}">Logout</a></li>
-                                      </ul>
-                                  </li>     
+                                 <ul class="dropdown-menu" style="right:0; left: auto;">
+                                     <li><a href="{{url('admin/account/profile')}}">Profile</a></li>
+                                     <li><a href="{{url('admin/account/billing')}}">Billing</a></li>
+                                    <li><a href="{{url('admin/logout')}}">Logout</a></li>
+                                  </ul>
+                              </li>     
 
                             </ul>
                         </div> 
