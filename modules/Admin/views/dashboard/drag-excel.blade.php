@@ -12,7 +12,8 @@
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/style.css')}}" rel="stylesheet">
-        <link href="{{ URL::asset('assets/css/vendimation-style-270118.css')}}" rel="stylesheet">
+        <link href="{{ URL::asset('assets/css/vendimation-style-270118.css')}}" rel="stylesheet"> 
+    	<link href="{{ URL::asset('assets/css/jquery.dm-uploader.min.css')}}" rel="stylesheet">
     </head>
     <body>
       @include('packages::partials.navigation')
@@ -32,36 +33,44 @@
 								<div class="profile-right-main">
 									<div class="profile-info">
 										<div class="profile-picture">
-											<img src="{{ asset('assets/img/team-pic.png')}}">
+											@if(file_exists($user->profile_image))
+											<img src="{{ url($user->profile_image)}}" width="120px">
+											@else
+											<img src="{{ asset('assets/img/user1.png')}}" width="120px">
+											@endif
+											
 										</div>
 										<div class="profile-view-desc">
-											<h3 class="cart-user-name">Juan Brooks</h3>
-											<p class="cart-partner">Partner at Morgan &amp; Morgan</p>
-											<p class="cart-location"><img src="{{ asset('assets/img/cart-location.jpg')}}"> Port Chester, New York</p>
+											<h3 class="cart-user-name">{{  $user->name or $user->first_name.' '.$user->last_name}}</h3>
+											<p class="cart-partner">{{$user->designation}}</p>
+											<p class="cart-location"><img src="{{asset('assets/img/cart-location.jpg')}}"> 
+												{{$user->designation}}
+											</p>
 										</div>
 									</div>
-									
+									<div class="pro-social">
+												<ul class="pro-social-icon">
+													<li><a href="#" class="gplus"><img src="{{ asset('assets/img/gplus.png')}}"></a></li>
+													<li><a href="#" class="fb"><img src="{{ asset('assets/img/fb.png')}}"></a></li>
+												</ul>
+											</div>
 									<div class="personal-box work-detail product-view wallet add-new-card add-excel-parameter">
-												<div class="add-btn-card drag-excel-btn">
-													<div id="fileDropBox"><img src="{{asset('assets/img/excel.jpg')}}" width="23px;"> Drag &amp; Drop Any excel file here </div>
-												</div>
-									</div>
+									<div class="add-btn-card drag-excel-btn">
+										<div id="drag-and-drop-zone" class="dm-uploader p-5">
+								            <div id="fileDropBox"><img src="{{asset('assets/img/excel.jpg')}}" width="23px;"> Drag &amp; Drop Any excel file here </div>
 
-									<div class="master-excel-file">
-										<p><img src="{{asset('assets/img/excel.jpg')}}" height="16.5px;"> <span class="master-text">Master Excel file</span> <span class="view-detail"><a href="#">VIEW DETAILS</a></span> <span class="min-ago">5 min ago<span class="excel-dot"><a href="#">•••</a></span></span>
-										
-										</p>
+								            <div class="btn btn-primary btn-block mb-5">
+								                <span>Open the file Browser</span>
+								                <input type="file" id="excel_file" title='Click to add Files' />
+								            </div>
+								          </div><!-- /uploader -->
+								        </div>  
 									</div>
-
-
-									<div class="master-excel-file">
-										<p><img src="{{asset('assets/img/excel.jpg')}}" height="16.5px;"> <span class="master-text">Master Excel file</span> <span class="view-detail"><a href="#">VIEW DETAILS</a></span> <span class="min-ago">5 min ago<span class="excel-dot"><a href="#">•••</a></span></span>
-										
-										</p>
-									</div>
+									<div id="uploaded_xls"></div> 
+ 
 
 									<div class="master-excel-file uploader-progress" style="position:relative;">
-										<p><span class="upload-text">Uploading… contact file.xls</span><span class="min-ago">10 min left<span class="excel-dot"><a href="#"><i class="fa fa-window-close"></i></a></span></span>
+										<p><span class="upload-text">Uploading… contact file.xls</span><span class="min-ago"><span class="excel-dot"><a href="#"><i class="fa fa-window-close"></i></a></span></span>
 										
 										</p>
 										<div class="row">
@@ -170,6 +179,9 @@
 										
 									<div class="drag-sample">
 										
+										<div class="excel-next text-center">
+											<a href="{{url('admin/account/profile')}}"> <input type="button" value="NEXT"  class="btn-login">
+										</div>
 									</div>
 								</div>
 								
@@ -180,15 +192,71 @@
 			</div>
 		</div>
 	</div> 
-	@if(isset($js_file))
-	    @foreach($js_file as $key => $js )
-	        <script src="{{ URL::asset('assets/js/'.$js) }}" type="text/javascript"></script>
-	    @endforeach
-	    @else
-	      <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
-	      <script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
-	      <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script>
-	@endif
+	 
+	    
+		<script src="{{ URL::asset('assets/js/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
+
+		<script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+		<script src="{{ URL::asset('assets/js/jquery.dm-uploader.min.js') }}" type="text/javascript"></script>
+		<script src="{{ URL::asset('assets/js/demo-ui.js') }}" type="text/javascript"></script>
+		<script src="{{ URL::asset('assets/js/demo-config.js') }}" type="text/javascript"></script>
+
+		<script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
+
+	 
+
+	<script type="text/javascript">
+		var fname;
+
+      $('input[type="file"]').dmUploader({
+        url: '/path/to/backend/upload.asp',
+        //... More settings here...
+        method:"POST",
+        //allowedTypes: "image/*",
+        onInit: function(){
+          console.log('Callback: Plugin initialized');
+          $('.uploader-progress').hide();
+        },
+
+         onUploadSuccess:function(id, data){
+          //  console.log(id, percent);
+        },
+        onUploadComplete:function(id){
+         console.log($('input[type="file"]').val());
+        },
+        onUploadError:function(id, xhr, status, errorThrown){
+          console.log(errorThrown,status);
+        },
+        onBeforeUpload:function(id){
+          console.log('onBeforeUpload');
+        },
+        onNewFile: function(id, file){
+           fname = file.name;
+           $('.uploader-progress').show();
+          $('.upload-text').html('Uploading…'+fname);
+        },
+        onUploadProgress:function(id, percent){
+        	$('.progress-bar').css('left',percent+'%');
+            console.log('percent='+percent);
+
+            var img = "{{asset('assets/img/excel.jpg')}}";
+
+            if(percent=="100"){
+           	var html  =  '<div class="master-excel-file">'
+           								+ '<p><img src="'+img+'" height="16.5px;">'
+										+ '<span class="master-text">'+fname+'</span>'
+										+ '<span class="view-detail"><a href="#">VIEW DETAILS</a></span>'
+										+ '<span class="min-ago">0 min ago<span class="excel-dot">'
+										+ '<a href="#">•••</a></span></span></p></div>';
+				$('#uploaded_xls').append(html);
+				$('.uploader-progress').hide();
+           } 
+        },
+        
+        // ... More callbacks
+      });
+    </script>
 
 </body>
 </html>
