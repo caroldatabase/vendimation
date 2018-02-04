@@ -80,9 +80,10 @@
                <li>
                   <input type="submit" value="CREATE MY ACCOUNT" class="btn-login" />
                </li>
-               <li><span class="or hidden-xs">Or</span></li>
-               <li><a href="#" class="gplus"><img src="{{ asset('assets/img/gplus.png')}}"></a></li>
-               <li><a href="#" class="fb"><img src="{{ asset('assets/img/fb.png')}}"></a></li>
+              
+                         <li> <span class="or hidden-xs">Or</span></li>
+                        <li><a href="{{url('auth/google')}}" class="gplus"><img src="{{ URL::asset('assets/ven/img/gplus.png')}}"></a></li>
+                        <li><a href="{{url('auth/facebook')}}" class="fb"><img src="{{ URL::asset('assets/ven/img/fb.png')}}"></a></li>
             </ul>
          </div>
          <div class="clearfix"></div>

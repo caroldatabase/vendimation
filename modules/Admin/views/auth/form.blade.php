@@ -39,8 +39,8 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="row">
-                    <span class="or hidden-xs">Or</span>
                     <ul>
+                         <li> <span class="or hidden-xs">Or</span></li>
                         <li><a href="{{url('auth/google')}}" class="gplus"><img src="{{ URL::asset('assets/ven/img/gplus.png')}}"></a></li>
                         <li><a href="{{url('auth/facebook')}}" class="fb"><img src="{{ URL::asset('assets/ven/img/fb.png')}}"></a></li>
                     </ul>
