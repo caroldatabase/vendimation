@@ -37,13 +37,7 @@ use Modules\Admin\Models\BusinessNatureType;
 use Illuminate\Http\UploadedFile;
 use Modules\Admin\Models\Country;
 use Modules\Admin\Models\State;
-use Modules\Admin\Models\City;
- 
-
-
-
- 
-
+use Modules\Admin\Models\City; 
  
 class AuthController extends Controller
 {
@@ -84,15 +78,13 @@ class AuthController extends Controller
 	 			} 
 	 		} 		
 		} 
-		$user = User::findOrNew($uid);
 
+		$user = User::findOrNew($uid);
 		if($request->method()=="POST"){
 
 			switch ($step) {
 				case 'step_2':
-			      
-
-			        if($user){
+			      			        if($user->id){
 			        	 $validator = Validator::make($request->all(), [
 				                        'email' => "required|email",
 				                        'password' => 'required',
@@ -282,6 +274,12 @@ class AuthController extends Controller
 	public function sendResetPasswordLink(Request $request)
 	{	 
 		$email = $request->get('email');
+		if(!$email){
+			 return redirect()
+				 		->back()
+				 		->withInput()  
+				 		->withErrors(['alert'=>'danger','message'=>'Pease enter your email address.']);
+		}
         //Server side valiation
         $validator = Validator::make($request->all(), [
             'email' => 'required|email'
