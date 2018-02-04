@@ -188,15 +188,19 @@
 			</div>
 		</div>
 	</div> 
-	@if(isset($js_file))
-	    @foreach($js_file as $key => $js )
-	        <script src="{{ URL::asset('assets/js/'.$js) }}" type="text/javascript"></script>
-	    @endforeach
-	    @else
-	      <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
-	      <script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
-	      <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script>
-	@endif
+	 
+ 	 <script src="http://vendimation.xyz/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="http://vendimation.xyz/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="http://vendimation.xyz/assets/js/jquery.flot.js" type="text/javascript"></script>
+    <script src="http://vendimation.xyz/assets/js/custom.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		var url = "{{url('/')}}";
+		function addCard()
+		{
+			 window.location = url+"/admin/account/add-excel";
+		}
+	</script>
 
 </body>
 </html>

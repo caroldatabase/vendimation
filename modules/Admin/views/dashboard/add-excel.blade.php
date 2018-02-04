@@ -60,7 +60,7 @@ please help us relate each column to our standard fields.
 										</div>
 										
 										<div class="excel-next text-center">
-											<input type="submit" value="NEXT" class="btn-login">
+											<input type="submit" value="NEXT" onclick="dragExcel()" class="btn-login">
 										</div>
 										
 									</div>
@@ -71,24 +71,33 @@ please help us relate each column to our standard fields.
 								<div class="profile-right-main">
 									<div class="profile-info">
 										<div class="profile-picture">
-											<img src="{{ asset('assets/img/team-pic.png')}}">
+											@if(file_exists($user->profile_image))
+											<img src="{{ url($user->profile_image)}}" width="120px">
+											@else
+											<img src="{{ asset('assets/img/user1.png')}}" width="120px">
+											@endif
+											
 										</div>
 										<div class="profile-view-desc">
-											<h3 class="cart-user-name">Juan Brooks</h3>
-											<p class="cart-partner">Partner at Morgan &amp; Morgan</p>
-											<p class="cart-location"><img src="{{ asset('assets/img/cart-location.jpg')}}"> Port Chester, New York</p>
+											<h3 class="cart-user-name">{{  $user->name or $user->first_name.' '.$user->last_name}}</h3>
+											<p class="cart-partner">{{$user->designation}}</p>
+											<p class="cart-location"><img src="{{asset('assets/img/cart-location.jpg')}}"> 
+												{{$user->designation}}
+											</p>
 										</div>
 									</div>
 									<div class="personal-detail-profile">
 										<h4>Personal Details</h4>
 										<div class="personal-box">
 											<ul>
-												<li><span class="box-info-icon"><img src="{{ asset('assets/img/cal-icon.jpg')}}"></span><span class="personal-text-static">juanbrooks@morganandmorgan.com</span></li>
-												<li><span class="box-info-icon"><img src="{{ asset('assets/img/address.jpg')}}"></span><span class="personal-text-static">Store Kongensgade 66, 1264 
-							København K,Denmark
-							</span></li>
-												<li><span class="box-info-icon"><img src="{{ asset('assets/img/call.jpg')}}"></span><span class="personal-text-static">+31 10 519 2666, +31 10 519 2666</span></li>
-												<li><span class="box-info-icon"><img src="{{ asset('assets/img/cake.jpg')}}"></span><span class="personal-text-static" style="border-bottom:none;">25/12/1988</span></li>
+												<li><span class="box-info-icon"><img src="{{ asset('assets/img/msg.png')}}" width="20px"></span><span class="personal-text-static">{{$user->email}}</span></li>
+												<li><span class="box-info-icon"><img src="{{ asset('assets/img/address.jpg')}}"></span><span class="personal-text-static">
+													{{$user->address}}
+												</span></li>
+												<li><span class="box-info-icon"><img src="{{ asset('assets/img/call.jpg')}}"></span><span class="personal-text-static">
+													{{$user->mobile.', '.$user->office_number }}
+												</span></li>
+												<li><span class="box-info-icon"><img src="{{ asset('assets/img/cake.jpg')}}"></span><span class="personal-text-static" style="border-bottom:none;">{{$user->dateOfBirth }}</span></li>
 											</ul>
 										</div>
 										
@@ -96,21 +105,32 @@ please help us relate each column to our standard fields.
 										<div class="personal-box work-detail">
 											<div class="row">
 												<div class="col-sm-12 work-detail-border">
-												<label>Nature of your business</label>
-												<p class="pro-tags"><a href="#">MEDICAL MALPRACTICE</a> <a href="#">ACCOUNT</a> <a href="#">SALE</a></p>
+													<label>Nature of your business</label>
+													<p class="pro-tags">
+														@foreach($businessNatureType as $result)
+														<a href="#">{{$result->title}}</a> 
+														@endforeach
+													</p>
+
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-sm-12 work-detail-border">
 												<label>Targeting Market</label>
-												<p class="pro-tags"><a href="#">MEDICAL</a> <a href="#">ACCOUNT</a> <a href="#">SALE</a></p>
+												<p class="pro-tags">
+												@foreach($targetMarketType as $result)
+														<a href="#">{{$result->title}}</a> 
+														@endforeach
+													</p>
 												</div>
 											</div>
 
 										<div class="row">
 												<div class="col-sm-12 work-detail-border">
 												<label>Targeting countries / cities / region</label>
-												<p class="pro-tags"><a href="#">MEDICAL MALPRACTICE</a> <a href="#">ACCOUNT</a> <a href="#">SALE</a></p>
+												<p class="pro-tags"><a href="#">
+													{{$user->region or 'NA'}}
+												</a></p>
 												</div>
 											</div>
 
@@ -210,7 +230,7 @@ please help us relate each column to our standard fields.
 												<input type="checkbox"> Add card to wallet
 											</div>
 										</div>
-										<!-- 
+										 
 										<h4>My Team</h4>
 										<div class="personal-box work-detail">
 											<div class="bar-chart">
@@ -232,10 +252,10 @@ please help us relate each column to our standard fields.
 											<p class="status-para">Status will be based on highest percentage bar</p>
 										</div>
 									</div>
-										</div> -->
+										</div>  
 									</div>
 								</div>
-								
+									
 							</div>
 						</div>
 					</div>
@@ -248,10 +268,18 @@ please help us relate each column to our standard fields.
 	        <script src="{{ URL::asset('assets/js/'.$js) }}" type="text/javascript"></script>
 	    @endforeach
 	    @else
-	      <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
+	     <!--  <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
 	      <script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
-	      <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script>
+	      <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script> -->
 	@endif
+
+	<script type="text/javascript">
+		var url = "{{url('/')}}";
+		function dragExcel(){
+			window.location= url+'/admin/account/drag-excel';
+
+		}
+	</script>
 
 </body>
 </html>
