@@ -90,17 +90,39 @@ class AuthController extends Controller
 
 			switch ($step) {
 				case 'step_2':
-			       $validator = Validator::make($request->all(), [
+			      
+
+			        if($user){
+			        	 $validator = Validator::make($request->all(), [
+				                        'email' => "required|email",
+				                        'password' => 'required',
+				                        'name' => 'required',
+				                        'phone_or_mobile' => 'required|numeric',
+				                        'dateOfBirth' => 'required'
+		            			]); 
+					    /** Return Error Message * */
+				        if (isset($validator) && $validator->fails()) {
+					        return  Redirect::back()->withInput()->withErrors($validator);    
+				        }
+			        }else{
+
+			        	 $validator = Validator::make($request->all(), [
 				                        'email' => "required|email|unique:users,email",
 				                        'password' => 'required',
 				                        'name' => 'required',
 				                        'phone_or_mobile' => 'required|numeric',
 				                        'dateOfBirth' => 'required'
 		            			]); 
-				    /** Return Error Message * */
-			        if (isset($validator) && $validator->fails()) {
-				        return  Redirect::back()->withInput()->withErrors($validator);    
+					    /** Return Error Message * */
+				        if (isset($validator) && $validator->fails()) {
+					        return  Redirect::back()->withInput()->withErrors($validator);    
+				        }
+
 			        }
+
+			        'email' => "required|email|unique:users,email",
+				                        
+
 
 			        if(!$request->get('tnc')){ 
 			        	 return  Redirect::back()->withInput()->withErrors(['tnc'=>'Please  check terms and condition']);

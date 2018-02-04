@@ -37,7 +37,7 @@
          </div> 
 
          <div class="form-group form-group-name {{ $errors->first('email', ' has-error') }}">
-            {!! Form::text('email',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address'])  !!} 
+            {!! Form::text('email',$user->email, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address'])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('email', ':message') }} 
          </div>
 

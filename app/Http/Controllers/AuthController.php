@@ -45,6 +45,7 @@ class AuthController extends Controller
                 $data['email']      = isset($user->email)?$user->email:'missing' . str_random(10).'@vendimation.com';
                 $data['profile_image'] = isset($user->avtar)?$user->avtar:'NA';
                 $data[$provider.'_id'] = isset($user->id)?$user->id:'NA';
+                $data['step'] = 1;
 
                 $user_data = \DB::table('users')->insert($data);
                 $checkUser = User::where('email', '=', $user->email)->first();
