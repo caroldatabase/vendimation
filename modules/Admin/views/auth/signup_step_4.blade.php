@@ -75,6 +75,12 @@
             <div class="forgot plusMinus"><a href="#"><span></span></a></div>
           <div class="clearfix"></div> 
         </div> 
+         <div class="form-group form-group-name">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label>Targeting Countries /city /region</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="" name="designation" value="{{$user->region}}" > 
+           
+        </div>
 
           <div class="clearfix"></div>
            

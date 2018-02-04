@@ -158,6 +158,7 @@ class AuthController extends Controller
 			 	case 'step_5':
 			 		$user->bussiness_nature 	= $request->get('bussiness_nature');
 		            $user->target_market 		= $request->get('target_market');
+		            $user->region 				= $request->get('region');
 		            $user->step 				= 5;
 		            $user->save();
 		            $helper = new Helper;
