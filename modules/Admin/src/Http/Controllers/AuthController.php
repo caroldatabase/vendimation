@@ -140,8 +140,7 @@ class AuthController extends Controller
 		            $user->target_market 		= $request->get('target_market');
 		            $user->step 				= 5;
 		            $user->save();
-		            $user = User::find(131);
-		         	$helper = new Helper;
+		            $helper = new Helper;
 		          	$subject = "Welcome to Vendimation! Verify your email address to get started";
 		          	$email_content = array(
 		          					'receipent_email'=> $user->email,
