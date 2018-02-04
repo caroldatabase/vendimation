@@ -42,7 +42,7 @@
          </div>
 
            <div class="form-group form-group-name {{ $errors->first('password', ' has-error') }}">
-            {!! Form::password('password', ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address'])  !!} 
+            {!! Form::password('password', ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Password'])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('password', ':message') }} 
          </div>
  
