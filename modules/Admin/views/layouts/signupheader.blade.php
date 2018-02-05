@@ -17,6 +17,10 @@
           <link href="{{ asset('assets/css/bootstrap-fileinput.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" type="text/css" />
 
+        <link href="{{ asset('assets/css/bootstrap-datepicker3.min.css')}}" rel="stylesheet" type="text/css" />
+
+
+
         <link href="{{ asset('assets/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/select2-bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
           <script type="text/javascript">
@@ -69,9 +73,19 @@
          </div>
          <div class="middleDivider">
             <ul>
+              @if(isset($step))
+              <li class="active">@if($step=="step_1") <span>&nbsp;</span> @endif</li>
+              <li class=" @if($step=="step_4") active @endif @if($step=="step_2" || $step=="step_3") active @endif"> @if($step=="step_2" || $step=="step_3") 
+                <span>&nbsp;</span> @endif 
+              </li>
+              <li class="last @if($step=="step_4") active @endif">
+                 @if($step=="step_4") <span>&nbsp;</span> @endif
+              </li>
+              @else
                <li class="active"><span>&nbsp;</span></li>
-               <li></li>
-               <li class="last"></li>
+              <li class="active"><span>&nbsp;</span> </li>
+              <li class="last active"><span>&nbsp;</span></li>
+              @endif
             </ul>
          </div>
       </div>

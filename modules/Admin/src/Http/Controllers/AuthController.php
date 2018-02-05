@@ -193,7 +193,7 @@ class AuthController extends Controller
 		}
 
 
-		return view('packages::auth.signup_'.$step, compact('user','countries','targetMarketType','businessNatureType'));
+		return view('packages::auth.signup_'.$step, compact('user','countries','targetMarketType','businessNatureType','step'));
 	}
 
    public function emailVerification(Request $request) {
