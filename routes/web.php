@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Route::post('api/login','UserAPIController@login');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,7 +32,6 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 header('Access-Control-Allow-Credentials: true');
 
 Route::get('/', function () {
- 
      return redirect('admin');
 });
 
