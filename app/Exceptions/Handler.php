@@ -61,10 +61,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-       
+       //dd($exception)
        if($exception){
-            $url =  URL::previous();
-            return redirect::to($url);
+            $url =  URL::previous('?error='.$exception->getMessage());
        }
         return parent::render($request, $exception);
     }

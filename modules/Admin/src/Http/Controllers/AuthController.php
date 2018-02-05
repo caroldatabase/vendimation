@@ -150,7 +150,8 @@ class AuthController extends Controller
 		                $companyLogo = User::createImage($request,'companyLogo');
 		                $request->merge(['companyPic'=> $companyLogo]);
 		                $user->companyLogo = $request->get('companyPic');
-		            }
+		            } 
+
 		            $user->companyName 	= $request->get('companyName');
 					$user->designation 	= $request->get('designation');
 		            $user->address 		= $request->get('address');

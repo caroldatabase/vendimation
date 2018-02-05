@@ -22,25 +22,27 @@
             <div class="form-group form-group-name">
                   <div class="input-group">
                     <label>UPLOAD LOGO</label>
-                 
+                   <img src="{{ asset('assets/img/com-logo.png')}}"  width="70px" id="preview" style="margin-top:10px ; display: none;" class="cLogo">
                 <div class="input-group-btn">
+
                   <span class="fileUpload btn btn-success">
                       <span class="upl" id="upload">UPLOAD LOGO</span>
-                      <input type="file" class="upload up" id="up" name="companyLogo">
+                      <input type="file" class="upload up" id="up" name="companyLogo" onchange="readURL(this)" >
                     </span><!-- btn-orange -->
+
                  </div><!-- btn -->
-                 
+               
                  </div><!-- group -->
                      <span class="help-block" style="color:red">{{ $errors->first('companyLogo', ':message') }} </span>           
-               </div> 
-                
-                 <div class="form-group"> 
+               </div>  
+
+                 <div class="form-group form-group-name"> 
                     <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Company Name" name="companyName" value="{{old('companyName')}}"> 
                      <span class="help-block" style="color:red">{{ $errors->first('companyName', ':message') }} </span>
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-group form-group-name">
                    
                     <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{old('designation')}}"> 
                 </div>
@@ -50,7 +52,7 @@
                </div>
                <div class="col-md-8 col-xs-8">
                    <div class="row">
-                    <div class="form-group">
+                    <div class="form-group form-group-name">
                         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                         <label class="colorGrey">OFFICE NUMBER</label>
                         <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"  value="{{old('office_number')}}" placeholder="OFFICE NUMBER" name="office_number">
@@ -59,9 +61,9 @@
                          </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-4 col-xs-4 ">
                    <div class="row">
-                   <div class="form-group" style="margin-left:15px;">
+                   <div class="form-group form-group-name" style="margin-left:15px;">
 
                         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                         <label class="colorGrey">EXTENSION</label>
@@ -89,3 +91,21 @@
                
             {!! Form::close()!!}
         @stop
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+
+          function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#preview').attr('src', e.target.result);
+              $('img.cLogo').show();
+            } 
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+        jQuery("#imgInp").change(function($) {
+          readURL(this);
+        });
+        </script>
