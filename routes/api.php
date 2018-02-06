@@ -25,6 +25,8 @@ Route::group(['prefix' => 'v1'],function(){
     Route::post('forgotpassword','UsersAPIController@forgotPassword');
     Route::post('changepassword','UsersAPIController@changePassword');
     Route::post('logout','UsersAPIController@logout');
+    Route::post('usercard','UsersAPIController@SaveCard');
+    Route::post('uploadImg','UsersAPIController@uploadImg');
 });
 
 
