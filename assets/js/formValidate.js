@@ -183,47 +183,49 @@ var Login = function() {
 
 
             $('#country_list').change(function() {
-                $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
+                $('.user-register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
             });
         }
-
-        $('.register-form').validate({
+        $('.user-register-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
             focusInvalid: false, // do not focus the last invalid input
             ignore: "",
             rules: {
-
-                fullname: {
+                name: {
                     required: true
                 },
                 email: {
                     required: true,
                     email: true
                 },
-                address: {
-                    required: true
-                },
-                city: {
-                    required: true
-                },
-                country: {
-                    required: true
-                },
-
-                username: {
-                    required: true
-                },
                 password: {
                     required: true
                 },
-                rpassword: {
-                    equalTo: "#register_password"
+                phone_or_mobile: {
+                    required: true
                 },
-
+                dateOfBirth: {
+                    required: true
+                },
                 tnc: {
                     required: true
-                }
+                },
+                companyName: {
+                    required: true
+                },                
+                 address: {
+                    required: true
+                },
+                office_number: {
+                    required: true
+                },             
+                extension: {
+                    required: true
+                },         
+                region: {
+                    required: true
+                }         
             },
 
             messages: { // custom messages for radio buttons and checkboxes
@@ -257,14 +259,15 @@ var Login = function() {
             },
 
             submitHandler: function(form) {
-                form[0].submit();
+               form[0].submit();
+              return false;
             }
         });
 
-        $('.register-form input').keypress(function(e) {
+        $('.user-register-form input').keypress(function(e) {
             if (e.which == 13) {
-                if ($('.register-form').validate().form()) {
-                    $('.register-form').submit();
+                if ($('.user-register-form').validate().form()) {
+                    $('.user-register-form').submit();
                 }
                 return false;
             }
@@ -326,12 +329,12 @@ var Login = function() {
 
         jQuery('#register-btn').click(function() {
             jQuery('.login-form').hide();
-            jQuery('.register-form').show();
+            jQuery('.user-register-form').show();
         });
 
         jQuery('#register-back-btn').click(function() {
             jQuery('.login-form').show();
-            jQuery('.register-form').hide();
+            jQuery('.user-register-form').hide();
         });
     }
 

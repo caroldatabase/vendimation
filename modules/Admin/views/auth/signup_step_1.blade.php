@@ -3,7 +3,7 @@
       <!-- BEGIN LOGIN -->
       <div class="content"> 
       <!-- BEGIN LOGIN FORM -->
-         {!! Form::open(['url' => url('admin/signup/step_2') ,'class'=>'form-horizontal ','id'=>'user-form','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
+         {!! Form::open(['url' => url('admin/signup/step_2') ,'class'=>'form-horizontal user-register-form','id'=>'user-form','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
  
          <div class="index">
             <ul>
@@ -65,7 +65,7 @@
              <span class="help-block" style="color:red">{{ $errors->first('dateOfBirth', ':message') }} </span>
          </div> 
           
-         <div class="savePass">
+         <div class="savePass" id="register_tnc_error" >
             <div class="mt-checkbox-list" data-error-container="#form_2_services_error">
                <label class="mt-checkbox {{ $errors->first('phone_or_mobile', ' has-error') }}" style="width:100%;">
                <input type="checkbox" value="1" name="tnc" > By clicking here you confirm that you agree with our terms & conditions

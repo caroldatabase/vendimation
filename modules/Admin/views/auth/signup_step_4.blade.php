@@ -3,7 +3,7 @@
       <!-- BEGIN LOGIN -->
     <div class="content">
       <!-- BEGIN LOGIN FORM -->
-        {!! Form::open(['url' => url('admin/signup/step_5') ,'class'=>'form-horizontal user-form','id'=>'user-form-final','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
+        {!! Form::open(['url' => url('admin/signup/step_5') ,'class'=>'form-horizontal user-form user-register-form','id'=>'user-form-final','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
         <div class="index">
             <ul>
                 <li>04</li>
@@ -63,7 +63,7 @@
         </div>
         <div class="form-group natureBusiness targetMkt form-group-name">
               <label>Targeting Markets</label>   
-           <select id="multiple" class="form-control select2" multiple name="target_market_type"> 
+           <select id="multiple" class="form-control select2" placeholder="" multiple name="target_market_type"> 
 
                 <optgroup label="Targeting Markets"> 
                      @foreach($targetMarketType as $result)

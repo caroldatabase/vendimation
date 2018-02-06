@@ -4,7 +4,7 @@
       <div class="content">
       <!-- BEGIN LOGIN FORM -->
 
-          {!! Form::open(['url' => url('admin/signup/step_3') ,'class'=>'form-horizontal user-form','id'=>'user-form','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
+          {!! Form::open(['url' => url('admin/signup/step_3') ,'class'=>'form-horizontal user-register-form','id'=>'user-form','enctype'=>'multipart/form-data', 'method' => 'post']) !!}
  
               <div class="index">
                <ul>
@@ -90,7 +90,6 @@
             <p class="signup"><span></span><a href="{{url('admin/login')}}">Login</a></p>
                
             {!! Form::close()!!}
-        @stop
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript">
 
@@ -109,3 +108,4 @@
           readURL(this);
         });
         </script>
+@stop

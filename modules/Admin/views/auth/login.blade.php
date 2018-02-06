@@ -14,6 +14,7 @@
         <link href="{{ URL::asset('assets/ven/css/components.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />
         <link href="{{ URL::asset('assets/ven/css/login.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ URL::asset('assets/ven/css/login.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ URL::asset('assets/ven/css/custom.css')}}" rel="stylesheet" type="text/css" />
         </head>
 
 
@@ -46,7 +47,31 @@
         {!! Form::close() !!}     
 
         <script src="{{ URL::asset('assets/js/jquery.min.js')}}" type="text/javascript"></script>
+        <script src="{{ URL::asset('assets/js/jquery.validate.min.js')}}" type="text/javascript"></script>
         <script src="{{ URL::asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+        <script type="text/javascript">
+         $(document).ready(function(){
+         $(".login-form").validate({
+			rules: {
+				email: {
+					required: true,
+					email: true
+				},
+                                password: {
+					required: true,
+					minlength: 5
+				},
+			},
+			messages: {
+                                email: "Please enter a valid email address",
+				password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long"
+				},
+			}
+                    });    
+         });   
+        </script>
     </body>
 </html>
 

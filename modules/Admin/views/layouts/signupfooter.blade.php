@@ -12,7 +12,6 @@
         <script src="{{ URL::asset('assets/js/app.min.js')}}"></script>
         
 
-         <script src="{{ URL::asset('assets/js/form-validation.js')}}"></script>
         <script src="{{ URL::asset('assets/js/formValidate.js')}}"></script>
 
 

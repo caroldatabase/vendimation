@@ -27,10 +27,6 @@
           var url = "{{url('/')}}";
 
       </script>
-    
-        
-
-   </head>
    </head>
    <body class=" login">
       <div class="backRight">
