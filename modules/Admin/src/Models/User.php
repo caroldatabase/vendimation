@@ -7,10 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Admin\Models\Group;
 use Modules\Admin\Models\Position;
 use Auth;
-<<<<<<< HEAD
 use URL;
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 class User extends Authenticatable {
 
@@ -39,16 +36,11 @@ class User extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-<<<<<<< HEAD
                             'first_name','last_name','about_me','profile_image',
-=======
-                            'name',
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                             'phone',
                             'mobile',
                             'email', 
                             'role_type',
-<<<<<<< HEAD
                             'password',
                             'status',
                             'tagLine',
@@ -68,8 +60,6 @@ class User extends Authenticatable {
                             'companyLogo',
                             'occupation',
                             'interests',
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                             'remember_token'
                         ];  // All field of user table here    
 
@@ -94,7 +84,6 @@ class User extends Authenticatable {
         return User::all();
     }
 
-<<<<<<< HEAD
     public static function createImage($request, $fielName)
     {
         try{
@@ -116,7 +105,5 @@ class User extends Authenticatable {
         }
         
     }
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 }

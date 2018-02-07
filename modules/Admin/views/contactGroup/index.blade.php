@@ -6,7 +6,6 @@
     @section('content') 
       @include('packages::partials.navigation')
       <!-- Left side column. contains the logo and sidebar -->
-<<<<<<< HEAD
       <div class="main-section">
 		<div class="container-fluid">
 			<div class="row">
@@ -18,8 +17,3 @@
 		</div>
 	</div>
 @stop
-=======
-      @include('packages::partials.sidebar')
-      @include('packages::contact.home')   
-@stop
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9

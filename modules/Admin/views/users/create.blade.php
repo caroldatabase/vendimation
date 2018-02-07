@@ -13,7 +13,6 @@
              <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
-<<<<<<< HEAD
                     <!-- BEGIN PAGE HEAD-->  
                     @include('packages::partials.breadcrumb') 
                     <div class="row">
@@ -154,38 +153,6 @@
                                     </div>
                                     </form>
                                 </div>
-=======
-                    <!-- BEGIN PAGE HEAD-->
-                    
-                    <!-- END PAGE HEAD-->
-                    <!-- BEGIN PAGE BREADCRUMB -->
-                    @include('packages::partials.breadcrumb')
-
-                  
-                    <!-- END PAGE BREADCRUMB -->
-                    <!-- BEGIN PAGE BASE CONTENT -->
-                      <div class="row">
-                        <div class="col-md-12">
-                            <!-- BEGIN VALIDATION STATES-->
-                            <div class="portlet light portlet-fit portlet-form bordered">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="icon-settings font-red"></i>
-                                        <span class="caption-subject font-red sbold uppercase">Create User</span>
-                                    </div>
-                                    
-                                </div>
-                                <div class="portlet-body">
-                                    <!-- BEGIN FORM-->
-                                  {!! Form::model($user, ['route' => ['user.store'],'class'=>'form-horizontal user-form','id'=>'user-form']) !!}
-                                  
-                                  @include('packages::users.form')
-                                  
-                                  {!! Form::close() !!}   
-                                    <!-- END FORM-->
-                                </div>
-                                <!-- END VALIDATION STATES-->
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                             </div>
                         </div>
                     </div>
@@ -196,12 +163,6 @@
             
             
             <!-- END QUICK SIDEBAR -->
-<<<<<<< HEAD
         </div> 
-=======
-        </div>
-        
-
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         
 @stop

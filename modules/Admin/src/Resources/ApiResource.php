@@ -34,7 +34,6 @@ class ApiResource extends BaseApiResource {
 
         return $this->getUserModel()->getUserDetail($id);
     }
-<<<<<<< HEAD
        public function validateUser(Request $request,User $user){
 
         $input['first_name']    = $request->input('first_name');
@@ -501,6 +500,4 @@ class ApiResource extends BaseApiResource {
                 );
 
     }
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 }

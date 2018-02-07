@@ -39,7 +39,6 @@ class ContactGroup extends Eloquent {
      *
      * @var array
      */
-<<<<<<< HEAD
 
    
 
@@ -52,8 +51,6 @@ class ContactGroup extends Eloquent {
     {
         return $this->hasMany('Modules\Admin\Models\ContactGroup','parent_id','id');
     }
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     
  
   

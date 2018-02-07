@@ -100,11 +100,8 @@ class CategoryDashboardController extends Controller {
         foreach ($categoryDashboard as $key => $value) {
              $cat_id[]= $value->category_id;
         }
-<<<<<<< HEAD
 
  
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         
         return view('packages::category-dashboard.index', compact('cat_id','categoryDashboard','category','sub_categories','categories','page_title', 'page_action','sub_page_title'));
     }

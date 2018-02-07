@@ -1,5 +1,4 @@
 <?php
- 
 
      Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {
 
@@ -81,7 +80,10 @@
                 'create' => 'user.create',
             ]
                 ]
-        ); 
+        );
+
+
+        
 
 
         Route::bind('targetMarket', function($value, $route) {
@@ -117,7 +119,14 @@
             ]
                 ]
         );
- 
+
+
+
+
+        
+
+
+       
         /*------------User Category and controller---------*/
 
             Route::bind('category', function($value, $route) {
@@ -193,7 +202,7 @@
             ]
                 ]
         );  
- 
+
          Route::bind('comment', function($value, $route) {
             return App\Models\Comments::find($value);
         });
@@ -270,9 +279,10 @@
             ]
                 ]
         );  
- 
+
+
+
         Route::get('admin/updateGroup', 'Modules\Admin\Http\Controllers\ContactGroupController@updateGroup'); 
- 
          /*---------Contact Route ---------*/    
 
         Route::bind('contactGroup', function($value, $route) {
@@ -344,7 +354,6 @@
             ]
                 ]
         ); 
- 
         
          Route::bind('tags', function($value, $route) {
             return Modules\Admin\Models\Tag::find($value);    
@@ -417,7 +426,7 @@
                 'create' => 'sales-funnel.create',
             ]
                 ]
-        ); 
+        );
 
 
         /*----------End---------*/    

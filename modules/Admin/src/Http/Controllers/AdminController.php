@@ -22,7 +22,7 @@ use Lang;
 use Validator;
 use App\Http\Requests;
 use App\Helpers\Helper as Helper;
-//use Modules\Admin\Models\User;  
+//use Modules\Admin\Models\User; 
 use Modules\Admin\Models\Contact;
 use Modules\Admin\Models\Deals;
 use Modules\Admin\Models\Notification;
@@ -33,7 +33,6 @@ use Illuminate\Http\Request;
 use Session;
 use Modules\Admin\Models\TargetMarketType; 
 use Modules\Admin\Models\BusinessNatureType;
-
  
 /**
  * Class : AdminController
@@ -51,7 +50,7 @@ class AdminController extends Controller {
     public function __construct()
     {  
         $this->middleware('admin');  
-        View::share('heading','dashboard');
+         View::share('heading','dashboard');
         View::share('route_url','admin');
 
         $js_file = [
@@ -61,7 +60,7 @@ class AdminController extends Controller {
                 'custom.js'
                 ];
         View::share('js_file',$js_file);
-    }    
+    }
     /*
     * Dashboard
     **/

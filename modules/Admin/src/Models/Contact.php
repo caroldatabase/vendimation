@@ -41,7 +41,6 @@ class Contact extends Model {
      * @var array
      */
     protected $fillable = ['firstName','lastName','name','email','phone'];  // All field of user table here    
-<<<<<<< HEAD
     public function contactGroup()
     {
         return $this->hasMany('Modules\Admin\Models\ContactGroup','contactId','id')->groupBy('contactId');
@@ -51,10 +50,6 @@ class Contact extends Model {
     {
         return $this->hasMany('Modules\Admin\Models\User','user_id','id');
     }
-=======
-
-    
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     
   
 }

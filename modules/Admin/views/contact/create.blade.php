@@ -34,11 +34,7 @@
                                 <div class="portlet-body">
                                     <!-- BEGIN FORM-->
                                 
-<<<<<<< HEAD
                                   {!! Form::model($category, ['route' => ['contact.store'],'class'=>'form-horizontal contact-form','id'=>'contact-form','enctype'=>'multipart/form-data']) !!}
-=======
-                                  {!! Form::model($category, ['route' => ['contact.store'],'class'=>'form-horizontal user-form','id'=>'user-form','enctype'=>'multipart/form-data']) !!}
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                   
                                   @include('packages::contact.form')
                                   

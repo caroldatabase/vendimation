@@ -19,11 +19,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/custom.css') }}"> 
     
   </head>
-<<<<<<< HEAD
   <body class="hold-transition login-page">
-=======
-  <body class="hold-transition login-page">fdfdf
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     <div class="login-box">
       <div class="login-logo">
         <a href="#"><b>{{ Lang::get('immoclick-lang.immoclick') }}</b></a>

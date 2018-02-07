@@ -24,18 +24,12 @@ use Route;
 use Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Dispatcher; 
-<<<<<<< HEAD
 use Modules\Admin\Helpers\Helper as Helper;
 use Modules\Admin\Models\Roles; 
 use Modules\Admin\Models\Category;
 use Modules\Admin\Models\Contact; 
 use Modules\Admin\Models\ContactGroup;
 use PDF; 
-=======
-use App\Helpers\Helper;
-use Modules\Admin\Models\Roles; 
-use Modules\Admin\Models\Category;
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
  
 
 /**
@@ -52,7 +46,6 @@ class ContactGroupController extends Controller {
      * @return \Illuminate\View\View
      */
     public function __construct() { 
-<<<<<<< HEAD
          $this->middleware('admin');
         View::share('viewPage', 'Contact');
         View::share('sub_page_title', 'Contact');
@@ -60,16 +53,6 @@ class ContactGroupController extends Controller {
         View::share('heading','Contact Group');
         View::share('route_url',route('contact')); 
         $this->record_per_page = Config::get('app.record_per_page'); 
-=======
-        $this->middleware('admin');
-        View::share('viewPage', 'contactGroup');
-        View::share('sub_page_title', 'Contact Group');
-        View::share('helper',new Helper);
-        View::share('heading','Contact Group');
-        View::share('route_url',route('contactGroup'));
-
-        $this->record_per_page = Config::get('app.record_per_page');
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
 
    
@@ -77,7 +60,6 @@ class ContactGroupController extends Controller {
      * Dashboard
      * */
 
-<<<<<<< HEAD
     public function index(ContactGroup $contactGroup, Request $request) 
     { 
        
@@ -88,29 +70,12 @@ class ContactGroupController extends Controller {
         if ($request->ajax()) {
             $id = $request->get('id'); 
             $category = ContactGroup::find($id); 
-=======
-    public function index(Category $category, Request $request) 
-    { 
-        $page_title = 'Category';
-        $sub_page_title = 'Group Category';
-        $page_action = 'View Group Category'; 
-
-
-        if ($request->ajax()) {
-            $id = $request->get('id'); 
-            $category = Category::find($id); 
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
             $category->status = $s;
             $category->save();
             echo $s;
             exit();
-<<<<<<< HEAD
         } 
  
-=======
-        }
-
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         // Search by name ,email and group
         $search = Input::get('search');
         $status = Input::get('status');
@@ -118,7 +83,6 @@ class ContactGroupController extends Controller {
 
             $search = isset($search) ? Input::get('search') : '';
                
-<<<<<<< HEAD
             $contactGroup = ContactGroup::with(['contactGroup' => function ($query) {
                                 $query->with('contact');
                             }])->where(function($query) use($search,$status) {
@@ -182,21 +146,6 @@ class ContactGroupController extends Controller {
         echo json_encode(['status'=>1,'message'=>'Group Updated successfully']); 
                 exit(); 
 
-=======
-            $categories = Category::where(function($query) use($search,$status) {
-                        if (!empty($search)) {
-                            $query->Where('category_group_name', 'LIKE', "%$search%")
-                                    ->OrWhere('category_name', 'LIKE', "%$search%");
-                        }
-                        
-                    })->where('parent_id',0)->Paginate($this->record_per_page);
-        } else {
-            $categories = Category::where('parent_id',0)->Paginate($this->record_per_page);
-        }
-         
-        
-        return view('packages::contact.index', compact('result_set','categories','data', 'page_title', 'page_action','sub_page_title'));
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
 
     /*
@@ -301,25 +250,15 @@ class ContactGroupController extends Controller {
         {
           $cat->category_group_image  =  $photo_name; 
         }
-<<<<<<< HEAD
         $cat->save();    
         return Redirect::to(route('contact'))
                         ->with('flash_alert_notice', 'Contact Group  successfully updated.');
-=======
-         
-        $cat->save();    
-
-
-        return Redirect::to(route('contact'))
-                        ->with('flash_alert_notice', 'Group Category  successfully updated.');
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
     /*
      *Delete User
      * @param ID
      * 
      */
-<<<<<<< HEAD
     public function destroy(ContactGroup $cg) 
     {
         ContactGroup::whereIdOrParentId($cg->id,$cg->id)->delete();
@@ -328,16 +267,6 @@ class ContactGroupController extends Controller {
     }
 
     public function show(ContactGroup $cg) {
-=======
-    public function destroy(Category $category) {
-        
-        $d = Category::where('id',$category->id)->delete(); 
-        return Redirect::to(route('category'))
-                        ->with('flash_alert_notice', 'Group Category  successfully deleted.');
-    }
-
-    public function show(Category $category) {
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         
     }
 

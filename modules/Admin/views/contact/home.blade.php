@@ -19,7 +19,6 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-settings font-red"></i>
-<<<<<<< HEAD
                                         <span class="caption-subject font-red sbold uppercase"> Contacts</span>
                                     </div>
                                         <div class="col-md-2 pull-right">
@@ -50,17 +49,6 @@
                                         </div>  
 
                                       
-=======
-                                        <span class="caption-subject font-red sbold uppercase">{{ $heading }}</span>
-                                    </div>
-                                     <div class="col-md-2 pull-right">
-                                            <div style="width: 150px;" class="input-group"> 
-                                                <a href="#">
-                                                    <button onclick="createGroup('{{url("admin/createGroup")}}')" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Contact Group</button> 
-                                                </a>
-                                            </div>
-                                        </div> 
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                      
                                 </div>
                                   
@@ -94,19 +82,11 @@
                                     <table class="table table-striped table-hover table-bordered" id="contact">
                                         <thead>
                                             <tr>
-<<<<<<< HEAD
                                              <th>   <INPUT type="checkbox" onchange="checkAll(this)" name="chk[]" /> All </th> 
                                              <th> Title </th>
                                                 <th> Name </th>
                                                 <th> Email </th> 
                                                 <th> Phone </th>  
-=======
-                                             <th>   <INPUT type="checkbox" onchange="checkAll(this)" name="chk[]" /> All </th>
-                                                <th> Name </th>
-                                                <th> Email </th> 
-                                                <th> Phone </th> 
-                                                 <th> Group Name </th> 
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                 <th>Created date</th> 
                                                 <th>Action</th> 
                                             </tr>
@@ -115,27 +95,16 @@
                                         @foreach($contacts as $key => $result)
                                             <tr>
                                              <th> <input type="checkbox" value="{{$result->id}}" name="checkAll"  class="checkAll contactChk"> </th>
-<<<<<<< HEAD
                                              <td> {{$result->title }} </td>
                                                 <td> {{$result->firstName.' '.$result->lastName}} </td>
                                                  <td> {{$result->email}} </td>
                                                  <td> {{$result->phone}} </td> 
-=======
-                                                <td> {{$result->name}} </td>
-                                                 <td> {{$result->email}} </td>
-                                                 <td> {{$result->phone}} </td>
-                                                    <td> NA </td> 
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                      <td>
                                                         {!! Carbon\Carbon::parse($result->created_at)->format('Y-m-d'); !!}
                                                     </td>
                                                     
                                                     <td> 
-<<<<<<< HEAD
                                                         <a href="{{ route('contact.edit',$result->id)}}">
-=======
-                                                        <a href="{{ route('contacts.edit',$result->id)}}">
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                             <i class="fa fa-edit" title="edit"></i> 
                                                         </a>
 
@@ -151,11 +120,8 @@
                                             
                                         </tbody>
                                     </table>
-<<<<<<< HEAD
                                    
 
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                      <div class="center" align="center">  {!! $contacts->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
                                 </div>
                             </div>
@@ -170,7 +136,6 @@
             
             <!-- END QUICK SIDEBAR -->
         </div>
-<<<<<<< HEAD
         
         
  <div id="responsive" class="modal fade" tabindex="-1" data-width="300">
@@ -226,6 +191,3 @@
     </div>
 </div>
 </form>
-=======
-        
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
