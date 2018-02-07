@@ -7,8 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Dispatcher; 
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
-<<<<<<< HEAD
+use App\Http\Requests\UserRequest; 
 use Input;
 use Validator;
 use Auth;
@@ -24,26 +23,12 @@ use Session;
 use DB;
 use Route;
 use Crypt;
-use Redirect;
-=======
-use Auth;
-use Input;
 use Redirect; 
-use Response;	
-use Crypt; 
-use View;
-use Cookie;
-use Closure; 
-use Hash;
-use URL;
-use Validator;
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 use App\Http\Requests;
 use App\Helpers\Helper as Helper;
 use Modules\Admin\Models\User;
 use Modules\Admin\Http\Requests\LoginRequest;
-use App\Admin;
-<<<<<<< HEAD
+use App\Admin; 
 use Modules\Admin\Models\TargetLocation; 
 use Modules\Admin\Models\TargetMarket; 
 use Modules\Admin\Models\BusinessNature;
@@ -53,14 +38,12 @@ use Illuminate\Http\UploadedFile;
 use Modules\Admin\Models\Country;
 use Modules\Admin\Models\State;
 use Modules\Admin\Models\City; 
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+ 
  
 class AuthController extends Controller
 {
      
-    protected $redirectTo = 'admin';
-<<<<<<< HEAD
+    protected $redirectTo = 'admin'; 
 	protected $guard = 'web';
 
 	protected $file;
@@ -238,22 +221,6 @@ class AuthController extends Controller
 	public function forgetPassword	()
 	{	 
 		return view('packages::auth.forget-password');
-=======
-	protected $guard = 'admin';
-	 
-	public function index(User $user, Request $request)
-	{  
-		
-        if(Auth::guard('admin')->check()){  
-    		return Redirect::to('admin');
-    	}
-        return view('packages::auth.login', compact('user'));
-	}
-
-	public function forgetPassword	()
-	{	 
-		return view('packages::auth.passwords.email');
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 	}
 	
 	public function resetPassword(UserRequest $request)
@@ -268,11 +235,9 @@ class AuthController extends Controller
 			try {
 			    $email = Crypt::decrypt($encryptedValue);
 			    if (Hash::check($email, $token)) {
-<<<<<<< HEAD
+ 
 			    	return view('packages::auth.reset',compact('token','email'));	
-=======
-			    	return view('packages::auth.passwords.reset',compact('token','email'));	
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+ 
 			    }else{
 			    	return redirect()
 				 		->back()
@@ -280,13 +245,9 @@ class AuthController extends Controller
 				 		->withErrors(['message'=>'Invalid reset password link!']);
 			    } 
 			    
-			} catch (DecryptException $e) {
-				 	
-<<<<<<< HEAD
-				return view('packages::auth.reset',compact('token','email')) 
-=======
-				return view('packages::auth.passwords.reset',compact('token','email')) 
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+			} catch (DecryptException $e) { 
+ 
+				return view('packages::auth.reset',compact('token','email'))  
 				 			->withErrors(['message'=>'Invalid reset password link!']); 		
 			}
 			
@@ -297,8 +258,7 @@ class AuthController extends Controller
 				 
 				$password =  Hash::make($request->get('password'));
 		        $user = User::where('email',$request->get('email'))->update(['password'=>$password]);
-<<<<<<< HEAD
-		        $msg = "Password reset successfully.";
+				 $msg = "Password reset successfully.";
 
 		        return view('packages::auth.email-verify', compact('msg'));
 
@@ -309,24 +269,11 @@ class AuthController extends Controller
 			}else{
 				 
 			 return redirect()
-=======
-		        echo "Password reset successfully.";
-			}else{
-				 
-				 //return Redirect::to(URL::previous())->with('message','Invalid token');
-				 return redirect()
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 				 		->back()
 				 		->withInput()  
 				 		->withErrors(['message'=>'Invalid reset password link!']);
-			}
-<<<<<<< HEAD
-		}
-=======
-			
-		}
-		
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+			} 
+		} 
 	}
 	
 	public function logout(){
@@ -346,41 +293,33 @@ class AuthController extends Controller
 	public function sendResetPasswordLink(Request $request)
 	{	 
 		$email = $request->get('email');
-<<<<<<< HEAD
+ 
 		if(!$email){
 			 return redirect()
 				 		->back()
 				 		->withInput()  
 				 		->withErrors(['alert'=>'danger','message'=>'Pease enter your email address.']);
-		}
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+		} 
         //Server side valiation
         $validator = Validator::make($request->all(), [
             'email' => 'required|email'
         ]); 
-<<<<<<< HEAD
+ 
         $user =   User::where('email',$email)->first(); 
         if(!$user){
-=======
-        $user =   User::where('email',$email)->get(); 
-        if($user->count()==0){
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+ 
         	 return redirect()
 				 		->back()
 				 		->withInput()  
 				 		->withErrors(['alert'=>'danger','message'=>'Oh no! The address you provided isn’t in our system']);
         }
-<<<<<<< HEAD
+ 
         $user_data = User::find($user->id); 
-=======
-        $user_data = User::find($user[0]->id); 
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         $temp_password =  Hash::make($email);
  
         $email_content = array(
                         'receipent_email'   => $request->get('email'),
-<<<<<<< HEAD
+ 
                         'subject'           => 'Your Vendimation Account Password',
                         'name'              => $user_data->name,
                         'temp_password'     => $temp_password,
@@ -390,18 +329,6 @@ class AuthController extends Controller
         //print_r($email_content);
         $helper = new Helper;
         $email_response = $helper->sendEmail(
-=======
-                        'subject'           => 'Your Yellotasker Account Password',
-                        'name'              => $user_data->first_name,
-                        'temp_password'     => $temp_password,
-                        'encrypt_key'       => Crypt::encrypt($email),
-                        'greeting'          => 'Yellotasker Team',
-                        'name'              => $user[0]->name
-                    );
-        //print_r($email_content);
-        $helper = new Helper;
-        $email_response = $helper->sendMail(
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                 $email_content,
                                 'forgot_password_link'
                             ); 
