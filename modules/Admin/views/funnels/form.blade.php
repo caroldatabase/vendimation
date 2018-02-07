@@ -96,15 +96,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<div class="form-body">
-
-
-
-
-
-</div> 
-
