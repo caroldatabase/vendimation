@@ -17,13 +17,6 @@ class ApiMiddleware
      */
     public function handle($request, Closure $next)
     {
-<<<<<<< HEAD
-        
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
-       // dd( Auth::guard('api')->user());
-         
-        //dd(str_random());
         return $next($request);
     }
 }

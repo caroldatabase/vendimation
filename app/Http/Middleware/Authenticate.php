@@ -27,27 +27,4 @@ class Authenticate
 
         return $next($request);
     }
-<<<<<<< HEAD
-
-    // public function handle($request, Closure $next, $role)
-    // {
-    //     if(!$this->auth->check())
-    //     {
-    //         return redirect()->to('/login')
-    //             ->with('status', 'success')
-    //             ->with('message', 'Please login.');
-    //     }
-
-    //     if($role == 'all')
-    //     {
-    //         return $next($request);
-    //     }
-    //     if( $this->auth->guest() || !$this->auth->user()->hasRole($role))
-    //     {
-    //         abort(403);
-    //     }
-    //     return $next($request);
-    // }
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 }

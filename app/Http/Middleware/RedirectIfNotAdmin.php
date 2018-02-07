@@ -21,10 +21,6 @@ class RedirectIfNotAdmin
      * @param  string|null  $guard
      * @return mixed
      */
-
-    protected $redirectTo = 'admin';
-    protected $guard = 'admin';
-
  
     public function handle($request, Closure $next, $guard = 'web')
     {   
