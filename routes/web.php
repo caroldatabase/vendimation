@@ -12,7 +12,7 @@
 */
  
 Route::get('/', function(){
-	return \Redirect::to('http://vedimations.xyz');
+	return \Redirect::to('http://vendimation.xyz');
 });
  
 /*
