@@ -19,8 +19,14 @@ use App\User;
 use Illuminate\Support\Facades\Lang;
 use App\CorporateProfile;
 use Validator; 
+<<<<<<< HEAD
+use App\Position; 
+use Modules\Admin\Models\Contact; 
+use Modules\Admin\Models\ContactGroup;
+=======
 use App\Position;
 use Modules\Admin\Helpers\Helper as Helper;
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
  
 
 class Helper {
@@ -41,6 +47,10 @@ class Helper {
 
          return $key;
     } 
+<<<<<<< HEAD
+ 
+ 
+=======
 /* @method : createCompanyGroup
     * @param : email,user_id
     * Response :  string
@@ -97,6 +107,7 @@ class Helper {
         $company_name = substr($email,$fps+1,$lps-1);
         return  $company_name;       
     } 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 /* @method : getCompanyUrl
     * @param : email
     * Response :  string
@@ -108,6 +119,9 @@ class Helper {
         $lps =  strpos(substr($email,$fps),".");
         $company_url = substr($email,$fps+1);
         return  $company_url;       
+<<<<<<< HEAD
+    } 
+=======
     }
 
 /* @method : getUserGroupedID
@@ -124,6 +138,7 @@ class Helper {
         
         return $user_from_same_company->lists('userID');
     }
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 /* @method : isUserExist
     * @param : user_id
     * Response : number
@@ -131,7 +146,11 @@ class Helper {
     */
     static public function isUserExist($user_id=null)
     {
+<<<<<<< HEAD
+        $user = User::where('id',$user_id)->count(); 
+=======
         $user = User::where('userID',$user_id)->count(); 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         return $user;
     }
 /* @method : getpassword
@@ -139,6 +158,24 @@ class Helper {
     * Response :  
     * Return : true or false
     */
+<<<<<<< HEAD
+
+    public static function contactName($id=null)
+    {
+        $contacts = ContactGroup::with('contact')->where('parent_id',$id)->get();
+        $gname = ContactGroup::find($id)->groupName;
+        
+        $contact_list = ContactGroup::where('parent_id',$id)->get(['contactId'])->toArray();
+
+        $contact_not_id = Contact::whereNotIn('id',$contact_list)->get();
+
+        $html = view::make('packages::contactGroup.group_pop',compact('contacts','contact_not_id','gname'));
+        return $html->render();  
+
+    }
+    
+    
+=======
     
     public static function getPassword(){
         $password = "";
@@ -148,6 +185,7 @@ class Helper {
         }
         return $password;
     }
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 /* @method : check mobile number
     * @param : mobile_number
     * Response :  

@@ -26,6 +26,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Dispatcher; 
 use App\Helpers\Helper;
 use Modules\Admin\Models\Roles; 
+<<<<<<< HEAD
+use Modules\Admin\Models\TargetLocation; 
+use Modules\Admin\Models\TargetMarket; 
+use Modules\Admin\Models\BusinessNature;
+use Modules\Admin\Models\TargetMarketType; 
+use Modules\Admin\Models\BusinessNatureType;
+
+use Modules\Admin\Models\Country;
+use Modules\Admin\Models\State;
+use Modules\Admin\Models\City;
+ 
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
  
 
 /**
@@ -49,6 +62,17 @@ class UsersController extends Controller {
         View::share('route_url',route('user'));
 
         $this->record_per_page = Config::get('app.record_per_page');
+<<<<<<< HEAD
+
+
+        $userJs[] = 'assets/pages/scripts/profile.min.js';
+        
+       
+
+        View::share('userJs',$userJs);
+
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
 
     protected $users;
@@ -59,6 +83,11 @@ class UsersController extends Controller {
 
     public function index(User $user, Request $request) 
     { 
+<<<<<<< HEAD
+ 
+
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         $page_title = 'User';
         $page_action = 'View User'; 
         if ($request->ajax()) {
@@ -80,7 +109,12 @@ class UsersController extends Controller {
                
             $users = User::where(function($query) use($search,$status) {
                         if (!empty($search)) {
+<<<<<<< HEAD
+                            $query->Where('first_name', 'LIKE', "%$search%")
+                                    ->OrWhere('last_name', 'LIKE', "%$search%")
+=======
                             $query->Where('name', 'LIKE', "%$search%")
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                     ->OrWhere('email', 'LIKE', "%$search%");
                         }
                         if (!empty($status)) {
@@ -109,8 +143,19 @@ class UsersController extends Controller {
         $page_action = 'Create User';
         $roles = Roles::all();
         $role_id = null;
+<<<<<<< HEAD
+
+        $countries = Country::with('state')->get(); 
+        $targetMarketType =  TargetMarketType::all();
+        $BusinessNatureType =  BusinessNatureType::all();
+        
+        $js_file = ['common.js','bootbox.js','formValidate.js'];
+        
+        return view('packages::users.create', compact('js_file','role_id','roles', 'user', 'page_title', 'page_action', 'countries','targetMarketType','BusinessNatureType'));
+=======
         $js_file = ['common.js','bootbox.js','formValidate.js'];
         return view('packages::users.create', compact('js_file','role_id','roles', 'user', 'page_title', 'page_action', 'groups'));
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
 
     /*
@@ -118,6 +163,10 @@ class UsersController extends Controller {
      * */
 
     public function store(UserRequest $request, User $user) {
+<<<<<<< HEAD
+
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         $user->fill(Input::all());
         $user->password = Hash::make($request->get('password'));
         $user->role_type = $request->get('role'); 
@@ -139,6 +188,49 @@ class UsersController extends Controller {
         $page_action = 'Show Users';
         $role_id = $user->role_type;
         $roles = Roles::all();
+<<<<<<< HEAD
+
+        $countries = Country::with('state')->get(); 
+        $targetMarketType =  TargetMarketType::all();
+        $BusinessNatureType =  BusinessNatureType::all();
+
+        $js_file = ['common.js','bootbox.js','formValidate.js'];
+        return view('packages::users.edit', compact('js_file','role_id','roles','user', 'page_title', 'page_action','countries','targetMarketType','BusinessNatureType'));
+    }
+
+    public function update(UserRequest $request, User $user) { 
+
+        $user->fill(Input::all());
+        $action = $request->get('submit');
+        $user->role_type=2;
+
+        if($action=='avtar'){ 
+            if ($request->file('profile_image')) {
+                $profile_image = User::createImage($request,'profile_image');
+                $request->merge(['profilePic'=> $profile_image]);
+                $user->profile_image = $request->get('profilePic'); 
+            }
+            if ($request->file('companyLogo')) {
+                $companyLogo = User::createImage($request,'companyLogo');
+                $request->merge(['companyPic'=> $companyLogo]);
+                $user->companyLogo = $request->get('companyPic');
+            }
+        }
+        elseif($action=='businessInfo'){
+
+
+
+        }
+        elseif($action=='paymentInfo'){
+
+        }else{
+
+        }
+       if(!empty($request->get('password'))){
+            $user->password = Hash::make($request->get('password'));
+
+       }
+=======
         $js_file = ['common.js','bootbox.js','formValidate.js'];
         return view('packages::users.edit', compact('js_file','role_id','roles','user', 'page_title', 'page_action'));
     }
@@ -147,6 +239,7 @@ class UsersController extends Controller {
         
         $user->fill(Input::all());
         $user->password = Hash::make($request->get('password'));
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
         $validator_email = User::where('email',$request->get('email'))
                             ->where('id','!=',$user->id)->first();
@@ -157,7 +250,11 @@ class UsersController extends Controller {
             }else{
                   return  Redirect::back()->withInput()->with(
                     'field_errors','The Email already been taken!'
+<<<<<<< HEAD
+                 )->withErrors(['email'=>'The Email already been taken!']);
+=======
                  );
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                  
             }
         }else{

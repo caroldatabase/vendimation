@@ -9,14 +9,13 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 class VerifyCsrfToken extends BaseVerifier
 {
    /**
-     * The URIs that should be excluded from CSRF verification.
+    * The URIs that should be excluded from CSRF verification.
      *
      * @var array
      */
     protected $except = [
-        //
-    ];
-    
+          '*/v1/api/*',
+    ]; 
     protected function excludedRoutes($request)  
 	{ 
 
@@ -54,5 +53,5 @@ class VerifyCsrfToken extends BaseVerifier
      * @param  \Illuminate\Http\Response  $response
      * @return \Illuminate\Http\Response
      */
-    
+
 }

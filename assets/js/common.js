@@ -422,6 +422,29 @@ function checkAll(ele) {
      }
  }
 
+<<<<<<< HEAD
+ function checkAllContact(ele) {
+     var checkboxes = document.getElementsByTagName('input');
+     if (ele.checked) {
+         for (var i = 0; i < checkboxes.length; i++) {
+             if (checkboxes[i].type == 'checkbox') {
+                 checkboxes[i].checked = true;
+             }
+         }
+     } else {
+         for (var i = 0; i < checkboxes.length; i++) {
+             console.log(i)
+             if (checkboxes[i].type == 'checkbox') {
+                 checkboxes[i].checked = false;
+             }
+         }
+     }
+ }
+
+
+
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
  function deleteRow(tableID) {
      try {
          var table = document.getElementById(tableID);
@@ -443,11 +466,181 @@ function checkAll(ele) {
 
 
 
+<<<<<<< HEAD
+function createGroup(Url,action) {
+    var createGroup=0;
+    var name ='';
+=======
 function createGroup(url) {
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
      try {
         var checkValues = $('input[name=checkAll]:checked').map(function()
             {
                 return $(this).val();
+<<<<<<< HEAD
+            }).get(); 
+        //alert(action);
+         if(checkValues.length==0){
+             $('#error_msg').html('Please select contact to create group').css('color','red');
+             $('#csave').hide();
+             return false;
+           }else{
+                if(action=='save'){
+                   name =  ($('#contact_group').val()).replace(/^\s+|\s+$/gm,'');
+                   if(name.length==0){
+                        $('#error_msg').html('Please enter group name.').css('color','red');
+                        return false;
+                     }else{
+                        $('#error_msg').html('');
+                        $('#csave').show();
+                        createGroup =1;
+                     }
+               }else{
+                     $('#error_msg').html('');
+                        $('#csave').show();
+               } 
+           }  
+            
+            if(createGroup==1){
+                $.ajax({
+                    url: Url,
+                    type: 'get',
+                    data: { ids: checkValues,groupName:name },
+                     dataType: "json",
+                    success:function(data){
+                         if(data.status==0){
+                            $('#error_msg').html(data.message).css('color','red');
+                            return false;
+                         }else{
+                             $('#responsive').modal('hide');
+                             bootbox.alert('Group name created successfully',function(){
+                                 var u =url+'/admin/contactGroup';
+                                 console.log(u);
+                                 window.location.assign(u);
+                             });
+                             
+                         }
+                        
+                    }
+                }); 
+            }else{
+                $('#responsive').modal('hide');
+            }
+
+
+     } catch (e) {
+         alert(e);
+     }
+ }
+
+ 
+$(document).ready(function(){
+
+    $("#startdate").datepicker({
+        todayBtn:  1,
+        autoclose: true,
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+        $('#enddate').datepicker('setStartDate', minDate);
+    });
+
+    $("#enddate").datepicker()
+        .on('changeDate', function (selected) {
+            var maxDate = new Date(selected.date.valueOf());
+            $('#startdate').datepicker('setEndDate', maxDate);
+        });
+
+});
+
+$(document).ready(function(){
+    var action = "admin/contact/import";
+    
+ 
+        $("#import_contact").on('submit',(function(e){
+            e.preventDefault();
+            $.ajax({
+            url: url+'/'+action,
+            type: "POST",
+            data:  new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(datas){
+                console.log(datas);
+                var data = JSON.parse(datas); 
+                if(data.status==0){
+                    $('#error_msg2').html(data.message).css('color','red');
+                    return false;
+                 }else{
+                     $('#responsive2').modal('hide');
+                     bootbox.alert('Contact imported successfully',function(){
+                         var u =url+'/admin/contact';
+                         console.log(u);
+                         setTimeout(function(){ window.location.assign(u);},100);
+                         
+                     });
+                 }
+            },
+            error: function(){}             
+            });
+        })); 
+
+
+});
+
+function updateGroup(Url,id) {
+    createGroup=0;
+    var name =$('form#updateGroup_'+id+' input#contact_group').val().replace(/^\s+|\s+$/gm,'');  
+    console.log(id,name,'form#updateGroup_'+id+' input#contact_group');
+    var parent_id = $('form#updateGroup_'+id+' input#parent_id').val();
+     try {
+        var checkValues = $('form#updateGroup_'+id+' input[name=checkAll]:checked').map(function()
+            {
+                return $(this).val();
+            }).get(); 
+        
+         if(checkValues.length==0){
+             $('form#updateGroup_'+id+' #error_msg').html('Please select contact from list').css('color','red');
+            
+             return false;
+           }else{
+                if(name.length==0){
+                    $('form#updateGroup_'+id+' #error_msg').html('Please enter group name.').css('color','red');
+                    return false;
+                 }else{
+                    $('form#updateGroup_'+id+' #error_msg').html('');
+                    createGroup =1;
+                 }
+           }  
+            if(createGroup==1){
+                $.ajax({
+                    url: Url,
+                    type: 'get',
+                    data: { ids: checkValues,groupName:name,parent_id:parent_id },
+                     dataType: "json",
+                    success:function(data){
+                        //return false;
+                         if(data.status==0){
+                            $('#error_msg').html(data.message).css('color','red');
+                            return false;
+                         }else{
+                             $('#responsive_'+id).modal('hide');
+                             bootbox.alert('Group updated successfully',function(){
+                                 var u =url+'/admin/contactGroup';
+                                 console.log(u);
+                                 //window.location.assign(u);
+                                setTimeout(function(){ location.reload();},100);
+                                
+                             });
+                             
+                         }
+                        
+                    }
+                }); 
+            }else{
+                $('#responsive').modal('hide');
+            }
+=======
             }).get();
 console.log(checkValues);
 
@@ -462,9 +655,14 @@ console.log(checkValues);
             });
 
 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 
      } catch (e) {
          alert(e);
      }
  }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9

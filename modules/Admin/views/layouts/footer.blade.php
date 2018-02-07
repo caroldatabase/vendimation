@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+
+        <!-- END THEME LAYOUT SCRIPTS -->
+  @if(isset($js_file))
+    @foreach($js_file as $key => $js )
+        <script src="{{ URL::asset('assets/js/'.$js) }}" type="text/javascript"></script>
+    @endforeach
+    @else
+      <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
+      <script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
+      <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script>
+  @endif
+
+   <!-- BEGIN CORE PLUGINS -->
+=======
  <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
@@ -12,6 +27,7 @@
         <!-- END QUICK NAV -->
        
         <!-- BEGIN CORE PLUGINS -->
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
          <script src="{{ URL::asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
@@ -52,6 +68,42 @@
         <script src="{{ URL::asset('assets/pages/scripts/form-validation.js') }}" type="text/javascript"></script>
 
          <script src="{{ URL::asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
+<<<<<<< HEAD
+          
+        
+
+        <script src="{{ URL::asset('assets/global/plugins/ladda/spin.min.js') }}" type="text/javascript"></script>
+
+        <script src="{{ URL::asset('assets/global/plugins/ladda/ladda.min.js') }}" type="text/javascript"></script>
+
+
+        <script src="{{ URL::asset('assets/pages/scripts/ui-buttons.min.js') }}" type="text/javascript"></script>
+        <script src="{{ URL::asset('assets/js/bootstrap-multiselect.js') }}" type="text/javascript"></script> 
+
+         <script src="{{ URL::asset('assets/js/components-select2.min.js') }}" type="text/javascript"></script>
+
+
+        <script src="{{ URL::asset('assets/js/components-bootstrap-multiselect.min.js') }}" type="text/javascript"></script>
+
+        <?php 
+        if(isset($userJs))
+        {
+          foreach($userJs as $key => $jsfile )
+            {
+               echo  '<script src="{{ URL::asset($jsfile) }}" type="text/javascript"></script>';
+            
+            }  
+        }   
+        ?>
+
+    <script src="https://use.fontawesome.com/a832a5b49f.js"></script>
+    <script type="text/javascript">
+        var   email_req     = "Please enter email";
+        var   password_req  = "Please enter password";
+        var   url           = "{{ url::to('/')}}";
+    </script> 
+    </body>
+=======
 
         <!-- END THEME LAYOUT SCRIPTS -->
       @if(isset($js_file))
@@ -75,4 +127,5 @@
 
     </body>
 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 </html>

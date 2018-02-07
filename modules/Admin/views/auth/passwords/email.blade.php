@@ -41,7 +41,11 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             
+<<<<<<< HEAD
+                <p style="font-size: 30px; font-family: inherit; color:#fff; margin: 0px; padding: 0px"> <b style="color:yellow">Vendimation </b> </p>
+=======
                 <p style="font-size: 30px; font-family: inherit; color:#fff; margin: 0px; padding: 0px"> <b style="color:yellow">Yellotasker </b> CMS</p>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         </div>
 
         <!-- END LOGO -->
@@ -66,7 +70,11 @@
                         @endif  
                     </div>
                     <div class="input-icon">
+<<<<<<< HEAD
+                       <input id="email" type="email" class="form-control placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="Enter Your Email">
+=======
                        <input id="email" type="email" class="form-control placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="Email">
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                        
 
 

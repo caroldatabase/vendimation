@@ -1,7 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
+<title>Your Vendimation Account Password</title>
+=======
 <title>Reset password Password</title>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 <style type="text/css">
   table {
     border-collapse: collapse;
@@ -11,7 +15,18 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr style="background-color:#00a5ec ; padding:20px; color:#332C41;font-size:28px; ">
+     <!-- <td width="197" align="right" valign="top" style="background-color:#17DA8A"><img src="https://www.wiaipi.com/public/assets/front-end/images/logo.png" width="197" height="61" style="display:block;"></td> -->
+      <td align="center" valign="middle" bgcolor="" style="background-color:#00a5ec ; padding:20px; color:#332C41;font-size:28px; ">
+      <div style="font-size:24px;">Vendimation</div>
+    </td>
+  </tr>
+</table>
+=======
  
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
   <table width="600" border="1" align="center" cellpadding="0" cellspacing="1" bgcolor="#971800" style="background-color:#fff;">
       <tr>
           <td align="center" valign="top" bgcolor="#ffffff" >
@@ -28,8 +43,13 @@
                     <a href="{{ url('admin/password/reset?token='.$content['temp_password'].'&key='.$content['encrypt_key']) }} ">{{ url('admin/password/reset?token='.$content['temp_password'].'&key='.$content['encrypt_key']) }}</a>
                    
                   </p> 
+<<<<<<< HEAD
+                  
+                  <p>Team Vendimation</p>
+=======
                   <p> Regards, </p>
                   <p>Team {{$content['greeting']}}</p>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                   </div>
                 </td>
               </tr>
@@ -38,4 +58,8 @@
       </tr>
   </table>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9

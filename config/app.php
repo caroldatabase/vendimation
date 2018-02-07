@@ -37,8 +37,8 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
-    'debug' => env('APP_DEBUG', true),
+ 
+    'debug' => env('APP_DEBUG', false), 
 
     /*
     |--------------------------------------------------------------------------
@@ -105,7 +105,7 @@ return [
 
     'key' => env('APP_KEY'),
 
-    'cipher' => 'AES-128-CBC',
+    'cipher' => 'AES-256-CBC',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,9 +167,8 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        Modules\Admin\AdminServiceProvider::class , 
-        Modules\Api\Provider\ApiServiceProvider::class,
 
+        Modules\Admin\AdminServiceProvider::class , 
 
         /*
          * Application Service Providers...
@@ -179,13 +178,23 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
+
+       /*
+         * Application Service Providers...
+         */
+        // App\Providers\BroadcastServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class, 
-         Collective\Html\HtmlServiceProvider::class,
-    ],
+        Collective\Html\HtmlServiceProvider::class,
+        Nestable\NestableServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
+   ],
 
     /*
     |--------------------------------------------------------------------------
@@ -233,13 +242,15 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        'Nestable' => Nestable\Facades\NestableService::class, 
 
     ],
 

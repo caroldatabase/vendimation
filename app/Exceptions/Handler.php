@@ -5,6 +5,23 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException; 
+//use Symfony\Component\HttpKernel\Exception\ErrorException;
+use InvalidArgumentException; 
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Auth;
+use Response;
+use Request;
+use Session;
+use Redirect;
+use URL;
+use ErrorException;
+use Illuminate\Database\QueryException;
+use ClientException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,7 +61,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+       if($exception){
+            $url =  URL::previous('?error='.$exception->getMessage());
+       }
+     return parent::render($request, $exception);
     }
 
     /**

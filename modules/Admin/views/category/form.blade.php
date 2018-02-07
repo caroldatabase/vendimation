@@ -11,12 +11,46 @@
 										        <div class="col-md-4"> 
 										            {!! Form::text('category_group_name',null, ['class' => 'form-control','data-required'=>1])  !!} 
 										            
+<<<<<<< HEAD
+										            <span class="help-block" style="color:red">{{ $errors->first('category_group_name', ':message') }} 
+
+                                                    @if(session('field_errors')) {{ 'The Group Category name already been taken!' }} @endif</span>
+=======
 										            <span class="help-block" style="color:red">{{ $errors->first('category_group_name', ':message') }} @if(session('field_errors')) {{ 'The Group Category name already been taken!' }} @endif</span>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 										        </div>
 										    </div> 
                                             
 
 
+<<<<<<< HEAD
+                                    <div class="form-group  {{ $errors->first('category_group_image', ' has-error') }}">
+                                        <label class="control-label col-md-3"> Image Upload <span class="required"> * </span></label>
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                        <img src=" {{ $url or 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image'}}" alt=""> </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"> 
+                                                </div>
+                                                <div>
+                                                <span class="btn default btn-file">
+                                                    <span class="fileinput-new"> Select image </span>
+                                                        <span class="fileinput-exists"> Change </span>
+                                                               
+                                            {!! Form::file('category_group_image',null,['class' => 'form-actionsontrol form-cascade-control input-small'])  !!} 
+                                                    </span>
+                                                    <span class="help-block" style="color:#e73d4a">{{ $errors->first('category_group_image', ':message') }}</span>
+                                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove    
+                                                        </a>
+                                                </div>
+                                            </div>
+                                        <div class="clearfix margin-top-10">
+                                            <span class="help-block">NOTE!</span> Image preview only works in IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+. In older browsers the filename is shown instead. 
+                                        </div>
+                                                
+                                        </div>
+                                    </div>
+=======
                                         <div class="form-group  {{ $errors->first('category_group_image', ' has-error') }}">
                                                 <label class="control-label col-md-3"> Image Upload <span class="required"> * </span></label>
                                                 <div class="col-md-9">
@@ -41,6 +75,7 @@
                                                         <span class="help-block">NOTE!</span> Image preview only works in IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+. In older browsers the filename is shown instead. </div>
                                                 </div>
                                             </div>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                             
                                            
                                             

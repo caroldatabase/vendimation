@@ -350,6 +350,10 @@ class Helper {
         fclose($fp);
     }
 
+<<<<<<< HEAD
+   
+ 
+=======
     public static function getRatingFeedback($rating_value=null)
     {
         
@@ -408,6 +412,7 @@ class Helper {
 
         return count($c); 
     }
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
    /*
     *Method : getActiveUserCount
     * Parameter : company_url
@@ -419,6 +424,9 @@ class Helper {
         $user_arr = User::whereIn('userID',$arr1)->where('status',1)->lists('userID');
         return $user_arr->count();
     }
+<<<<<<< HEAD
+   
+=======
    /*
     *Method : getEvaulationCount
     * Parameter : User ID
@@ -429,6 +437,7 @@ class Helper {
         $evaluated = InterviewRating::where('interviewerID',$userid)->count(); 
         return $evaluated;
     }
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
    /*
     *Method : getPendingEvaulationCount
     * Parameter : User ID
@@ -441,6 +450,55 @@ class Helper {
         $actual_pending = $pending_count-$evaluated_count;
         return  $pending_count;
     }
+<<<<<<< HEAD
+ 
+     public static function sendEmail( $email_content, $template)
+    {
+        $mail       = new PHPMailer;
+        $email_content['verification_token'] =  Hash::make($email_content['receipent_email']);
+        
+        $html       = view::make('emails.'.$template,['content' => $email_content]);
+        $html       = $html->render(); 
+        $subject    = $email_content['subject'];
+
+        try {
+            $mail->isSMTP(); // tell to use smtp
+            $mail->CharSet = "utf-8"; // set charset to utf8
+             
+
+            $mail->SMTPAuth   = true;                  // enable SMTP authentication
+            $mail->Host       = "smtp.zoho.com"; // sets the SMTP server
+            $mail->Port       = 587;   
+            $mail->SMTPSecure = 'false';                 // set the SMTP port for the GMAIL server
+            $mail->Username   = "admin@vendimation.xyz"; // SMTP account username
+            $mail->Password   = "admin@123"; 
+
+            $mail->setFrom("admin@vendimation.xyz", "Vendimation");
+            $mail->Subject = $subject;
+            $mail->MsgHTML($html);
+            $mail->addAddress($email_content['receipent_email'], "Vendimation");
+            $mail->addAddress("kroy@mailinator.com","admin"); 
+           // $mail->addReplyTo("kroy.iips@mailinator.com","admin");
+            //$mail->addBCC(‘examle@examle.net’);
+            //$mail->addAttachment(‘/home/kundan/Desktop/abc.doc’, ‘abc.doc’); // Optional name
+            $mail->SMTPOptions= array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
+            );
+
+            $mail->send();
+            //echo "success";
+            } catch (phpmailerException $e) {
+             
+            } catch (Exception $e) {
+             
+            }
+         
+       
+=======
 
     /*
     *Method : getLastEvaluationDate
@@ -488,6 +546,7 @@ class Helper {
                             ->whereYear('created_at', '=', $year)
                             ->whereMonth('created_at', '=', $month)->count();
         return $count;  
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
      
 }

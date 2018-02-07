@@ -19,6 +19,38 @@
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-settings font-red"></i>
+<<<<<<< HEAD
+                                        <span class="caption-subject font-red sbold uppercase"> Contacts</span>
+                                    </div>
+                                        <div class="col-md-2 pull-right">
+                                            <div class="input-group"> 
+                                                <a href="{{ route('contact.create')}}">
+                                                    <button  class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Contact</button> 
+                                                </a>
+                                            </div>
+                                        </div> 
+
+                                         <div class="col-md-2 pull-right">
+                                            <div   class="input-group">  
+                                             <a class="btn  btn-success" data-toggle="modal" href="#responsive2"><i class="fa fa-plus-circle"></i>   Import Contacts </a> 
+                                            </div>
+                                        </div>  
+                                        
+                                         <div class="col-md-2 pull-right">
+                                            <div   class="input-group">  
+                                              <a onclick="createGroup('{{url("admin/createGroup")}}')" class="btn  btn-success  btn-outline sbold" data-toggle="modal" href="#responsive"> 
+                                                <i class="fa fa-plus-circle"></i> 
+                                            Create Group </a>  
+                                            </div>
+                                        </div>  
+                                          <div class="col-md-3 pull-right">
+                                            <div   class="input-group">  
+                                             <a class="btn  btn-success" data-toggle="modal" href="{{url('admin/contact?export=pdf')}}"><i class="fa fa-plus-circle"></i> Export Contacts to pdf </a> 
+                                            </div>
+                                        </div>  
+
+                                      
+=======
                                         <span class="caption-subject font-red sbold uppercase">{{ $heading }}</span>
                                     </div>
                                      <div class="col-md-2 pull-right">
@@ -28,6 +60,7 @@
                                                 </a>
                                             </div>
                                         </div> 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                      
                                 </div>
                                   
@@ -61,11 +94,19 @@
                                     <table class="table table-striped table-hover table-bordered" id="contact">
                                         <thead>
                                             <tr>
+<<<<<<< HEAD
+                                             <th>   <INPUT type="checkbox" onchange="checkAll(this)" name="chk[]" /> All </th> 
+                                             <th> Title </th>
+                                                <th> Name </th>
+                                                <th> Email </th> 
+                                                <th> Phone </th>  
+=======
                                              <th>   <INPUT type="checkbox" onchange="checkAll(this)" name="chk[]" /> All </th>
                                                 <th> Name </th>
                                                 <th> Email </th> 
                                                 <th> Phone </th> 
                                                  <th> Group Name </th> 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                 <th>Created date</th> 
                                                 <th>Action</th> 
                                             </tr>
@@ -74,16 +115,27 @@
                                         @foreach($contacts as $key => $result)
                                             <tr>
                                              <th> <input type="checkbox" value="{{$result->id}}" name="checkAll"  class="checkAll contactChk"> </th>
+<<<<<<< HEAD
+                                             <td> {{$result->title }} </td>
+                                                <td> {{$result->firstName.' '.$result->lastName}} </td>
+                                                 <td> {{$result->email}} </td>
+                                                 <td> {{$result->phone}} </td> 
+=======
                                                 <td> {{$result->name}} </td>
                                                  <td> {{$result->email}} </td>
                                                  <td> {{$result->phone}} </td>
                                                     <td> NA </td> 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                      <td>
                                                         {!! Carbon\Carbon::parse($result->created_at)->format('Y-m-d'); !!}
                                                     </td>
                                                     
                                                     <td> 
+<<<<<<< HEAD
+                                                        <a href="{{ route('contact.edit',$result->id)}}">
+=======
                                                         <a href="{{ route('contacts.edit',$result->id)}}">
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                             <i class="fa fa-edit" title="edit"></i> 
                                                         </a>
 
@@ -99,6 +151,11 @@
                                             
                                         </tbody>
                                     </table>
+<<<<<<< HEAD
+                                   
+
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                      <div class="center" align="center">  {!! $contacts->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
                                 </div>
                             </div>
@@ -113,4 +170,62 @@
             
             <!-- END QUICK SIDEBAR -->
         </div>
+<<<<<<< HEAD
         
+        
+ <div id="responsive" class="modal fade" tabindex="-1" data-width="300">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #efeb10 !important">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Contact Group</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Contact Group Name</h4>
+                        <p>
+                            <input type="text" class="col-md-12 form-control" name="contact_group" id="contact_group"> </p>
+                            <input type="hidden" name="contacts_id" value="">
+                    </div>
+                </div> 
+            </div>
+            <div class="modal-footer">
+            <span id="error_msg"></span>
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Close</button>
+                <button type="button" class="btn red" id="csave"  onclick="createGroup('{{url("admin/createGroup")}}','save')" >Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="import_contact" action="" method="post" encytype="multipart/form-data">
+ <div id="responsive2" class="modal fade" tabindex="-1" data-width="300">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #efeb10 !important">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Import Contact Name</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Import Contact</h4>
+                        <span id="error_msg2"></span>
+                        <p>
+                            <input type="file" class="col-md-12 form-control" name="importContact" id="importContact"> </p> 
+                    </div>
+                </div> 
+            </div>
+            <div class="modal-footer">
+            
+                <button type="button" data-dismiss="modal" class="btn dark btn-outline">Close</button>
+                <button type="submit" class="btn red" id="csave" >Imort</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+=======
+        
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9

@@ -28,5 +28,4 @@ Route::group(['prefix' => 'v1'],function(){
     Route::post('usercard','UsersAPIController@SaveCard');
     Route::post('uploadImg','UsersAPIController@uploadImg');
 });
-
-
+ 

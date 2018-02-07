@@ -19,23 +19,39 @@ table {
               <tr>
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000;"> 
                   <div>
+<<<<<<< HEAD
+                        <p>Dear {{$content['name']}},</p>
+=======
                         <p>Dear {{$content['first_name']}},</p>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                         <p>Welcome !</p>
                         <p>Thank you for registration. To activate
 your account, please click the link below to confirm your email address and
 get started.
                         </p>
                         <p>
+<<<<<<< HEAD
+                          <a href="{{ url('admin/email_verification?verification_code='.$content['verification_token'].'&email='.$content['receipent_email']) }}">
+=======
                           <a href="{{ url('api/v1/email_verification?verification_code='.$content['verification_token'].'&email='.$content['email']) }}">
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                           Verify Your E-mail Address  
                         </a> 
                       </p>
                       <p> Or copy & paste this link into your browser.<br>
+<<<<<<< HEAD
+                        <a href="{{ url('admin/email_verification?verification_code='.$content['verification_token'].'&email='.$content['receipent_email']) }}">
+                          {{ url('api/v1/email_verification?verification_code='.$content['verification_token'].'&email='.$content['receipent_email']) }}</a> 
+                      </p> 
+                          <p>Best Regards,</p>
+                          <p>Team Vendimation</p>
+=======
                         <a href="{{ url('api/v1/email_verification?verification_code='.$content['verification_token'].'&email='.$content['email']) }}">
                           {{ url('api/v1/email_verification?verification_code='.$content['verification_token'].'&email='.$content['email']) }}</a> 
                       </p> 
                           <p>Best Regards,</p>
                           <p>Team Yellotasker</p>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
                   </div>
                 </td>
