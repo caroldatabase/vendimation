@@ -1732,3 +1732,140 @@ position:relative;
   position: absolute;
   top: 0;
 }
+
+@media only screen and (max-width: 1320px)
+{
+.header-right-menu {
+    float: left;
+    padding-left: 0px;
+}
+
+}
+@media only screen and (max-width: 1255px)
+{
+.header-right-menu ul li {
+    float: left;
+    margin: 0px 10px;
+}
+}
+@media only screen and (max-width: 960px)
+{
+li.invite a {
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid #00a5ec;
+    border-radius: 30px;
+    padding: 5px 20px;
+    margin-right: 10px;
+    color: #00a5ec;
+    font-size: 13px;
+}
+.search-keyword {
+    float: left;
+    width: 55%;
+    border-right: 1px solid #eaebec;
+}
+.header input[type="text"] {
+    line-height: 1;
+    border: 0px;
+    width: 86%;
+    margin-left: 15px;
+    font-size: 14px;
+    color: #989ca6 !important;
+}
+}
+@media only screen and (max-width: 830px)
+{
+.search-keyword {
+    float: left;
+    width: 45%;
+    border-right: 1px solid #eaebec;
+}
+.col-sm-5.profile-right-col {
+    padding-right: 0;
+    width: 41%;
+}
+.invite-pro-pic {
+    float: right;
+    padding-right: 0;
+}
+.header input[type="text"] {
+    line-height: 1;
+    border: 0px;
+    width: 70%;
+    margin-left: 15px;
+    font-size: 14px;
+    color: #989ca6 !important;
+}
+.header {
+    background: #fff;
+    line-height: 70px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+}
+.main-section {
+    padding-top: 70px;
+}
+
+}
+@media only screen and (max-width: 767px)
+{
+.col-sm-2.text-center.main-logo {
+    float: left;
+	width:20%;
+}
+.col-sm-5.profile-right-col {
+    padding-right: 0;
+    width: 100%;
+    padding-left: 0px;
+}
+.header .col-sm-10 {
+    float: left;
+    width: 80%;
+}
+input[type="text"] {
+    line-height: 1;
+    border: 0px;
+    width: 86%;
+    margin-left: 0px;
+    font-size: 12px;
+    color: #989ca6 !important;
+}
+.search-keyword {
+    display: none;
+}
+.header-right-menu {
+    display: none;
+}
+.invite-pro-pic {
+    float: right;
+    padding-right: 0px;
+}
+.header {
+    background: #fff;
+    line-height: 60px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+}
+.main-section {
+    padding-top: 60px;
+}
+.header input[type="text"] {
+    line-height: 1;
+    border: 0px;
+    width: 65%;
+    margin-left: 15px;
+    font-size: 11px;
+    color: #989ca6 !important;
+}
+.header .col-sm-10 {
+    float: left;
+    width: 70%;
+}
+.col-sm-2.text-center.main-logo {
+    float: left;
+    width: 30%;
+}
+}
