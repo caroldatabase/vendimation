@@ -30,10 +30,7 @@
 
     Route::match(['post'],'admin/user/addCard','PaymentController@addCard');
     Route::match(['get'],'admin/user/cardList','PaymentController@cardList');
-
-
-
-
+ 
 
     Route::post('admin/login',function(App\Admin $user, \Illuminate\Http\Request $request){
    

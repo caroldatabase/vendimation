@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
      * @return void
      */
     public function report(Exception $exception)
-    {
+    {   
         parent::report($exception);
     }
 
@@ -59,11 +59,122 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, \Exception $e)
     {
-       if($exception){
-            $url =  URL::previous('?error='.$exception->getMessage());
-       }
+        $path_info_url = $request->getpathInfo();
+        $api_url='';
+        $web_url ='';
+        if (strpos($path_info_url, 'api/v1') !== false) {
+            $api_url = $path_info_url;
+        }else{
+           $web_url = $path_info_url;
+        } 
+        
+         if($e instanceof InvalidArgumentException)
+        {
+            if($api_url)
+            {
+                echo json_encode(
+                    [ "status"=>0,
+                      "code"=>500,
+                      "message"=>"Route Not defind" ,
+                      "data" => "" 
+                    ]
+                );
+            }else{
+                echo "This Route Not define";
+            } 
+            exit(); 
+        }    
+        if ($e instanceof ModelNotFoundException) {
+            $e = new NotFoundHttpException($e->getMessage(), $e);
+        }
+        $error_from_route =0;
+        if($e instanceof NotFoundHttpException)
+        {   
+            $error_from_route =1;
+            if($api_url)
+            {
+                echo json_encode(
+                    [ "status"=>0,
+                      "code"=>500,
+                      "message"=>"Request URL not available" ,
+                      "data" => "" 
+                    ]
+                );
+            }else{
+               
+              //$url =  URL::previous().'?error=InvalidURL'; 
+              return Redirect::to('admin/404');
+            } 
+            exit();
+        }
+        if($e instanceof QueryException)
+        {    
+            if($api_url)
+            {    
+                echo json_encode(
+                    [ "status"=>0,
+                      "code"=>500,
+                      "message"=>$e->getMessage(),
+                      "data" => "" 
+                    ]
+                );
+            }else{
+              $page_title = "404 Error";
+              $page_action = "Page";
+              $viewPage = "404 Error";
+              $msg = "page not found";
+              $error_msg = $e->getMessage(); //"Oops! Server is busy please try later."; 
+              return view('packages::auth.page_not_found',compact('error_msg','page_title','page_action','viewPage'))->with('flash_alert_notice', $msg);
+            } 
+            exit();
+        }
+        if($e instanceof MethodNotAllowedHttpException){
+            
+            if($api_url)
+            {
+                echo json_encode(
+                    [ "status"=>0,
+                      "code"=>500,
+                      "message"=>"Request method not found!" ,
+                      "data" => "" 
+                    ]
+                );
+            }else{
+                echo "Method Not Allowed"; 
+            } 
+            exit();
+           
+        } 
+        if($e instanceof ErrorException){
+           if($api_url)
+            {
+                echo json_encode(
+                    [ "status"=>1,
+                      "code"=>500,
+                      "message"=>[
+                                    'error_message'=>$e->getmessage(),
+                                    'file_path'=>$e->getfile(),
+                                    'line_number'=>$e->getline()],    
+                      "data" => "" 
+                    ]
+                );
+            }else{
+                $error =  [
+                        'Error message'=>$e->getmessage(),
+                        'File path'=>$e->getfile(),
+                        'Line number'=>$e->getline()
+                     ];
+                
+                echo "Opps..We found Error! Pease fix it.<ol>";    
+                foreach ($error as $key => $value) {
+                        echo "<li><b>$key =></b>".$value.'</li>';
+                    }
+                echo "</ol>";    
+            } 
+            exit();
+        }
      return parent::render($request, $exception);
     }
 

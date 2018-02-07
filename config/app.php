@@ -37,8 +37,8 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
- 
-    'debug' => env('APP_DEBUG', false), 
+
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -168,8 +168,6 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
-        Modules\Admin\AdminServiceProvider::class , 
-
         /*
          * Application Service Providers...
          */
@@ -181,7 +179,11 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 
 
-       /*
+         /*
+         * Package Service Providers...
+         */
+        Modules\Admin\AdminServiceProvider::class , 
+        /*
          * Application Service Providers...
          */
         // App\Providers\BroadcastServiceProvider::class,
@@ -194,7 +196,7 @@ return [
         Nestable\NestableServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
 
-   ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -243,6 +245,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
@@ -250,7 +253,9 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Input' => Illuminate\Support\Facades\Input::class,
-        'Nestable' => Nestable\Facades\NestableService::class, 
+        'Nestable' => Nestable\Facades\NestableService::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        
 
     ],
 
