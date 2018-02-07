@@ -37,12 +37,8 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
-<<<<<<< HEAD
-    'debug' => env('APP_DEBUG', false),
-=======
-    'debug' => env('APP_DEBUG', true),
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+ 
+    'debug' => env('APP_DEBUG', false), 
 
     /*
     |--------------------------------------------------------------------------
@@ -109,11 +105,7 @@ return [
 
     'key' => env('APP_KEY'),
 
-<<<<<<< HEAD
     'cipher' => 'AES-256-CBC',
-=======
-    'cipher' => 'AES-128-CBC',
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
     /*
     |--------------------------------------------------------------------------
@@ -175,12 +167,8 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-<<<<<<< HEAD
-=======
-        Modules\Admin\AdminServiceProvider::class , 
-        Modules\Api\Provider\ApiServiceProvider::class,
 
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+        Modules\Admin\AdminServiceProvider::class , 
 
         /*
          * Application Service Providers...
@@ -190,34 +178,23 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-<<<<<<< HEAD
         Laravel\Socialite\SocialiteServiceProvider::class,
 
 
-         /*
-         * Package Service Providers...
-         */
-        Modules\Admin\AdminServiceProvider::class , 
-        /*
+       /*
          * Application Service Providers...
          */
         // App\Providers\BroadcastServiceProvider::class,
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         Orangehill\Iseed\IseedServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class, 
-<<<<<<< HEAD
         Collective\Html\HtmlServiceProvider::class,
         Nestable\NestableServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
 
-=======
-         Collective\Html\HtmlServiceProvider::class,
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
-    ],
+   ],
 
     /*
     |--------------------------------------------------------------------------
@@ -265,27 +242,15 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-<<<<<<< HEAD
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-<<<<<<< HEAD
         'Input' => Illuminate\Support\Facades\Input::class,
-        'Nestable' => Nestable\Facades\NestableService::class,
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        
-=======
-         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-        'Input' => Illuminate\Support\Facades\Input::class,
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+        'Nestable' => Nestable\Facades\NestableService::class, 
 
     ],
 

@@ -5,7 +5,6 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-<<<<<<< HEAD
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -23,8 +22,6 @@ use URL;
 use ErrorException;
 use Illuminate\Database\QueryException;
 use ClientException;
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 class Handler extends ExceptionHandler
 {
@@ -64,14 +61,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-<<<<<<< HEAD
-       //dd($exception)
        if($exception){
             $url =  URL::previous('?error='.$exception->getMessage());
        }
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
-        return parent::render($request, $exception);
+     return parent::render($request, $exception);
     }
 
     /**

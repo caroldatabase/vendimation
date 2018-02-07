@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+ 
 
      Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {
 
@@ -66,44 +66,6 @@
     Route::group(['middleware' => ['admin']], function () { 
         Route::get('admin', 'Modules\Admin\Http\Controllers\AdminController@index');
         /*------------User Model and controller---------*/
-=======
-    
-    Route::get('abc',function(){
-        echo "test";
-    });
-
-    Route::get('admin/login','Modules\Admin\Http\Controllers\AuthController@index');
-    Route::get('admin/forgot-password','Modules\Admin\Http\Controllers\AuthController@forgetPassword');
-    Route::post('password/email','Modules\Admin\Http\Controllers\AuthController@sendResetPasswordLink');
-    Route::get('admin/password/reset','Modules\Admin\Http\Controllers\AuthController@resetPassword');  
-    Route::get('admin/logout','Modules\Admin\Http\Controllers\AuthController@logout');  
-
-    Route::post('admin/login',function(App\Admin $user){
-   
-    $credentials = ['email' => Input::get('email'), 'password' => Input::get('password')]; 
-    
-   // $credentials = ['email' => 'kundan@gmail.com', 'password' => 123456]; 
-    $auth = auth()->guard('admin');
-    
-
-        if ($auth->attempt($credentials)) {
-            return Redirect::to('admin');
-        }else{ 
-           //return Redirect::to('admin/login')->withError(['message'=>'Invalid Credential!']);
-            return redirect()
-                        ->back()
-                        ->withInput()  
-                        ->withErrors(['message'=>'Invalid email or password. Try again!']);
-            } 
-    }); 
-      
-    Route::group(['middleware' => ['admin']], function () { 
-
-        Route::get('admin', 'Modules\Admin\Http\Controllers\AdminController@index');
-        
-        /*------------User Model and controller---------*/
-
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         Route::bind('user', function($value, $route) {
             return Modules\Admin\Models\User::find($value);
         });
@@ -119,11 +81,7 @@
                 'create' => 'user.create',
             ]
                 ]
-        );
-
-
-<<<<<<< HEAD
-        
+        ); 
 
 
         Route::bind('targetMarket', function($value, $route) {
@@ -159,16 +117,7 @@
             ]
                 ]
         );
-
-
-
-
-        
-
-
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
-       
+ 
         /*------------User Category and controller---------*/
 
             Route::bind('category', function($value, $route) {
@@ -244,8 +193,7 @@
             ]
                 ]
         );  
-
-<<<<<<< HEAD
+ 
          Route::bind('comment', function($value, $route) {
             return App\Models\Comments::find($value);
         });
@@ -304,10 +252,6 @@
 
          Route::get('admin/createGroup', 'Modules\Admin\Http\Controllers\ContactController@createGroup');  
          Route::post('admin/contact/import', 'Modules\Admin\Http\Controllers\ContactController@contactImport');  
-=======
-         Route::get('admin/createGroup', 'Modules\Admin\Http\Controllers\ContactController@createGroup');  
-
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 
          Route::bind('contacts', function($value, $route) {
@@ -326,14 +270,9 @@
             ]
                 ]
         );  
-
-
-
-<<<<<<< HEAD
+ 
         Route::get('admin/updateGroup', 'Modules\Admin\Http\Controllers\ContactGroupController@updateGroup'); 
-=======
-
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+ 
          /*---------Contact Route ---------*/    
 
         Route::bind('contactGroup', function($value, $route) {
@@ -405,7 +344,7 @@
             ]
                 ]
         ); 
-<<<<<<< HEAD
+ 
         
          Route::bind('tags', function($value, $route) {
             return Modules\Admin\Models\Tag::find($value);    
@@ -478,9 +417,7 @@
                 'create' => 'sales-funnel.create',
             ]
                 ]
-        );
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+        ); 
 
 
         /*----------End---------*/    

@@ -40,25 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-<<<<<<< HEAD
-=======
         'admin' => [
             'driver' => 'session',
             'provider' => 'admin',
-        ],
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+        ], 
 
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-        ],
-<<<<<<< HEAD
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admin',
         ]
-=======
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     ],
 
     /*
@@ -87,29 +77,17 @@ return [
              'driver' => 'eloquent',
              'model' => App\Admin::class,
          ],
-<<<<<<< HEAD
-=======
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     ],
 
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
     |--------------------------------------------------------------------------
-    |
-<<<<<<< HEAD
-=======
+    | 
     | Here you may set the options for resetting passwords including the view
     | that is your password reset e-mail. You may also set the name of the
     | table that maintains all of the reset tokens for your application.
-    |
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
-    | You may specify multiple password reset configurations if you have more
+    |  you have more
     | than one user table or model in the application and you want to have
     | separate password reset settings based on the specific user types.
     |
@@ -121,21 +99,14 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-<<<<<<< HEAD
-=======
-            'email' => 'auth.emails.password',
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+            'provider' => 'users', 
+            'email' => 'auth.emails.password', 
             'table' => 'password_resets',
             'expire' => 60,
         ],
         'admin' => [
-            'provider' => 'admin',
-<<<<<<< HEAD
-          //  'email' => 'auth.emails.password',
-=======
-            'email' => 'auth.emails.password',
->>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
+            'provider' => 'admin', 
+            'email' => 'auth.emails.password', 
             'table' => 'password_resets',
             'expire' => 60,
         ],
