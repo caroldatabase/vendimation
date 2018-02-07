@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
         <!-- END THEME LAYOUT SCRIPTS -->
   @if(isset($js_file))
@@ -11,6 +12,22 @@
   @endif
 
    <!-- BEGIN CORE PLUGINS -->
+=======
+ <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2017 &copy; Yellotasker
+               
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        
+        <!-- END QUICK NAV -->
+       
+        <!-- BEGIN CORE PLUGINS -->
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
          <script src="{{ URL::asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ URL::asset('assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
@@ -51,6 +68,7 @@
         <script src="{{ URL::asset('assets/pages/scripts/form-validation.js') }}" type="text/javascript"></script>
 
          <script src="{{ URL::asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
+<<<<<<< HEAD
           
         
 
@@ -85,4 +103,29 @@
         var   url           = "{{ url::to('/')}}";
     </script> 
     </body>
+=======
+
+        <!-- END THEME LAYOUT SCRIPTS -->
+      @if(isset($js_file))
+
+        @foreach($js_file as $key => $js )
+              <script src="{{ URL::asset('assets/js/'.$js) }}" type="text/javascript"></script>
+        @endforeach
+        @else
+         <script src="{{ URL::asset('assets/js/common.js') }}" type="text/javascript"></script>
+         <script src="{{ URL::asset('assets/js/bootbox.js') }}" type="text/javascript"></script>
+          <script src="{{ URL::asset('assets/js/formValidate.js') }}" type="text/javascript"></script>
+      @endif
+
+      <script type="text/javascript">
+          
+          var   email_req = "Please enter email";
+          var  password_req = "Please enter password";
+          var url = "{{ url::to('/')}}";
+      </script>
+
+
+    </body>
+
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 </html>

@@ -34,6 +34,7 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+<<<<<<< HEAD
     'google' => [
         'client_id' => env('GOOGLE_KEY','834953885970-i7l2mv64qlkldlqp38iodbg9v97ed827.apps.googleusercontent.com'),
         'client_secret' => env('GOOGLE_SECRET','h_chgtmW8XEa6ceV5mu69js8'),
@@ -49,5 +50,7 @@ return [
         'client_secret' => env('TWITTER_SECRET'),
         'redirect'      => env('TWITTER_URL'),
     ],
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 ];

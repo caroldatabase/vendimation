@@ -5,7 +5,11 @@ var Login = function() {
 
     var handleLogin = function() {
 
+<<<<<<< HEAD
         $('.user-form, .contact-form').validate({
+=======
+        $('.user-form').validate({
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
             focusInvalid: false, // do not focus the last invalid input
@@ -19,7 +23,14 @@ var Login = function() {
                 password: {
                     required: true
                 },
+<<<<<<< HEAD
                 
+=======
+                phone: {
+                    required: true,
+                    number: true
+                },
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                  
                 category_group_name:{
                     required:true
@@ -35,9 +46,12 @@ var Login = function() {
                 },
                 name:{
                     required:true
+<<<<<<< HEAD
                 },
                 first_name:{
                     required:true
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                 }
             },
 

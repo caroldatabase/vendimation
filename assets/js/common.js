@@ -422,6 +422,7 @@ function checkAll(ele) {
      }
  }
 
+<<<<<<< HEAD
  function checkAllContact(ele) {
      var checkboxes = document.getElementsByTagName('input');
      if (ele.checked) {
@@ -442,6 +443,8 @@ function checkAll(ele) {
 
 
 
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
  function deleteRow(tableID) {
      try {
          var table = document.getElementById(tableID);
@@ -463,13 +466,18 @@ function checkAll(ele) {
 
 
 
+<<<<<<< HEAD
 function createGroup(Url,action) {
     var createGroup=0;
     var name ='';
+=======
+function createGroup(url) {
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
      try {
         var checkValues = $('input[name=checkAll]:checked').map(function()
             {
                 return $(this).val();
+<<<<<<< HEAD
             }).get(); 
         //alert(action);
          if(checkValues.length==0){
@@ -632,10 +640,29 @@ function updateGroup(Url,id) {
             }else{
                 $('#responsive').modal('hide');
             }
+=======
+            }).get();
+console.log(checkValues);
+
+            $.ajax({
+                url: url,
+                type: 'get',
+                data: { ids: checkValues },
+                 dataType: "json",
+                success:function(data){
+                    console.log(data);
+                }
+            });
+
+
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 
      } catch (e) {
          alert(e);
      }
  }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9

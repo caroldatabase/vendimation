@@ -27,6 +27,7 @@ class Authenticate
 
         return $next($request);
     }
+<<<<<<< HEAD
 
     // public function handle($request, Closure $next, $role)
     // {
@@ -47,4 +48,6 @@ class Authenticate
     //     }
     //     return $next($request);
     // }
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 }

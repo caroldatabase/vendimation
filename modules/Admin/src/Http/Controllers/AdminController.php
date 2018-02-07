@@ -23,6 +23,7 @@ use Validator;
 use App\Http\Requests;
 use App\Helpers\Helper as Helper;
 //use Modules\Admin\Models\User; 
+<<<<<<< HEAD
 use Modules\Admin\Models\Contact;
 use Modules\Admin\Models\Deals;
 use Modules\Admin\Models\Notification;
@@ -33,6 +34,17 @@ use Illuminate\Http\Request;
 use Session;
 use Modules\Admin\Models\TargetMarketType; 
 use Modules\Admin\Models\BusinessNatureType;
+=======
+use Modules\Admin\Models\Category;
+use Modules\Admin\Models\CategoryDashboard;
+use App\Admin;
+use Illuminate\Http\Request;
+use Session;
+
+use App\User;
+use App\ProfessorProfile;
+use App\StudentProfile;
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
  
 /**
  * Class : AdminController
@@ -50,6 +62,7 @@ class AdminController extends Controller {
     public function __construct()
     {  
         $this->middleware('admin');  
+<<<<<<< HEAD
          View::share('heading','dashboard');
         View::share('route_url','admin');
 
@@ -60,12 +73,17 @@ class AdminController extends Controller {
                 'custom.js'
                 ];
         View::share('js_file',$js_file);
+=======
+        View::share('heading','dashboard');
+        View::share('route_url','admin');
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
     /*
     * Dashboard
     **/
     public function index(Request $request) 
     { 
+<<<<<<< HEAD
         $page_title = "";
         $page_action = "";
         $viewPage = "Admin";
@@ -123,6 +141,23 @@ class AdminController extends Controller {
          
                 
         return view('packages::dashboard.'.$myprofile,compact('contact_count','deals','notification_count','close_deals','contactGroup','user','targetMarketType','businessNatureType'));
+=======
+       // dd(Session::getId());
+        $page_title = "";
+        $page_action = "";
+        $professor = User::where('role_type',1)->count();
+         
+        $user = User::count();
+        $viewPage = "Admin";
+
+        $users_count        =  User::count();
+        $category_grp_count =  Category::where('parent_id',0)->count();
+        $category_count     =  Category::where('parent_id','!=',0)->count();
+        $category_dashboard_count = CategoryDashboard::count();
+
+
+        return view('packages::dashboard.index',compact('category_count','users_count','category_grp_count','page_title','page_action','viewPage','category_dashboard_count'));
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
 
    public function profile(Request $request,Admin $users)

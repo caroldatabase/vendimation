@@ -57,8 +57,12 @@
                                     <table class="table table-striped table-hover table-bordered" id="">
                                         <thead>
                                             <tr>
+<<<<<<< HEAD
                                                  <th> Sno. </th>
                                                 <th> Full Name </th>
+=======
+                                                <th> Name </th>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                 <th> Email </th>
                                                 <th> Phone </th>
                                                 <th> Role </th>
@@ -70,8 +74,12 @@
                                         <tbody>
                                         @foreach($users as $key => $result)
                                             <tr>
+<<<<<<< HEAD
                                                  <td> {{++$key}} </td>
                                                 <td> {{$result->first_name.'  '.$result->last_name}} </td>
+=======
+                                                <td> {{$result->name}} </td>
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                                                 <td> {{$result->email}} </td>
                                                 <td> {{$result->phone}} </td>
                                                 <td class="center">  @if($result->role_type==1)

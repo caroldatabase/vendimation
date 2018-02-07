@@ -350,8 +350,69 @@ class Helper {
         fclose($fp);
     }
 
+<<<<<<< HEAD
    
  
+=======
+    public static function getRatingFeedback($rating_value=null)
+    {
+        
+        $feedback_data = RatingFeedback::lists('feedback','rating_value');
+
+        $rating_value = isset($rating_value)?$rating_value:"";
+                switch ($rating_value) {
+                    case 1:
+                        $feedback = isset($feedback_data[1])?$feedback_data[1]:'Terrible';
+                        return $feedback;
+                        break;
+                    case 2:
+                        $feedback = isset($feedback_data[2])?$feedback_data[2]:'Poor';
+                        return $feedback;
+                        break;
+                    case 3:
+                        $feedback = isset($feedback_data[3])?$feedback_data[3]:'Average';
+                        return $feedback;
+                        break;
+                    case 4:
+                        $feedback = isset($feedback_data[4])?$feedback_data[4]:'Good';
+                        return $feedback;
+                        break;
+                    case 5:
+                        $feedback = isset($feedback_data[5])?$feedback_data[5]:'Excellent';
+                        return $feedback;
+                        break;                
+                    
+                    default:
+                        $feedback = "Not rated";
+                        return $feedback;
+                        break;
+                }
+    }
+
+    public static function getCondidateCountByUserID($user_id=null){
+        
+        $query  = CorporateProfile::query();
+        $corp_profile       = $query->where('userID',$user_id)->first();
+        $query  = CorporateProfile::query();
+        $total_cuser = $query->where('company_url',$corp_profile->company_url)->get();
+        $user_arr = $total_cuser->lists('userID'); 
+        $c = [];
+        foreach ($user_arr as $key => $userid) {
+          # code...
+       
+            $interviewD = Interview::where(function($query) use($userid){
+                $query->whereRaw('FIND_IN_SET('.$userid.',interviewerID)');
+                }
+            )
+            ->get(); 
+           foreach ($interviewD as $key => $value) {
+              $c[$value->id] = $value->condidate_name; 
+           } 
+         }
+
+        return count($c); 
+    }
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
    /*
     *Method : getActiveUserCount
     * Parameter : company_url
@@ -363,7 +424,20 @@ class Helper {
         $user_arr = User::whereIn('userID',$arr1)->where('status',1)->lists('userID');
         return $user_arr->count();
     }
+<<<<<<< HEAD
    
+=======
+   /*
+    *Method : getEvaulationCount
+    * Parameter : User ID
+    * Response : condidate Evaluation Count
+    */
+
+    public function getEvaulationCount($userid=null){ 
+        $evaluated = InterviewRating::where('interviewerID',$userid)->count(); 
+        return $evaluated;
+    }
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
    /*
     *Method : getPendingEvaulationCount
     * Parameter : User ID
@@ -376,6 +450,7 @@ class Helper {
         $actual_pending = $pending_count-$evaluated_count;
         return  $pending_count;
     }
+<<<<<<< HEAD
  
      public static function sendEmail( $email_content, $template)
     {
@@ -423,6 +498,55 @@ class Helper {
             }
          
        
+=======
+
+    /*
+    *Method : getLastEvaluationDate
+    * Parameter : User ID
+    * Response : last Evaluation date
+    */
+
+    public function getLastEvaluationDate($userid=null){ 
+        $evaluated_count = InterviewRating::where('interviewerID',$userid)
+                            ->orderBy('id','desc')->first();
+        $date =  "N/A";
+        if($evaluated_count!=null){                    
+            $date = (\Carbon\Carbon::parse($evaluated_count->created_at)->format('m-d-Y H:i:s A'));
+        }                    
+        return  $date;
+    }
+   /*
+    *Method : getEvaluationCountByMonth
+    * Parameter : User ID, month
+    * Response : last Evaluation date
+    */
+    public function getEvaluationCountByMonth($userid=null,$month=null){
+        $year = Input::get('year');
+        $year =  isset($year)?$year:date('Y');  
+        
+        $count = InterviewRating::where('interviewerID',$userid)
+                    ->whereYear('created_at', '=', $year)
+                    ->whereMonth('created_at', '=', $month)->count(); 
+        return $count;
+    }
+    /*
+    *Method : getCorporateEvaluationCountByMonth
+    * Parameter : User ID, month
+    * Response : last Evaluation date
+    */
+    public function getCorporateEvaluationCountByMonth($userid=null,$month=null){ 
+        
+        $year = Input::get('year');
+        $year =  isset($year)?$year:date('Y'); 
+        $cp = CorporateProfile::where('userID',$userid)->first();
+        $org_domain = $cp->company_url;
+        $cp_user = CorporateProfile::where('company_url',$org_domain)->lists('userID')->toArray();
+        $user = User::whereIn('userID',$cp_user)->count();
+        $count = InterviewRating::whereIn('interviewerID',$cp_user)
+                            ->whereYear('created_at', '=', $year)
+                            ->whereMonth('created_at', '=', $month)->count();
+        return $count;  
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     }
      
 }

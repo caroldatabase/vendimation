@@ -7,10 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use Hash;
 use App\User;
 use App\Admin;
+<<<<<<< HEAD
 use Request;
 use Session;
 use View;
 
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 class RedirectIfNotAdmin
 {
     /**
@@ -25,6 +28,7 @@ class RedirectIfNotAdmin
     protected $redirectTo = 'admin';
     protected $guard = 'admin';
 
+<<<<<<< HEAD
     public function handle($request, Closure $next, $guard = 'web')
     {   
         if (!Auth::guard($guard)->check() && !Auth::guard('admin')->check() ) {
@@ -43,6 +47,17 @@ class RedirectIfNotAdmin
             return redirect('admin/signup/step_'.$step); 
         }
 
+=======
+    public function handle($request, Closure $next, $guard = 'admin')
+    {   
+
+      // dd(Auth::guard('admin')->attempt($credentials,true));
+        if (!Auth::guard($guard)->check()) {
+
+            return redirect('admin/login');
+        }
+        
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         return $next($request);
     }
 }

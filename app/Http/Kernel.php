@@ -17,11 +17,18 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
+<<<<<<< HEAD
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class, 
          \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
          ];
 
+=======
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    ];
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
     /**
      * The application's route middleware groups.
@@ -33,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
+<<<<<<< HEAD
             \Illuminate\Session\Middleware\AuthenticateSession::class, 
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -41,6 +49,14 @@ class Kernel extends HttpKernel
 
       
 
+=======
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+           \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -66,9 +82,12 @@ class Kernel extends HttpKernel
         'api'   =>  \App\Http\Middleware\ApiMiddleware::class,
         'restApiAuth'   =>  \App\Http\Middleware\ApiMiddleware::class,
         'jwt-auth' => \App\Http\Middleware\authJWT::class,
+<<<<<<< HEAD
 
         'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     ];
 }

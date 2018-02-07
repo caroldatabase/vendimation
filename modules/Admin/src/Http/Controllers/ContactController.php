@@ -26,10 +26,14 @@ use Illuminate\Http\Dispatcher;
 use App\Helpers\Helper;
 use Modules\Admin\Models\Contact; 
 use Modules\Admin\Models\Category;
+<<<<<<< HEAD
 use Modules\Admin\Models\ContactGroup;
 use Response; 
 use Maatwebsite\Excel\Facades\Excel as Excel;
 use PDF;
+=======
+use Response; 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
 /**
  * Class AdminController
@@ -59,7 +63,11 @@ class ContactController extends Controller {
      * Dashboard
      * */
 
+<<<<<<< HEAD
     public function index(Contact $contact, Request $request) 
+=======
+    public function index(Category $category, Request $request) 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     { 
         $page_title = 'Contact';
         $sub_page_title = 'View Contact';
@@ -73,9 +81,14 @@ class ContactController extends Controller {
             $category->save();
             echo $s;
             exit();
+<<<<<<< HEAD
         } 
 
  
+=======
+        }
+
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         // Search by name ,email and group
         $search = Input::get('search');
         $status = Input::get('status');
@@ -90,6 +103,7 @@ class ContactController extends Controller {
                                       ->OrWhere('phone', 'LIKE', "%$search%");
                         }
                         
+<<<<<<< HEAD
                     })->Paginate($this->record_per_page);
         } else {
             $contacts = Contact::orderBy('id','desc')->Paginate($this->record_per_page);
@@ -100,6 +114,11 @@ class ContactController extends Controller {
         {
            $pdf = PDF::loadView('packages::contact.pdf', compact('corporateProfile', 'page_title', 'page_action','contacts'));
            return ($pdf->download('all-contacts.pdf'));
+=======
+                    })>Paginate($this->record_per_page);
+        } else {
+            $contacts = Contact::Paginate($this->record_per_page);
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         }
          
         
@@ -110,19 +129,32 @@ class ContactController extends Controller {
      * create Group method
      * */
 
+<<<<<<< HEAD
     public function create(Contact $contact) 
+=======
+    public function create(Category $category) 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
     {
         
         $page_title = 'Contact';
         $page_action = 'Create Contact';
         $category  = Category::all();
+<<<<<<< HEAD
         $categories  = Category::all();
   
+=======
+        $sub_category_name  = Category::all();
+ 
+        $html = '';
+        $categories = '';
+
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         return view('packages::contact.create', compact('categories', 'html','category','sub_category_name', 'page_title', 'page_action'));
     }
 
     public function createGroup(Request $request)
     {
+<<<<<<< HEAD
         $users = $request->get('ids');
         $validator = Validator::make($request->all(), [
                 'groupName' => 'required|unique:contact_groups,groupName' 
@@ -160,6 +192,8 @@ class ContactController extends Controller {
 
         return $cg;
 
+=======
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         $contact = Contact::whereIn('id',$request->get('ids'))->get();
         return $contact;
     }
@@ -170,6 +204,7 @@ class ContactController extends Controller {
 
     public function store(ContactRequest $request, Contact $contact) 
     {   
+<<<<<<< HEAD
         
         $categoryName = $request->get('categoryName');
         $cn= '';
@@ -278,6 +313,18 @@ class ContactController extends Controller {
         
        
     }
+=======
+        $contact->name     =   $request->get('name');
+        $contact->phone    =   $request->get('phone');
+        $contact->email    =   $request->get('email');
+        $contact->address  =   $request->get('address'); 
+        
+        $contact->save();   
+         
+        return Redirect::to(route('contact'))
+                            ->with('flash_alert_notice', 'New contact  successfully created!');
+        }
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
 
     /*
      * Edit Group method
@@ -285,6 +332,7 @@ class ContactController extends Controller {
      * object : $category
      * */
 
+<<<<<<< HEAD
     public function edit(Contact $contact) {
         $page_title     = 'contact';
         $page_action    = 'Edit contact'; 
@@ -308,6 +356,18 @@ class ContactController extends Controller {
         }
         $request = $request->except('_method','_token','categoryName');
         
+=======
+    public function edit($id) {
+        $contact = Contact::find($id);
+        $page_title = 'contact';
+        $page_action = 'Edit contact'; 
+        return view('packages::contact.edit', compact( 'url','contact', 'page_title', 'page_action'));
+    }
+
+    public function update(Request $request, $id) {
+        $request = $request->except('_method','_token');
+        $contact = Contact::find($id); 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         foreach ($request as $key => $value) {
             $contact->$key = $value;
         }
@@ -320,8 +380,13 @@ class ContactController extends Controller {
      * @param ID
      * 
      */
+<<<<<<< HEAD
     public function destroy(Contact $contact) { 
         Contact::where('id',$contact->id)->delete(); 
+=======
+    public function destroy($id) { 
+        Contact::where('id',$id)->delete(); 
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
         return Redirect::to(route('contact'))
                         ->with('flash_alert_notice', 'contact  successfully deleted.');
     }

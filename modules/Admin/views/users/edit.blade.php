@@ -15,6 +15,7 @@
                 <div class="page-content">
                     <!-- BEGIN PAGE HEAD-->
                     
+<<<<<<< HEAD
                       @include('packages::partials.breadcrumb')
 
                     <div class="row">
@@ -157,6 +158,46 @@
                                     </div>
                                     </form>
                                 </div>
+=======
+                    <!-- END PAGE HEAD-->
+                    <!-- BEGIN PAGE BREADCRUMB -->
+                    <ul class="page-breadcrumb breadcrumb">
+                        <li>
+                            <a href="index.html">Home</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <a href="#">User</a>
+                            <i class="fa fa-circle"></i>
+                        </li>
+                        <li>
+                            <span class="active">Create</span>
+                        </li>
+                    </ul>
+                    <!-- END PAGE BREADCRUMB -->
+                    <!-- BEGIN PAGE BASE CONTENT -->
+                      <div class="row">
+                        <div class="col-md-12">
+                            <!-- BEGIN VALIDATION STATES-->
+                            <div class="portlet light portlet-fit portlet-form bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-settings font-dark"></i>
+                                        <span class="caption-subject font-dark sbold uppercase">Create User</span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="portlet-body">
+                                    <!-- BEGIN FORM-->
+                                  
+
+                                {!! Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', $user->id],'class'=>'form-horizontal user-form','id'=>'form_sample_3']) !!}
+                                    @include('packages::users.form', compact('user'))
+                                {!! Form::close() !!} 
+                                    <!-- END FORM-->
+                                </div>
+                                <!-- END VALIDATION STATES-->
+>>>>>>> 749be5ae7e09c2da741080e084a373208e43fcf9
                             </div>
                         </div>
                     </div>
