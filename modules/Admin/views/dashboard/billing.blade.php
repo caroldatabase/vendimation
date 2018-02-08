@@ -129,7 +129,7 @@
 											</div>
 											
 										</div>
-									</form
+                                                                                </form>
 										
 										<h4>My Bill</h4>
 										<div class="personal-box work-detail product-view">

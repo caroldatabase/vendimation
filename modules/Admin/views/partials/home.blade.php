@@ -204,5 +204,4 @@
                 </div>
             </div>
             <!-- END QUICK SIDEBAR -->
-        </div>
-        
+    
