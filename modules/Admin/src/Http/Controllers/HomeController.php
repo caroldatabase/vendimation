@@ -19,7 +19,10 @@ use View;
 use URL;
 use Lang;
 use Route;
+use Session;
 use App\Http\Controllers\Controller; 
+use Modules\Admin\Models\TargetMarketType; 
+use Modules\Admin\Models\BusinessNatureType;
 
 /**
  * Class AdminController
@@ -33,6 +36,23 @@ class HomeController extends Controller {
      *
      * @return \Illuminate\View\View
      */
+    public function __construct()
+    {
+        $targetMarketType   =  TargetMarketType::all();
+        $businessNatureType =  BusinessNatureType::all(); 
+        View::share('targetMarketType',$targetMarketType);
+        View::share('businessNatureType',$businessNatureType);
+        View::share('businessNatureType',$businessNatureType);
+        $admin = Auth::guard('admin')->user();
+        if($admin){
+            $user = Auth::guard('admin')->user(); 
+        }else{
+            $user = Auth::guard('web')->user(); 
+        }
+        View::share('user',$user);        
+    }
+    
+
    /*
     * Dashboard
     **/
@@ -40,5 +60,11 @@ class HomeController extends Controller {
          
        return view('packages::auth.create', compact('user'));
     } 
+
+
+    public function contactList(Request $request){
+        $allContact = '';
+        return view('packages::dashboard.contact-list', compact('allContact'));
+    }
 
 }

@@ -22,7 +22,9 @@
          Route::view('admin/add-card','packages::dashboard.add-card');  
          Route::view('admin/add-excel','packages::dashboard.add-excel'); 
          Route::get('admin/billing','AdminController@billing'); 
-        Route::get('admin/account/{myprofile}','AdminController@renderPage');      
+        Route::get('admin/account/{myprofile}','AdminController@renderPage'); 
+
+        Route::get('admin/mycontact','HomeController@contactList');     
     }); 
       
 

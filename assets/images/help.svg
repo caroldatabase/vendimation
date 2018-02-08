@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>help</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="help">
+            <g id="Group-7">
+                <circle id="Combined-Shape" stroke="#00A5EC" stroke-width="2.5" cx="11" cy="11" r="11"></circle>
+                <polygon id="Triangle-2" fill="#00A5EC" transform="translate(11.916667, 11.000000) rotate(90.000000) translate(-11.916667, -11.000000) " points="11.9166667 7.33333333 16.5 14.6666667 7.33333333 14.6666667"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

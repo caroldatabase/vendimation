@@ -31,29 +31,17 @@
 							</div>
 							<div class="col-sm-5 profile-right-col">
 								<div class="profile-right-main">
-									<div class="profile-info">
-										<div class="profile-picture">
-											@if(file_exists($user->profile_image))
-											<img src="{{ url($user->profile_image)}}" width="120px">
-											@else
-											<img src="{{ asset('assets/img/user1.png')}}" width="120px">
-											@endif
-											
-										</div>
-										<div class="profile-view-desc">
-											<h3 class="cart-user-name">{{  $user->name or $user->first_name.' '.$user->last_name}}</h3>
-											<p class="cart-partner">{{$user->designation}}</p>
-											<p class="cart-location"><img src="{{asset('assets/img/cart-location.jpg')}}"> 
-												{{$user->designation}}
-											</p>
-										</div>
+									@include('packages::partials.user-info')
+									<div class="we-can-collect-conta">
+										we can collect contatcs from your social media accounts please click on the icons to sync your contacts
 									</div>
 									<div class="pro-social">
-												<ul class="pro-social-icon">
-													<li><a href="#" class="gplus"><img src="{{ asset('assets/img/gplus.png')}}"></a></li>
-													<li><a href="#" class="fb"><img src="{{ asset('assets/img/fb.png')}}"></a></li>
-												</ul>
-											</div>
+										<ul class="pro-social-icon">
+											<li><a href="#" class="gplus"><img src="{{ asset('assets/img/gplus.png')}}"></a></li>
+											<li><a href="#" class="fb"><img src="{{ asset('assets/img/fb.png')}}"></a></li>
+											<li><a href="#" class="gplus"><img src="{{ asset('assets/img/gplus.png')}}"></a></li>
+										</ul>
+									</div>
 									<div class="personal-box work-detail product-view wallet add-new-card add-excel-parameter">
 									<div class="add-btn-card drag-excel-btn">
 										<div id="drag-and-drop-zone" class="dm-uploader p-5">
