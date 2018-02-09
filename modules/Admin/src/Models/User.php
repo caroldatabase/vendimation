@@ -106,4 +106,25 @@ class User extends Authenticatable {
         
     }
 
+        public static function saveFile($request, $fielName)
+    {
+        try{
+           
+            if ($request->file($fielName)) {
+                $file = $request->file($fielName);
+
+                $destinationPath = storage_path('uploads/excels/');
+                $newFileName=  time().$file->getClientOriginalName();
+                $file->move($destinationPath,$newFileName);
+                return  'storage/uploads/excels/'.$newFileName;
+            }else{
+                 return false;
+            }  
+            
+        }catch(Exception $e){
+            return false;
+        }
+        
+    }
+
 }

@@ -23,6 +23,7 @@ use Session;
 use App\Http\Controllers\Controller; 
 use Modules\Admin\Models\TargetMarketType; 
 use Modules\Admin\Models\BusinessNatureType;
+use Response;
 
 /**
  * Class AdminController
@@ -60,6 +61,40 @@ class HomeController extends Controller {
          
        return view('packages::auth.create', compact('user'));
     } 
+    
+    public function uploadFile(Request $request){
+        
+     
+       $validator = Validator::make($request->all(), [
+           'file' => 'required|mimes:xls,csv,xlsx'
+        ]);
+        /** Return Error Message **/
+        if ($validator->fails()) {
+                    $error_msg  =   [];
+            foreach ( $validator->messages()->all() as $key => $value) {
+                        array_push($error_msg, $value);     
+                    }
+                            
+            return Response::json(array(
+                'status' => 0,
+                'code'=>500,
+                'message' => $error_msg[0],
+                'data'  =>  ''
+                )
+            );
+        } 
+         $savefile = User::saveFile($request, 'file');
+         if($savefile !==FALSE) {
+        return Response::json(array(
+                       'status' => 1,
+                       'code'=>200,
+                       'message' => 'File uploaded succesfully.',
+                       'data'  => ['path'=>$savefile, 'full_url'=>url($savefile)]
+                       )
+                   );
+          }
+        
+    }
 
 
     public function contactList(Request $request){

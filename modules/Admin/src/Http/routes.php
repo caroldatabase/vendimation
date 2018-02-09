@@ -25,6 +25,7 @@
         Route::get('admin/account/{myprofile}','AdminController@renderPage'); 
 
         Route::get('admin/mycontact','HomeController@contactList');     
+        Route::post('admin/upload_file','HomeController@uploadFile');      
     }); 
       
 
