@@ -502,7 +502,6 @@ class PaymentController extends Controller {
 	* Purpose: To add card on paypal voult and database.
 	*/
     public function addCard(Request $request) {
-        dd('ds');
         
         $response_array['code']    = 406;
         $response_array['message'] = "Due to some reason card is not added!";
@@ -511,12 +510,12 @@ class PaymentController extends Controller {
         $requests = $request->all(); 
         try{
             $cardNumber 	= $request->get('card_number'); 
-            $cardType           = $request->get('card_type');
+            $cardType       = $request->get('card_type');
             $expireMonth 	= $request->get('expire_month');
             $expireYear 	= $request->get('expire_year');
-            $cvv2 		= $request->get('cvv');
+            $cvv2 		    = $request->get('cvv');
             $firstName 		= $request->get('first_name');
-            $lastName           = $request->get('last_name');
+            $lastName       = $request->get('last_name');
             $userId 		= $request->get('userId');
             
           

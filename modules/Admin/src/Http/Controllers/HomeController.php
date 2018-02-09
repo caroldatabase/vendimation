@@ -1,7 +1,6 @@
 <?php
 namespace Modules\Admin\Http\Controllers;
 
-
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;

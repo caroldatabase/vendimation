@@ -43,3 +43,7 @@ Route::any('google', 'AuthController@handleProviderCallback');
 Route::get('account/login', function(){
 	return \Redirect::to('admin');
 });
+
+Route::match(['post'],'admin/user/addCard','PaymentController@addCard');
+Route::match(['get'],'admin/user/cardList','PaymentController@cardList');
+

@@ -16,28 +16,18 @@
      });
 
     Route::group(['middleware' => 'admin', 'namespace'=>'Modules\Admin\Http\Controllers' ], function () { 
-         Route::get('admin', 'AdminController@index');
-         Route::get('admin/logout','AuthController@logout');  
-         Route::view('admin/drag-excel','packages::dashboard.drag-excel');
-         Route::view('admin/add-card','packages::dashboard.add-card');  
-         Route::get('admin/billing','AdminController@billing'); 
-       Route::get('admin/account/{myprofile}','AdminController@renderPage'); 
+        Route::get('admin', 'AdminController@index');
+        Route::get('admin/logout','AuthController@logout');  
+        Route::view('admin/drag-excel','packages::dashboard.drag-excel');
+        Route::view('admin/add-card','packages::dashboard.add-card');  
+        Route::get('admin/billing','AdminController@billing'); 
+        Route::get('admin/account/{myprofile}','AdminController@renderPage'); 
 
         Route::get('admin/mycontact','HomeController@contactList');     
         Route::post('admin/upload_file','HomeController@uploadFile');      
         Route::match(['get'],'admin/add-excel','HomeController@AddExcel');      
         Route::match(['post'],'admin/import-contact','HomeController@AddExcel');      
-    }); 
-      
-
-
-
-    Route::match(['post'],'admin/user/addCard','PaymentController@addCard');
-    Route::match(['get'],'admin/user/cardList','PaymentController@cardList');
-
-
-
-
+    });  
 
     Route::post('admin/login',function(App\Admin $user, \Illuminate\Http\Request $request){
    
