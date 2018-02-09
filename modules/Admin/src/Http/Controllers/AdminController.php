@@ -60,6 +60,19 @@ class AdminController extends Controller {
                 'custom.js'
                 ];
         View::share('js_file',$js_file);
+
+        $admin = Auth::guard('admin')->user();
+        if($admin){
+            $user = Auth::guard('admin')->user(); 
+        }else{
+            $user = Auth::guard('web')->user(); 
+        }
+        $card= \DB::table('user_cards')->where('user_id',$user->id)->get();
+        View::share('card',$card);  
+        
+        $buy_contacts = \DB::table('buy_contacts')->get();
+        View::share('buy_contacts',$buy_contacts);  
+
     }
     /*
     * Dashboard

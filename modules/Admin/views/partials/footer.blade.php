@@ -11,14 +11,20 @@
     </script>
     <script src="{{ URL::asset('assets/js/jquery.creditCardValidator.js')}}" type="text/javascript"></script>
 
+    <style type="text/css">
+        .file-error{
+            color: red;
+        }
+    </style>
+
     <script type="text/javascript">
         var url = "{{url('/')}}";
         function addCard()
         {
-             window.location = url+"/admin/account/add-excel";
+             window.location = url+"/admin/drag-excel"; 
         }
         function dragExcel(){
-            window.location= url+'/admin/account/drag-excel';
+            window.location= url+'/admin/add-excel';
 
         }
 
@@ -26,7 +32,7 @@
             return (!str || 0 === str.length);
         }
 
-        function addCreditCard(){
+        function addCreditCard(uid){
             var name = $('#card_name').val(); 
             var card = $('#card_number').val(); 
             var expiry = $('#expire_mm_yy').val(); 
@@ -64,24 +70,33 @@
                $('#error_cvv').html(""); 
             }
 
+            var checked = $("input#checkbox:checked").length;
+            
+              if (checked == 0) {
+                return false;
+              }
 
             var data =  $('form#addCard').serialize(); 
             $.ajax({
                 type: "POST",
                 data: data,
-                url: url+'/admin/user/addCard',
+                url: url+'/admin/addCard?user_id='+uid,
                 beforeSend: function() {
-                   $('.process').html('Please wait while validating your card');
+                   $('.process').html('Please wait...');
                 },
                 success: function(response) {
                         console.log(response);  
-              //bootbox.alert('Activated');            
-                if(response==1)
+              //bootbox.alert('Activated');  
+              $('.process').html('');          
+                if(response.status==0)
                     {
-                        
+                         document.getElementById("checkbox").checked = false;
+                        $('.process').html(response.message);         
                     }else
                     {
-                        
+                        $('.add-new-card').before(response.data);
+                        $('.process').html('Card added successfully');
+                        $('#addCard').hide();
                     }
                 }
             });
@@ -122,9 +137,14 @@
                 
             $('#cvv').keyup(function(){
                     var cvv = $(this).val();
+                    if(cvv.length==0){
+                        return false;
+                    }
                     if(!$.isNumeric(cvv) || (cvv.length)>4){ 
                         $('#error_cvv').html('invalid cvv');
                          document.getElementById("checkbox").checked = false;
+                    }else{
+                        $('#error_cvv').html('');
                     }
 
                 })
@@ -163,8 +183,11 @@
                     }
                 });
 
+             
+             $('#addCard').hide();
+             $('#add_new_card').click(function(){
+                $('#addCard').show();
+             });
     </script>
-
-
 </body>
 </html>

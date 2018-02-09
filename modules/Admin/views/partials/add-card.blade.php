@@ -1,7 +1,7 @@
 <div class="personal-box work-detail product-view wallet add-new-card">
                                             
     <div class="add-btn-card">
-        <a href="#">Add New Card</a>
+        <a href="javascript::void(0)" id="add_new_card">Add New Card</a>
     </div>
         
 </div>
@@ -29,10 +29,18 @@
             </div>
         </div>
         <div class="input-card check-click">
-            <input type="checkbox" id="checkbox" onchange="addCreditCard('{{$user->id}}')"   name="saveCard" value="1" > Add card to wallet
+            <input type="checkbox" id="checkbox"  onchange="addCreditCard('{{$user->id}}')"   name="saveCard" value="1" > Add card to wallet
             <br>
-            <span class="process"></span>
         </div>
         
     </div>
 </form>
+<span class="process error"></span>
+
+
+<style type="text/css">
+    
+    .error{
+        color: red;
+    }
+</style>

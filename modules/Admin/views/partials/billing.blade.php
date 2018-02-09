@@ -8,7 +8,7 @@
                 <li><span class="box-info-icon"><img src="{{ asset('assets/images/call.svg')}}"></span><span class="personal-text-static">
                     {{$user->mobile.', '.$user->office_number }}
                 </span></li>
-                <li><span class="box-info-icon"><img src="{{ asset('assets/images/dob.svg')}}"></span><span class="personal-text-static" style="border-bottom:none;">{{$user->dateOfBirth }}</span></li>
+               
             <li class="border-top">
                 <span class="personal-text-static" style="border-bottom:none;">
                     <a href="#" style="width:50%;text-align: right;float: left;" class="Remove">REMOVE</a> 

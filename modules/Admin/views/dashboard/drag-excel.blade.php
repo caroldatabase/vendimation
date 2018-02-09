@@ -140,6 +140,28 @@
 
                                         <h4>If you dont have enough contacts you can select one of our contact starter packs.</h4>
                                         <div class="personal-box work-detail product-view">
+                                            @if(count($buy_contacts))
+                                            @foreach($buy_contacts as $result)
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <h5>{{$result->funnel_name}}</h5>
+                                                    <ul>
+                                                        <li><img src="{{asset('assets/img/contacts-book.png')}}"> {{ $result->total_contact }} Contacts</li>
+                                                        <li><img src="{{asset('assets/img/contacts-book.png')}}">{{ $result->total_company }} Companies</li>
+                                                        <li><img src="{{asset('assets/img/contacts-book.png')}}">{{ $result->owner }}</li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <img src="{{asset('assets/img/product1.jpg')}}">
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="col-sm-12">
+                                                    <p class="price-pro">£{{ $result->price }}</p>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @lese
                                             <div class="row">
                                                 <div class="col-sm-8">
                                                     <h5>Restaurants Asian Food</h5>
@@ -157,27 +179,9 @@
                                                 <div class="col-sm-12">
                                                     <p class="price-pro">£159</p>
                                                 </div>
-
-
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-8">
-                                                    <h5>Restaurants Asian Food</h5>
-                                                    <ul>
-                                                        <li><img src="{{asset('assets/img/contacts-book.png')}}"> 100 Contacts</li>
-                                                        <li><img src="{{asset('assets/img/contacts-book.png')}}"> 80 Companies</li>
-                                                        <li><img src="{{asset('assets/img/contacts-book.png')}}"> Owner</li>
 
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <img src="{{asset('assets/img/product1.jpg')}}">
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <div class="col-sm-12">
-                                                    <p class="price-pro">£159</p>
-                                                </div>
-                                            </div>
+                                            @endif
 
                                         </div>
                                     </div>
@@ -185,7 +189,7 @@
                                     <div class="drag-sample">
 
                                         <div class="excel-next text-center">
-                                            <a href="{{url('admin/account/add-excel')}}"> <input type="button" value="NEXT"  class="btn-login">
+                                            <a href="{{url('admin/add-excel')}}"> <input type="button" value="NEXT"  class="btn-login">
                                         </div>
                                     </div>
                                 </div>

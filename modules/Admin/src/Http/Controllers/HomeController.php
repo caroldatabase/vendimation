@@ -50,7 +50,21 @@ class HomeController extends Controller {
         }else{
             $user = Auth::guard('web')->user(); 
         }
-        View::share('user',$user);        
+        View::share('user',$user);   
+
+        $card= \DB::table('user_cards')->where('user_id',$user->id)->get();
+        View::share('card',$card);   
+
+        $buy_contacts = \DB::table('buy_contacts')->get();
+        View::share('buy_contacts',$buy_contacts);   
+
+
+    }
+
+    public function dragExcel()
+    {
+      return view('packages::dashboard.drag-excel');
+    
     }
     
 
@@ -148,6 +162,82 @@ class HomeController extends Controller {
     public function contactList(Request $request){
         $allContact = '';
         return view('packages::dashboard.contact-list', compact('allContact'));
+    }
+
+    public function addCard(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+           'card_number' => 'required|numeric',
+           'card_name' => 'required|string',
+           'expire_mm_yy' => 'required',
+           'cvv'=> 'required|numeric'
+        ]);
+        /** Return Error Message **/
+        if ($validator->fails()) {
+                    $error_msg  =   [];
+            foreach ( $validator->messages()->all() as $key => $value) {
+                        array_push($error_msg, $value);     
+                    }
+                            
+            return Response::json(array(
+                'status' => 0,
+                'code'=>500,
+                'message' => $error_msg[0],
+                'data'  =>  ''
+                )
+            );
+        } 
+
+        $data = $request->all();
+
+        $expire_mm_yy = explode('/',$request->get('expire_mm_yy'));
+        $card_name = explode(" ", $request->get('card_name'));  
+
+        $date = date('Y');
+        $exp = isset($expire_mm_yy[1])?$expire_mm_yy[1]:0;
+        $expire_yr = 2000+intval($exp);
+
+        if($date>$expire_yr){
+          return Response::json(array(
+                'status' => 0,
+                'code'=>200,
+                'message' =>'Please enter valid expiry date',
+                'data'  =>  $data
+                )
+            );
+        }
+
+
+        $input['card_number'] = $request->get('card_number');
+        $input['first_name']  = isset($card_name[0])?$card_name[0]:'';
+        $input['last_name']   =  isset($card_name[1])?$card_name[1]:'';
+        $input['expire_month']= isset($expire_mm_yy[1])?$expire_mm_yy[1]:'';
+        $input['expire_year'] = isset($expire_mm_yy[1])?$expire_mm_yy[1]:'';
+        $input['user_id'] = $request->get('user_id');
+
+      $html =  '<div class="personal-box work-detail product-view wallet">
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="wallet-in"><a href="#"><img src="'.url("assets/img/circle-right.jpg").'"></a> <span class="nam-card">'.$request->get('card_name').'<span>****'.substr($request->get('card_number'), -4).'</span></span></p>
+            </div>
+            <div class="col-sm-6 visa">
+                <img src="http://localhostt/blog/assets/img/visa.jpg"> <input type="text" class="cvv" placeholder="CVV">
+            </div>
+        </div>
+    </div>';
+        
+        
+
+        $result = \DB::table('user_cards')->insert($input);
+
+         return Response::json(array(
+                'status' => 1,
+                'code'=>200,
+                'message' =>'Card added successfully',
+                'data'  =>  $html
+                )
+            );
+
     }
 
 }

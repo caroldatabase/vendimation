@@ -40,7 +40,7 @@
                                  <ul class="dropdown-menu" style="right:0; left: auto;">
                                      <li style="width: 100%"><a href="{{url('admin/account/profile')}}">Profile</a></li>
                                      <li style="width: 100%"><a href="{{url('admin/account/billing')}}">Billing</a></li>
-                                     <li style="width: 100%"><a href="{{url('admin/account/add-excel')}}">Add Contacts</a></li>
+                                     <li style="width: 100%"><a href="{{url('admin/drag-excel')}}">Add Contacts</a></li>
                                     <li style="width: 100%"><a href="{{url('admin/logout')}}">Logout</a></li>
                                   </ul>
                               </li>     
