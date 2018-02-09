@@ -1451,7 +1451,7 @@ font-family: Muli;
     width: 50%;
     padding: 15px;
 }
-.left-excel-form form input
+.left-excel-form  input,.left-excel-form  select,.map-excel-colum-form input
 {
 font-size:14px;
 float:left;
