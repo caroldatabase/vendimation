@@ -52,6 +52,20 @@ class ContactController extends Controller {
         View::share('heading','Contact');
         View::share('route_url',route('contact')); 
         $this->record_per_page = Config::get('app.record_per_page'); 
+        $admin = Auth::guard('admin')->user();
+        if($admin){
+            $user = Auth::guard('admin')->user(); 
+        }else{
+            $user = Auth::guard('web')->user(); 
+        }
+        if($user==null){
+            Auth::logout();
+            auth()->guard('admin')->logout(); 
+            return redirect('admin/login');
+        }
+        
+        View::share('user',$user);   
+        $this->user =$user;
     }
 
    
@@ -90,9 +104,9 @@ class ContactController extends Controller {
                                       ->OrWhere('phone', 'LIKE', "%$search%");
                         }
                         
-                    })->Paginate($this->record_per_page);
+                    })->where('user_id', $this->user->id)->Paginate($this->record_per_page);
         } else {
-            $contacts = Contact::orderBy('id','desc')->Paginate($this->record_per_page);
+            $contacts = Contact::where('user_id', $this->user->id)->orderBy('id','desc')->Paginate($this->record_per_page);
         }
 
         $export = $request->get('export');
