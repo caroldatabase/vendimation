@@ -38,6 +38,7 @@ class HomeController extends Controller {
      *
      * @return \Illuminate\View\View
      */
+    private $user;
     public function __construct()
     {
         $this->middleware('admin');
@@ -65,6 +66,7 @@ class HomeController extends Controller {
         }
         
         View::share('user',$user);   
+        $this->user =$user;
 
         $card= \DB::table('user_cards')->where('user_id',$user->id)->get();
         View::share('card',$card);   
@@ -131,7 +133,6 @@ class HomeController extends Controller {
     $excel_file_data = $request->session()->get('excel_upload_file'); 
     $excel_path = isset($excel_file_data['path'])?$excel_file_data['path']:'';
     $excel_name =  isset($excel_file_data['name'])?$excel_file_data['name']:'MyContact.xls';
-    $minimumContactRequired = 100;//Set Minimum Required Contact 
     $file_found =false;
     $sheetTitle =false;
     $sheetHeadingCount =0;
@@ -171,19 +172,9 @@ class HomeController extends Controller {
           $totalRows = $this->processRecords($totalRows,$mapFields);
           
           $totalRowsCount =$totalRows['total_count'];
-          $acceptedCount = $totalRows['accepted_count'];
-          if($totalRowsCount < $minimumContactRequired){
-               return Response::json(array(
-                       'status' =>0,
-                       'code'=>500,
-                       'message' => '<div class="alert alert-danger">You need at least 100 contacts to continue.</div>',
-                       'data'  =>''
-                       )
-                   );
-          }else{
+          $acceptedCount = $totalRows['accepted_count'];         
          $totalRows = $totalRows['items'];     
           return  $this->saveContacts($request,$totalRows);
-          }
         }else{
           $mapFields =$request->get('excel_map',array());
           $totalRows = $this->processRecords($totalRows,$mapFields);
@@ -214,6 +205,7 @@ class HomeController extends Controller {
                    $contact->email = $record['email']['value'];
                    $contact->mobile = $record['mobile']['value'];
                    $contact->phone = $record['phone']['value'];
+                   $contact->user_id = $this->user->id;
                    $contact->save();
                   
                  $result['success'][]= $row_id;     
@@ -235,6 +227,13 @@ class HomeController extends Controller {
                $message .= '<li>Not Found : '.count($result['notfound']).' Records</li>';    
               }
               $message.= '</ul></div>';
+            }
+            $minimumContactRequired = 100;//Set Minimum Required Contact 
+            $totalImported =Contact::where(['user_id' => $this->user->id])->count();
+            if($totalImported <$minimumContactRequired){
+            $remainingNeed = $minimumContactRequired-$totalImported;
+            $message .= "You need more {$remainingNeed} contacts.";
+            $status=0;
             }
         
         }else{
