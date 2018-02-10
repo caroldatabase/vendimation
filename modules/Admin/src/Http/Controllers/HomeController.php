@@ -40,6 +40,7 @@ class HomeController extends Controller {
      */
     public function __construct()
     {
+        $this->middleware('admin');
         $targetMarketType   =  TargetMarketType::all();
         $businessNatureType =  BusinessNatureType::all(); 
         View::share('targetMarketType',$targetMarketType);
