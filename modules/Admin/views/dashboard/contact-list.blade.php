@@ -29,7 +29,7 @@
                                     <div class="add-excel">
                                         <div class="excel-iocn text-center">
                                             <p><img src="{{ asset('assets/img/excel.jpg')}}"></p>
-                                            <h3>MyContacts.exl</h3>
+                                            <h3>{{$excel_name}}</h3>
 <!--                                            <p>
                                                 We have detected 4 columns in your file,<br/>please help us relate each column to our standard fields.
                                             </p>-->
@@ -37,7 +37,7 @@
 
                                         <div class="contact-table">
 <!--                                            <h3>210 contacts detected (110 acceptable for import)</h3>-->
-                                            <h3>{{$totalRowsCount}} contacts detected</h3>
+                                            <h3>{{$totalRowsCount}} contacts detected({{$totalRows['accepted_count']}}  acceptable for import).</h3>
                                             <form method="post" id="ready_to_report" action="{{url('admin/import-contact')}}">
                                                 <input type="hidden" name="action" value="{{md5('save-excel-import')}}"/>
                                             <table width="100%" border="0" style="text-align:center;">
@@ -48,11 +48,17 @@
                                                     @endforeach
                                                 </tr>
                                                 </thead><tbody>
-                                                @foreach($totalRows as $row_id=>$row)
+                                                @foreach($totalRows['items'] as $row_id=>$row)
                                                 <tr class="isvalid-{{$row['valid']}}">
                                                     <td><input type="checkbox" value="{{$row_id}}" name="import_selected[]"></td>
                                                     @foreach($db_contact_fields as $columnKey=>$columnValue)
-                                                    <td class="error-{{$row[$columnKey]['error']}}">{{$row[$columnKey]['value'] or '-'}}</td>
+                                                    <td class="error-{{$row[$columnKey]['error']}}">
+                                                        @if($row[$columnKey]['value']!='')
+                                                        {{$row[$columnKey]['value'] OR '-'}}
+                                                        @else
+                                                        -
+                                                        @endif
+                                                    </td>
                                                     @endforeach
                                                 </tr>
                                                  @endforeach

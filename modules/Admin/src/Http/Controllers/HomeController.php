@@ -131,6 +131,7 @@ class HomeController extends Controller {
     $excel_file_data = $request->session()->get('excel_upload_file'); 
     $excel_path = isset($excel_file_data['path'])?$excel_file_data['path']:'';
     $excel_name =  isset($excel_file_data['name'])?$excel_file_data['name']:'MyContact.xls';
+    $minimumContactRequired = 100;//Set Minimum Required Contact 
     $file_found =false;
     $sheetTitle =false;
     $sheetHeadingCount =0;
@@ -168,13 +169,25 @@ class HomeController extends Controller {
         if($action ==md5('save-excel-import')){
           $mapFields =$request->session()->get('excel_map'); 
           $totalRows = $this->processRecords($totalRows,$mapFields);
-          $totalRowsCount = count($totalRows);
+          
+          $totalRowsCount =$totalRows['total_count'];
+          $acceptedCount = $totalRows['accepted_count'];
+          if($totalRowsCount < $minimumContactRequired){
+               return Response::json(array(
+                       'status' =>0,
+                       'code'=>500,
+                       'message' => '<div class="alert alert-danger">You need at least 100 contacts to continue.</div>',
+                       'data'  =>''
+                       )
+                   );
+          }else{
+         $totalRows = $totalRows['items'];     
           return  $this->saveContacts($request,$totalRows);
+          }
         }else{
           $mapFields =$request->get('excel_map',array());
           $totalRows = $this->processRecords($totalRows,$mapFields);
-         // print_r($totalRows);die;
-          $totalRowsCount = count($totalRows);
+          $totalRowsCount =$totalRows['total_count'];
           $request->session()->put('excel_map',$mapFields);
          return  view('packages::dashboard.contact-list', compact('db_contact_fields','file_found','excel_name','sheetHeading','sheetHeadingCount','totalRows','totalRowsCount','mapFields'));          
         }
@@ -238,6 +251,8 @@ class HomeController extends Controller {
     
     private function processRecords($sheet_records,$mapFields){
         $totalRows =array();
+        $accepted=0;
+        $count = 0;
         foreach($sheet_records as $k=>$record){
        
          $row =array();
@@ -264,8 +279,10 @@ class HomeController extends Controller {
         }
          $row['valid'] =$valid;
          $totalRows[$id]=$row; 
+         if($valid)$accepted++;
+         $count++;
       }
-      return $totalRows;
+      return array('items'=>$totalRows,'total_count'=>$count,'accepted_count'=>$accepted);
     }
     public function contactList(Request $request){
         $allContact = '';

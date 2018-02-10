@@ -2055,6 +2055,10 @@ opacity: 0.87;
   letter-spacing: normal;
 }
 
+#ready_to_report .isvalid-0{
+   background: #eed; 
+}
+#ready_to_report .error-1{color: red;}
 .we-can-collect-conta { 
   height: 72px;
   font-family: Muli;
