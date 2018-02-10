@@ -55,9 +55,9 @@
          <div class="form-group form-group-name"> 
             
              <div class="input-group  date date-picker" data-date="15 Mar,1988" data-date-format="dd M,yyyy" data-date-viewmode="years">
-            <input type="text" class="form-control" readonly="" value="{{ old('dateOfBirth') }}"   name="dateOfBirth" placeholder="Date of Birth">
+            <input type="text" id="dateofbday" class="form-control" readonly="" value="{{ old('dateOfBirth') }}"   name="dateOfBirth" placeholder="Date of Birth">
                   <span class="input-group-addon">
-               <button type="button" style="border:0;background:transparent;">
+                      <button type="button" style="border:0;background:transparent;" onclick="$('#dateofbday').datepicker('show')">
                <img src="{{ asset('assets/img/dob.png')}}">
                </button>
                </span>

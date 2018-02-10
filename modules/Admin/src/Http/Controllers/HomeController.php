@@ -329,7 +329,7 @@ class HomeController extends Controller {
                 <p class="wallet-in"><a href="#"><img src="'.url("assets/img/circle-right.jpg").'"></a> <span class="nam-card">'.$request->get('card_name').'<span>****'.substr($request->get('card_number'), -4).'</span></span></p>
             </div>
             <div class="col-sm-6 visa">
-                <img src="http://localhostt/blog/assets/img/visa.jpg"> <input type="text" class="cvv" placeholder="CVV">
+                <img src="'.url("assets/img/visa.jpg").'"> <input type="text" class="cvv" placeholder="CVV">
             </div>
         </div>
     </div>';
