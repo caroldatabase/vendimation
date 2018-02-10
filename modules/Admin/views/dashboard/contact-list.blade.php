@@ -38,25 +38,30 @@
                                         <div class="contact-table">
 <!--                                            <h3>210 contacts detected (110 acceptable for import)</h3>-->
                                             <h3>{{$totalRowsCount}} contacts detected</h3>
+                                            <form method="post" id="ready_to_report" action="{{url('admin/import-contact')}}">
+                                                <input type="hidden" name="action" value="{{md5('save-excel-import')}}"/>
                                             <table width="100%" border="0" style="text-align:center;">
-                                                <tr>
-                                                    <td><input type="checkbox" name="selectAll"></td>
+                                                <thead><tr>
+                                                    <td><input type="checkbox" onclick="$('input[name*=\'import_selected\']').prop('checked', this.checked);" ></td>
                                                     @foreach($db_contact_fields as $columnKey=>$columnValue)
                                                      <td>{{$columnValue}}</td>
                                                     @endforeach
                                                 </tr>
-                                                @foreach($totalRows as $columnKey=>$row)
-                                                <tr>
-                                                     <td><input type="checkbox" name="selectAll[]"></td>
-                                                    @foreach($mapFields as $key=>$value)
-                                                     <td>{{$row[$value] or 'Not found'}}</td>
+                                                </thead><tbody>
+                                                @foreach($totalRows as $row_id=>$row)
+                                                <tr class="isvalid-{{$row['valid']}}">
+                                                    <td><input type="checkbox" value="{{$row_id}}" name="import_selected[]"></td>
+                                                    @foreach($db_contact_fields as $columnKey=>$columnValue)
+                                                    <td class="error-{{$row[$columnKey]['error']}}">{{$row[$columnKey]['value'] or '-'}}</td>
                                                     @endforeach
                                                 </tr>
                                                  @endforeach
+                                                </tbody>
                                             </table>
+                                            </form>
                                         </div>
-                                        <div class="excel-next text-center">
-                                            <input type="submit" value="IMPORT SELECTED" class="btn-login">
+                                        <div class="excel-next text-center" style="clear:both; position: relative;">
+                                            <input type="submit" id="import-select-contact" value="IMPORT SELECTED" class="btn-login">
                                         </div>
 
                                     </div>
@@ -82,10 +87,40 @@
 
         <script type="text/javascript">
 var url = "{{url('/')}}";
-function dragExcel() {
-    window.location = url + '/admin/account/drag-excel';
+var ajaxLoader = $('<span class="ajax-loader" style="margin-right: 10px;"><img src="{{ URL::asset('assets/img/ajax-loader.gif') }}"/></span>')
 
-}
+    $(document).on('click','#import-select-contact',function(e){
+        e.preventDefault();
+           
+            var data = $('#ready_to_report').serialize();
+            $.ajax({
+                url:url+'/admin/save-contact',
+                data:data,
+                type:'POST',
+                dataType:'json',
+                beforeSend:function(){
+                $('#import-select-contact').before(ajaxLoader);   
+                $('#import-select-contact').attr('disabled','disabled');
+                },
+                success:function(res){
+                     $('.ajax-loader').remove();
+                      $('#import-select-contact').removeAttr('disabled');
+                      var messageContent = '<div class=""><h4>Success</h4><div>'+res.message+'</div></div>';
+                     bootbox.alert(messageContent,function(){
+                        if(res.status==1){
+                            window.location.href="{{url('admin/account/profile')}}"
+                        }
+                     });
+                },
+                error:function(){
+                     $('.ajax-loader').remove();
+                      $('#import-select-contact').removeAttr('disabled');
+                      alert('Error Occured. Please try again.')
+                },
+                complete:function(){}
+            });
+        return ;
+    });
         </script>
 
     </body>

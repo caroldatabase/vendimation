@@ -26,7 +26,8 @@
         Route::get('admin/mycontact','HomeController@contactList');     
         Route::post('admin/upload_file','HomeController@uploadFile');      
         Route::match(['get'],'admin/add-excel','HomeController@AddExcel');      
-        Route::match(['post'],'admin/import-contact','HomeController@AddExcel');  
+        Route::match(['post'],'admin/import-contact','HomeController@AddExcel');
+        Route::match(['post'],'admin/save-contact','HomeController@AddExcel');
 
         Route::match(['get','post'],'admin/addCard','HomeController@addCard');  
         Route::get('admin/drag-excel','HomeController@dragExcel');
