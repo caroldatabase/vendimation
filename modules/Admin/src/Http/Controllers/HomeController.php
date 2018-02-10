@@ -58,6 +58,12 @@ class HomeController extends Controller {
         }else{
             $user = Auth::guard('web')->user(); 
         }
+        if($user==null){
+            Auth::logout();
+            auth()->guard('admin')->logout(); 
+            return redirect('admin/login');
+        }
+        
         View::share('user',$user);   
 
         $card= \DB::table('user_cards')->where('user_id',$user->id)->get();
