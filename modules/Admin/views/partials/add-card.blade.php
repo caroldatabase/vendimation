@@ -23,7 +23,7 @@
                      <span id="error_expire_mm_yy" class="error"></span>
                 </div>
                 <div class="col-sm-4">
-                    <input type="text" placeholder="CVV" name="cvv" id="cvv"  maxlength="4">
+                    <input type="password" placeholder="CVV" name="cvv" id="cvv"  maxlength="4">
                     <span id="error_cvv" class="error"></span>
                 </div>
             </div>

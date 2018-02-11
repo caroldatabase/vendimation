@@ -106,6 +106,10 @@
                         $('.add-new-card').before(response.data);
                         $('.process').html('Card added successfully');
                         $('#addCard').hide();
+                        $('#card_name').val(''); 
+                        $('#card_number').val(''); 
+                        $('#expire_mm_yy').val(''); 
+                        $('#cvv').val('');  
                     }
                 }
             });

@@ -291,7 +291,7 @@ class HomeController extends Controller {
     public function addCard(Request $request)
     {
         $validator = Validator::make($request->all(), [
-           'card_number' => 'required|numeric',
+           'card_number' => 'required|digits:16',
            'card_name' => 'required|string',
            'expire_mm_yy' => 'required',
            'cvv'=> 'required|numeric'

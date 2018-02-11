@@ -21,32 +21,32 @@
                                         <i class="icon-settings font-red"></i>
                                         <span class="caption-subject font-red sbold uppercase"> Contacts</span>
                                     </div>
-                                        <div class="col-md-2 pull-right">
+                                      <!--   <div class="col-md-2 pull-right">
                                             <div class="input-group"> 
                                                 <a href="{{ route('contact.create')}}">
                                                     <button  class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Contact</button> 
                                                 </a>
                                             </div>
                                         </div> 
-
-                                         <div class="col-md-2 pull-right">
+ -->
+                                        <!--  <div class="col-md-2 pull-right">
                                             <div   class="input-group">  
                                              <a class="btn  btn-success" data-toggle="modal" href="#responsive2"><i class="fa fa-plus-circle"></i>   Import Contacts </a> 
                                             </div>
-                                        </div>  
-                                        
+                                        </div>   -->
+                                      <!--   
                                          <div class="col-md-2 pull-right">
                                             <div   class="input-group">  
                                               <a onclick="createGroup('{{url("admin/createGroup")}}')" class="btn  btn-success  btn-outline sbold" data-toggle="modal" href="#responsive"> 
                                                 <i class="fa fa-plus-circle"></i> 
                                             Create Group </a>  
                                             </div>
-                                        </div>  
-                                          <div class="col-md-3 pull-right">
+                                        </div>   -->
+                                        <!--   <div class="col-md-3 pull-right">
                                             <div   class="input-group">  
                                              <a class="btn  btn-success" data-toggle="modal" href="{{url('admin/contact?export=pdf')}}"><i class="fa fa-plus-circle"></i> Export Contacts to pdf </a> 
                                             </div>
-                                        </div>  
+                                        </div>   -->
 
                                       
                                      
@@ -104,9 +104,9 @@
                                                     </td>
                                                     
                                                     <td> 
-                                                        <a href="{{ route('contact.edit',$result->id)}}">
+                                                       <!--  <a href="{{ route('contact.edit',$result->id)}}">
                                                             <i class="fa fa-edit" title="edit"></i> 
-                                                        </a>
+                                                        </a> -->
 
                                                         {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('contact.destroy', $result->id))) !!}
                                                         <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-fw fa-trash" title="Delete"></i></button>
