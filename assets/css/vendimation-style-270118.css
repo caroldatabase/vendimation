@@ -36,7 +36,23 @@ color:#474d60;
 font-weight:700;
 margin-top:0px;
 }
+.drag-drop{
+    position: absolute;
+    margin-top: -51px;
+    width: 270px;
+    margin-left: 127px;
+    background: #fff;
+    border: none;
+    color: #474d60 !important;
+    padding: 0px;
+    line-height: 65px;
+    margin-top: 0;
 
+}
+
+.drag-drop:hover { 
+    background-color: #fff !important;
+}
 .header {
     background: #fff;
     line-height: 88px;

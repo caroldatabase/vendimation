@@ -60,11 +60,11 @@
                                     </div>
                                     <div class="personal-box work-detail product-view wallet add-new-card add-excel-parameter">
                                         <div class="add-btn-card drag-excel-btn">
-                                            <div id="drag-and-drop-zone" class="dm-uploader p-5">
-                                                <div id="fileDropBox"><img src="{{asset('assets/img/excel.jpg')}}" width="23px;"> Drag &amp; Drop Any excel file here </div>
+                                            <div id="drag-and-drop-zone" class="dm-uploader p-5"   >
+                                                <div id="fileDropBox" style="float: left; margin-left: 100px" ><img src="{{asset('assets/img/excel.jpg')}}" width="23px;"  >  </div>
 
-                                                <div class="btn btn-primary btn-block mb-5">
-                                                    <span>Open the file Browser</span>
+                                                <div class="btn btn-primary btn-block mb-5 drag-drop">
+                                                    <span> Click here Any excel file here </span>
                                                     <input type="file" name="excel_file" id="excel_file" title='Click to add Files' />
                                                 </div>
                                             </div><!-- /uploader -->
@@ -161,7 +161,7 @@
                                                 </div>
                                             </div>
                                             @endforeach
-                                            @lese
+                                            @else
                                             <div class="row">
                                                 <div class="col-sm-8">
                                                     <h5>Restaurants Asian Food</h5>
