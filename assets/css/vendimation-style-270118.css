@@ -1766,6 +1766,9 @@ position:relative;
     padding-left: 0px;
 }
 
+@media only screen and (max-width: 1050px){
+
+li.invite a{padding: 10px 17px;}
 }
 @media only screen and (max-width: 1255px)
 {
