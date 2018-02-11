@@ -56,7 +56,12 @@ class AuthController extends Controller
         return view('packages::auth.login', compact('user'));
 	}
 
-	 
+	// termsAndCondition
+	public function termsAndCondition(Request $request)
+	{ 
+		return view('packages::auth.terms-and-condition', compact('user'));
+
+	}
 
 	public function signup(Request $request, $step=null){
 

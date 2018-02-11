@@ -68,7 +68,7 @@
          <div class="savePass" id="register_tnc_error" >
             <div class="mt-checkbox-list" data-error-container="#form_2_services_error">
                <label class="mt-checkbox {{ $errors->first('phone_or_mobile', ' has-error') }}" style="width:100%;">
-               <input type="checkbox" value="1" name="tnc" > By clicking here you confirm that you agree with our terms & conditions
+               <input type="checkbox" value="1" name="tnc" > <a href="{{url('terms-and-condition')}}"> By clicking  here  </a> you confirm that you agree with our terms & conditions
                <span></span>
                </label>
                      <span class="help-block" style="color:red">{{ $errors->first('tnc', ':message') }} </span>

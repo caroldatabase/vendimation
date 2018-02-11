@@ -15,10 +15,19 @@
         .file-error{
             color: red;
         }
+        #update_address{
+          display: none;
+        }
     </style>
 
     <script type="text/javascript">
         var url = "{{url('/')}}";
+
+        function showAddress()
+        {
+          $('#update_address').show();
+        }
+
         function addCard()
         {
              window.location = url+"/admin/drag-excel"; 

@@ -9,10 +9,8 @@
 					@include('packages::partials.sidebar')
 					<div class="col-sm-10 main-left-content profile-page">
 						<div class="row">
-							<div class="col-sm-7">
-								<div class="profile-left-main">
-								</div>
-							</div>
+									
+							@include('packages::partials.edit-address')
 							<div class="col-sm-5 profile-right-col">
 								<div class="profile-right-main">
 							 		@include('packages::partials.user-info')

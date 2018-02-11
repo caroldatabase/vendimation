@@ -47,12 +47,12 @@
             </a>
          </div>
          <div class="vendimation">
+           <a href="{{url('/')}}">
             <div class="text">Powered by Vendimation</div>
             <div class="logov">
-               <a href="#">
                <img src="{{ asset('assets/img/logov.png')}}">
-               </a>
             </div>
+            </a>
          </div>
          <div class="carousel slide carousel-fade hidden-xs" data-ride="carousel">
             <!-- Wrapper for slides -->

@@ -4,7 +4,9 @@
 
         Route::get('admin/login','AuthController@index');
         Route::match(['get','post'],'admin/signup/{step}','AuthController@signup');
-       
+        Route::match(['get','post'],'terms-and-condition','AuthController@termsAndCondition');
+
+
      });
 
      Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {

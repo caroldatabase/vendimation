@@ -8,12 +8,14 @@
                 <li><span class="box-info-icon"><img src="{{ asset('assets/images/call.svg')}}"></span><span class="personal-text-static">
                     {{$user->mobile.', '.$user->office_number }}
                 </span></li>
-            <li class="border-top">
+            <li class="border-top" style="display: none">
                 <span class="personal-text-static" style="border-bottom:none;">
                     <a href="#" style="width:50%;text-align: right;float: left;" class="Remove">REMOVE</a> 
 
-                    <a href="#" style="width:50%;float: left;text-align: center; padding-left:50px" class="Edit" style="padding-left: 10px"><label>EDIT</label></a>
+                    <a href="javascript::void(0)" onclick="showAddress()" style="width:50%;float: left;text-align: center; padding-left:50px" class="Edit" style="padding-left: 10px"><label>EDIT</label></a>
                 </span>
             </li>
         </ul>
     </div>
+
+<!-- Modal -->
