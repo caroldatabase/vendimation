@@ -992,6 +992,9 @@ upload-btn-wrapper {
     filter: alpha(opacity=0);
 }
 
+#tnc-error {
+    color: #a94442;
+}
 .has-error{
   
 }

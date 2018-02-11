@@ -38,6 +38,7 @@ class HomeController extends Controller {
      *
      * @return \Illuminate\View\View
      */
+    private $user;
     public function __construct()
     {
         $this->middleware('admin');
@@ -65,6 +66,7 @@ class HomeController extends Controller {
         }
         
         View::share('user',$user);   
+        $this->user =$user;
 
         $card= \DB::table('user_cards')->where('user_id',$user->id)->get();
         View::share('card',$card);   
@@ -168,13 +170,15 @@ class HomeController extends Controller {
         if($action ==md5('save-excel-import')){
           $mapFields =$request->session()->get('excel_map'); 
           $totalRows = $this->processRecords($totalRows,$mapFields);
-          $totalRowsCount = count($totalRows);
+          
+          $totalRowsCount =$totalRows['total_count'];
+          $acceptedCount = $totalRows['accepted_count'];         
+         $totalRows = $totalRows['items'];     
           return  $this->saveContacts($request,$totalRows);
         }else{
           $mapFields =$request->get('excel_map',array());
           $totalRows = $this->processRecords($totalRows,$mapFields);
-         // print_r($totalRows);die;
-          $totalRowsCount = count($totalRows);
+          $totalRowsCount =$totalRows['total_count'];
           $request->session()->put('excel_map',$mapFields);
          return  view('packages::dashboard.contact-list', compact('db_contact_fields','file_found','excel_name','sheetHeading','sheetHeadingCount','totalRows','totalRowsCount','mapFields'));          
         }
@@ -201,6 +205,7 @@ class HomeController extends Controller {
                    $contact->email = $record['email']['value'];
                    $contact->mobile = $record['mobile']['value'];
                    $contact->phone = $record['phone']['value'];
+                   $contact->user_id = $this->user->id;
                    $contact->save();
                   
                  $result['success'][]= $row_id;     
@@ -223,6 +228,13 @@ class HomeController extends Controller {
               }
               $message.= '</ul></div>';
             }
+            $minimumContactRequired = 100;//Set Minimum Required Contact 
+            $totalImported =Contact::where(['user_id' => $this->user->id])->count();
+            if($totalImported <$minimumContactRequired){
+            $remainingNeed = $minimumContactRequired-$totalImported;
+            $message .= "You need more {$remainingNeed} contacts.";
+            $status=0;
+            }
         
         }else{
         $message = 'No Contact selected. Please select record to continue.';   
@@ -238,6 +250,8 @@ class HomeController extends Controller {
     
     private function processRecords($sheet_records,$mapFields){
         $totalRows =array();
+        $accepted=0;
+        $count = 0;
         foreach($sheet_records as $k=>$record){
        
          $row =array();
@@ -264,8 +278,10 @@ class HomeController extends Controller {
         }
          $row['valid'] =$valid;
          $totalRows[$id]=$row; 
+         if($valid)$accepted++;
+         $count++;
       }
-      return $totalRows;
+      return array('items'=>$totalRows,'total_count'=>$count,'accepted_count'=>$accepted);
     }
     public function contactList(Request $request){
         $allContact = '';
@@ -329,7 +345,7 @@ class HomeController extends Controller {
                 <p class="wallet-in"><a href="#"><img src="'.url("assets/img/circle-right.jpg").'"></a> <span class="nam-card">'.$request->get('card_name').'<span>****'.substr($request->get('card_number'), -4).'</span></span></p>
             </div>
             <div class="col-sm-6 visa">
-                <img src="http://localhostt/blog/assets/img/visa.jpg"> <input type="text" class="cvv" placeholder="CVV">
+                <img src="'.url("assets/img/visa.jpg").'"> <input type="text" class="cvv" placeholder="CVV">
             </div>
         </div>
     </div>';
