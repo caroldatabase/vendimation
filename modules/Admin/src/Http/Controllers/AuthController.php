@@ -49,11 +49,16 @@ class AuthController extends Controller
 	 
 	public function index(User $user, Request $request)
 	{  
+
+		$url = URL::previous();
+		if(str_contains($url,'step')){
+			$request->session()->flush();
+		}
 		if(Auth::guard($this->guard)->check()){  
     		return Redirect::to('admin');
     	}
-    	$request->session()->flush();
-        return view('packages::auth.login', compact('user'));
+    	
+    	return view('packages::auth.login', compact('user'));
 	}
 
 	// termsAndCondition
@@ -142,7 +147,6 @@ class AuthController extends Controller
 				                        'companyName' => 'required',
 				                        'designation' => 'required',
 				                        'office_number' => 'numeric',
-				                        'extension' => 'numeric',
 				                        'companyLogo' => 'mimes:jpeg,bmp,png,jpg'
 		            			]); 
 			    /** Return Error Message * */
@@ -239,6 +243,7 @@ class AuthController extends Controller
 			try {
 			    $email = Crypt::decrypt($encryptedValue);
 			    if (Hash::check($email, $token)) {
+			    	User::where('email', $email)->update(['status' => 1]);
 			    	return view('packages::auth.reset',compact('token','email','encryptedValue'));	
 			    }else{
 			    	return redirect()
@@ -258,7 +263,7 @@ class AuthController extends Controller
 			try {
 				$email = Crypt::decrypt($encryptedValue);
 				if (Hash::check($email, $token)) {
-				   
+				   		
 						$password =  Hash::make($request->get('password'));
 				        $user = User::where('email',$request->get('email'))->update(['password'=>$password]);
 				        $msg = "Password reset successfully.";

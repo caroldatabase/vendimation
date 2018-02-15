@@ -3,9 +3,11 @@
      Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {
 
         Route::get('admin/login','AuthController@index');
+
+
         Route::match(['get','post'],'admin/signup/{step}','AuthController@signup');
         Route::match(['get','post'],'terms-and-condition','AuthController@termsAndCondition');
-        
+
      });
      
      Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {
@@ -19,7 +21,6 @@
 
     Route::group(['middleware' => 'admin', 'namespace'=>'Modules\Admin\Http\Controllers' ], function () {
 
-        Route::get('admin', 'AdminController@index');
         Route::get('admin/logout','AuthController@logout');  
         Route::view('admin/drag-excel','packages::dashboard.drag-excel');
         Route::view('admin/add-card','packages::dashboard.add-card');  
@@ -39,19 +40,20 @@
     });  
 
     Route::post('admin/login',function(App\Admin $user, \Illuminate\Http\Request $request){
-   
-    $credentials = ['email' => Input::get('email'), 'password' => Input::get('password')]; 
-    $admin_auth = auth()->guard('admin'); 
-    $user_auth =  auth()->guard('web'); //Auth::attempt($credentials);
+	   
+	    $admin_credential = ['email' => Input::get('email'), 'password' => Input::get('password')]; 
+	    $user_credential = ['email' => Input::get('email'), 'password' => Input::get('password'),'status'=>1]; 
+	    $admin_auth = auth()->guard('admin'); 
+	    $user_auth =  auth()->guard('web'); //Auth::attempt($credentials);
 
-    if ($admin_auth->attempt($credentials) OR $user_auth->attempt($credentials)) {
-            return Redirect::to('admin');
-        }else{  
-            return redirect()
-                    ->back()
-                        ->withInput()  
-                            ->withErrors(['message'=>'Invalid email or password. Try again!']);
-            } 
+	    if ($admin_auth->attempt($admin_credential) OR $user_auth->attempt($user_credential)) {
+	            return Redirect::to('admin');
+	        }else{  
+	            return redirect()
+	                    ->back()
+	                        ->withInput()  
+	                            ->withErrors(['message'=>'Invalid email or password.Please try again!']);
+	            } 
     });
 
 

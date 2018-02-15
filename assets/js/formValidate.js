@@ -220,9 +220,7 @@ var Login = function() {
                 office_number: {
                     required: true
                 },             
-                extension: {
-                    required: true
-                },         
+                        
                 region: {
                     required: true
                 }         

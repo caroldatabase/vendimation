@@ -44,7 +44,7 @@
 
                 <div class="form-group form-group-name">
                    
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{old('designation')}}"> 
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{ (old('designation'))?old('designation'):$user->skills }}"> 
                 </div>
                 <div class="form-group form-group-name">  
                     

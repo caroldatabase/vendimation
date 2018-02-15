@@ -39,12 +39,18 @@ class AuthController extends Controller
             }else{
                 $data['password'] = bcrypt(str_random(16));
                 $name               = explode(" ", $user->name);
-                $data['first_name'] = isset($name[0])?$name[0]:'NA';
-                $data['last_name']  = isset($name[1])?$name[1]:'NA';
+                $data['first_name'] = isset($name[0])?$name[0]:'';
+                $data['last_name']  = isset($name[1])?$name[1]:'';
+                $data['name'] = isset($user->name)?$user->name:'';
+                
                 $data['email']      = isset($user->email)?$user->email:'missing' . str_random(10).'@vendimation.com';
-                $data['profile_image'] = isset($user->avtar)?$user->avtar:'NA';
+                $data['profile_image'] = isset($user->avatar)?$user->avatar:'NA';
                 $data[$provider.'_id'] = isset($user->id)?$user->id:'NA';
                 $data['step'] = 1;
+                $data['gender'] = isset($user->user['gender'])?$user->user['gender']:'';
+                $data['skills'] =  isset($user->user['skills'])?$user->user['skills']:'';
+                $data['occupation'] =  isset($user->user['occupation'])?$user->user['occupation']:'';
+                $data['about_me'] = isset($user->user['aboutMe'])?$user->user['aboutMe']:'';
 
                 $user_data = \DB::table('users')->insert($data);
                 $checkUser = User::where('email', '=', $user->email)->first();
