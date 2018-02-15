@@ -40,6 +40,9 @@ Route::get('/', function(){
 Route::any('auth/{provider}', 'AuthController@redirectToProvider');
 Route::any('{provider}/callback', 'AuthController@handleProviderCallback');
 Route::any('google', 'AuthController@handleProviderCallback');
+
+Route::any('google2', 'UserController@googleLogin');
+
 Route::get('account/login', function(){
 	return \Redirect::to('admin');
 });

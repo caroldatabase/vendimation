@@ -239,7 +239,7 @@ class AuthController extends Controller
 			try {
 			    $email = Crypt::decrypt($encryptedValue);
 			    if (Hash::check($email, $token)) {
-			    	return view('packages::auth.reset',compact('token','email'));	
+			    	return view('packages::auth.reset',compact('token','email','encryptedValue'));	
 			    }else{
 			    	return redirect()
 				 		->back()
@@ -249,31 +249,33 @@ class AuthController extends Controller
 			    
 			} catch (DecryptException $e) {
 				 	
-				return view('packages::auth.reset',compact('token','email')) 
+				return view('packages::auth.reset',compact('token','email','encryptedValue')) 
 				 			->withErrors(['message'=>'Invalid reset password link!']); 		
 			}
 			
 		}else
-		{ 	  
-			 
-			if (Hash::check($email, $token)) {
-				 
-				$password =  Hash::make($request->get('password'));
-		        $user = User::where('email',$request->get('email'))->update(['password'=>$password]);
-		        $msg = "Password reset successfully.";
-
-		        return view('packages::auth.email-verify', compact('msg'));
-
-		        return redirect()
-				 		->back()
-				 		->withInput()  
-				 		->withErrors(['message'=>$msg]);
-			}else{
-				 
-			 return redirect()
+		{  
+			try {
+				$email = Crypt::decrypt($encryptedValue);
+				if (Hash::check($email, $token)) {
+				   
+						$password =  Hash::make($request->get('password'));
+				        $user = User::where('email',$request->get('email'))->update(['password'=>$password]);
+				        $msg = "Password reset successfully.";
+				    	return view('packages::auth.email-verify', compact('msg'));
+ 
+				}else{
+					 return redirect()
 				 		->back()
 				 		->withInput()  
 				 		->withErrors(['message'=>'Invalid reset password link!']);
+				}
+
+			} catch (DecryptException $e) {	
+
+				return view('packages::auth.reset',compact('token','email','encryptedValue')) 
+				 			->withErrors(['message'=>'Invalid reset password link!']); 	
+
 			}
 		}
 	}

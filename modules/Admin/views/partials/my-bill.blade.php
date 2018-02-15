@@ -15,7 +15,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-sm-12">
-                    <p class="price-pro">£159 <span class="send-inv"><a href="#">REMOVE</a></span></p>
+                    <p class="price-pro">£159 <span class="send-inv"><!-- <a href="#">REMOVE</a> --></span></p>
                 </div>
                 
 
@@ -35,7 +35,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-sm-12">
-                    <p class="price-pro">£159 <span class="send-inv"><a href="#">REMOVE</a></span></p>
+                    <p class="price-pro">£159 <span class="send-inv"><!-- <a href="#">REMOVE</a> --></span></p>
                 </div>
             </div>
             

@@ -8,7 +8,7 @@ class UserController extends Controller
 {
    
     public function googleLogin(Request $request)  {
-        $google_redirect_url = route('google');
+        $google_redirect_url = 'http://localhost.blog.com/blog/google';
         $gClient = new \Google_Client();
         $gClient->setApplicationName('vendimation');
         $gClient->setClientId('834953885970-i7l2mv64qlkldlqp38iodbg9v97ed827.apps.googleusercontent.com');
@@ -31,7 +31,7 @@ class UserController extends Controller
         }
        
         if ($gClient->getAccessToken())
-        {
+        {   dd($gClient->getAccessToken());
             //For logged in user, get details from google using access token
             $guser = $google_oauthV2->userinfo->get();  
              
@@ -40,14 +40,31 @@ class UserController extends Controller
             $picture    =   $guser->picture;
             $gender     =   $guser->gender;
 
+
+             $accesstoken = $user->token;
+              $url = 'https://www.google.com/m8/feeds/contacts/default/full?max-results=100&start-index=1&alt=json&v=2.0&oauth_token='.$accesstoken;
+              dd($url);
+            $ch = curl_init(); 
+            // set URL and other appropriate options
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+
+            // grab URL and pass it to the browser
+            $res =  curl_exec($ch);
+            dd($res );
+            // close cURL resource, and free up system resources
+            curl_close($ch);
+
+
+
+
                 $request->session()->put('name', $guser['name']);
                 if ($user =User::where('email',$guser['email'])->first())
                 {
                     //logged your user via auth login
                 }else{
                     //register your user with response data
-                }               
-            dd($guser);      
+                }           
         } else
         {
             //For Guest user, get google login url

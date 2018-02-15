@@ -36,8 +36,8 @@
               <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/password/reset') }}">
                         {{ csrf_field() }}
 
-                <input type="hidden" name="token" value="{{ $token }}">
-               
+                <input type="hidden" name="token" value="{{$token}}">
+                <input type="hidden" name="key" value="{{$encryptedValue}}">
 
                 <div class="form-group form-group-name {{ $errors->first('password', ' has-error') }}">
                   {!! Form::password('password', ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Password'])  !!} 

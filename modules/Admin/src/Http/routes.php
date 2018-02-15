@@ -5,19 +5,20 @@
         Route::get('admin/login','AuthController@index');
         Route::match(['get','post'],'admin/signup/{step}','AuthController@signup');
         Route::match(['get','post'],'terms-and-condition','AuthController@termsAndCondition');
-
-
+        
      });
-
+     
      Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function() {
 
         Route::get('admin/forgot-password','AuthController@forgetPassword');
         Route::post('password/email','AuthController@sendResetPasswordLink');
         Route::match(['get','post'],'AuthController@resetPassword'); 
         Route::match(['post','get'],'admin/email_verification','AuthController@emailVerification');
+        Route::match(['get','post'],'admin/password/reset','AuthController@resetPassword');
      });
 
-    Route::group(['middleware' => 'admin', 'namespace'=>'Modules\Admin\Http\Controllers' ], function () { 
+    Route::group(['middleware' => 'admin', 'namespace'=>'Modules\Admin\Http\Controllers' ], function () {
+
         Route::get('admin', 'AdminController@index');
         Route::get('admin/logout','AuthController@logout');  
         Route::view('admin/drag-excel','packages::dashboard.drag-excel');
