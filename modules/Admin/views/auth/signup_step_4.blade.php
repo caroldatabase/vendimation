@@ -7,7 +7,20 @@
         <div class="index">
             <ul>
                 <li>04</li>
-                <li class="personalDetails"><span>&nbsp;</span>Additional Information</li> 
+                <li class="personalDetails"><span>&nbsp;</span>Additional Information</li>
+                 <li class="form-select">
+                  <div class="btn-group">
+                     <button type="button" class="btn btn-default">English</button>
+                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                     <i class="fa fa-angle-down"></i>
+                     </button>
+                     <ul class="dropdown-menu">
+                        <li>
+                           <a href="javascript:;"> English </a>
+                        </li> 
+                     </ul>
+                  </div>
+               </li>
             
           </ul>
           
@@ -63,7 +76,7 @@
         </div>
         <div class="form-group natureBusiness targetMkt form-group-name">
               <label>Targeting Markets</label>   
-           <select id="multiple" class="form-control select2" placeholder="" multiple name="target_market_type"> 
+           <select id="multiple" class="form-control select2"  multiple  name="target_market_type"> 
 
                 <optgroup label="Targeting Markets"> 
                      @foreach($targetMarketType as $result)

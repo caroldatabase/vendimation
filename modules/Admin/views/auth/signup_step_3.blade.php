@@ -9,6 +9,19 @@
             <ul>
                 <li>03</li>
                 <li class="personalDetails"><span>&nbsp;</span>About Company</li>
+                 <li class="form-select">
+                  <div class="btn-group">
+                     <button type="button" class="btn btn-default">English</button>
+                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                     <i class="fa fa-angle-down"></i>
+                     </button>
+                     <ul class="dropdown-menu">
+                        <li>
+                           <a href="javascript:;"> English </a>
+                        </li> 
+                     </ul>
+                  </div>
+               </li>
             </ul>
         </div>
         <div class="clearfix"></div>
