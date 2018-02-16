@@ -93,7 +93,6 @@ class AuthController extends Controller
 		$user = User::findOrNew($uid);
 			if($request->method()=="POST"){
 
-			
 			switch ($step) {
 				case 'step_2':
 			      			        if($user->id){

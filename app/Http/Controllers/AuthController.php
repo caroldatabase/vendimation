@@ -32,9 +32,9 @@ class AuthController extends Controller
             $user = Socialite::driver($provider)->stateless()->user();
             $socialUser = null;
             //Check is this email present
-            $checkUser = User::where('email', '=', $user->email)->first();
+            $checkUser = User::where($provider.'_id', '=', $user->id)->first(); 
             $data = [];
-            if (User::where('email', '=', $user->email)->first()) {
+            if ($checkUser) {
                 Auth::login($checkUser);
             }else{
                 $data['password'] = bcrypt(str_random(16));
@@ -51,9 +51,10 @@ class AuthController extends Controller
                 $data['skills'] =  isset($user->user['skills'])?$user->user['skills']:'';
                 $data['occupation'] =  isset($user->user['occupation'])?$user->user['occupation']:'';
                 $data['about_me'] = isset($user->user['aboutMe'])?$user->user['aboutMe']:'';
+                $data['status'] = 1;
 
                 $user_data = \DB::table('users')->insert($data);
-                $checkUser = User::where('email', '=', $user->email)->first();
+                $checkUser = User::where($provider.'_id', '=', $user->id)->first(); 
                 Auth::login($checkUser);
             }
             return redirect('admin');

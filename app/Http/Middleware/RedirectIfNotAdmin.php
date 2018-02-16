@@ -38,7 +38,6 @@ class RedirectIfNotAdmin
         }
 
         if($user && $user->step<5){ 
-
             $step = $user->step;
             $request->session()->put('user_id', $user->id);
             return redirect('admin/signup/step_'.$step); 
