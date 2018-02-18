@@ -38,13 +38,15 @@
             $('.carousel').carousel();
 
             $('input[type="text"],input[type="password"]').click('on',function(){
-               var v = $(this).attr('placeholder'); 
+               
+               var field_name=  $(this).attr('field_name');
+                
 
-               var label =  $('label:contains("'+v+'")').length;
-               console.log(label);
+               var label =  $('label:contains("'+field_name+'")').length;
+             
    
                if(label==0){
-                  $(this).before('<label>'+v+'</label>');
+                  $(this).before('<label>'+field_name+'</label>');
                }
             }); 
          });   

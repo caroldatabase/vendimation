@@ -27,7 +27,8 @@
                     <span> Enter any username and password. </span>
             </div>         
             <div class="form-group natureBusiness targetMkt form-group-name">
-                <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="Enter Your Email">
+              <label>Email Address</label>
+                <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="kroy@programmerlab.com">
                 <div class="forgot tickRight"><a href="#">&nbsp;</a></div>
             </div>
           <div class="savePass">

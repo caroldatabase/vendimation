@@ -32,22 +32,22 @@
             <span> Enter any username and password. </span>
          </div>
          <div class="form-group form-group-name {{ $errors->first('name', ' has-error') }}">
-              {!! Form::text('name',$user->name, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,'autocomplete'=>"off","placeholder"=>'Full Name'])  !!} 
+              {!! Form::text('name',($user->name)?$user->name:$user->first_name, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,'autocomplete'=>"off","placeholder"=>'Full Name','field_name'=>"Full Name"])  !!} 
                <span class="help-block" style="color:red">{{ $errors->first('name', ':message') }} 
          </div> 
 
          <div class="form-group form-group-name {{ $errors->first('email', ' has-error') }}">
-            {!! Form::text('email',$user->email, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address'])  !!} 
+            {!! Form::text('email',$user->email, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address','field_name'=>"Email Address"])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('email', ':message') }} 
          </div>
 
            <div class="form-group form-group-name {{ $errors->first('password', ' has-error') }}">
-            {!! Form::password('password', ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Password'])  !!} 
+            {!! Form::password('password', ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Password','field_name'=>"Password"])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('password', ':message') }} 
          </div>
  
          <div class="form-group form-group-name {{ $errors->first('phone_or_mobile', ' has-error') }}"> 
-             {!! Form::text('phone_or_mobile',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"placeholder"=>'PHONE/MOBILE','value'=>old('phone_or_mobile')])  !!} 
+             {!! Form::text('phone_or_mobile',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"placeholder"=>'PHONE/MOBILE','value'=>old('phone_or_mobile'),'field_name'=>"Phone/Mobile"])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('phone_or_mobile', ':message') }} </span>
          </div>
 

@@ -33,7 +33,7 @@
                 </div>
             <div class="form-group form-group-name"> 
               <label>Company Name</label>
-                <input class="form-control form-control-solid placeholder-no-fix" style="min-height:64px;" type="text" autocomplete="off" placeholder="Company Name"  value="{{ $user->companyName}}" readonly="readonly"> 
+                <input class="form-control form-control-solid placeholder-no-fix" style="min-height:64px;" type="text" autocomplete="off" placeholder="Company Name"  value="{{ $user->companyName}}" readonly="readonly" field_name=""> 
                     
                     @if(!empty($user->companyLogo) && file_exists($user->companyLogo))
                      <img src="{!! url($user->companyLogo) !!}" class="cLogo" width="50px">
@@ -46,14 +46,14 @@
         <div class="form-group form-group-name">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
             <label>DESIGNATION</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{$user->designation}}" readonly="readonly"> 
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{$user->designation}}" readonly="readonly" field_name=""> 
            
         </div>
 
         <div class="form-group form-group-name">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
             <label>Address</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{$user->address}}" readonly="readonly"> 
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="DESIGNATION" name="designation" value="{{$user->address}}" readonly="readonly" field_name=""> 
            
         </div>
 
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                         <label class="colorGrey">OFFICE NUMBER</label>
-                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="OFFICE NUMBER" name="office_number" value="{{$user->office_number}}" readonly="readonly"> </div>
+                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="OFFICE NUMBER" name="office_number" value="{{$user->office_number}}" readonly="readonly" field_name=""> </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-4">
@@ -72,7 +72,7 @@
 
                         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                         <label class="colorGrey">EXTENSION</label>
-                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="EXTENSION" name="extension" readonly="readonly" value="{{$user->extension}}"> 
+                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="EXTENSION" name="extension" readonly="readonly" value="{{$user->extension}}" field_name=""> 
                    </div>
                    </div>
                </div>

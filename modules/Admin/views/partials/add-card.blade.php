@@ -8,12 +8,12 @@
 <form id="addCard" method="post">
     <div class="personal-box work-detail product-view add-card-process cc">
         <div class="input-card">
-            <input type="text" placeholder="Card number" name="card_number" id="card_number">
-            <img src="{{ asset('assets/img/visa.jpg')}}" style="position:absolute; right:15px; top:15px;">
+            <input type="text" placeholder="Card number" name="card_number" id="card_number" class="card_number">
+            <img src="{{ asset('assets/img/visa.jpg')}}" id="cc_img" style="position:absolute; right:15px; top:15px;max-height: 30px">
             <span id="error_card_number" class="error"></span>
         </div>
         <div class="input-card">
-            <input type="text" placeholder="Name on card" name="card_name" id="card_name">
+            <input type="text" placeholder="Name on card" name="card_name" id="card_name" placeholder="4111-1234-1111-1252">
               <span id="error_card_name" class="error"></span>
         </div>
         <div class="input-card">
@@ -29,6 +29,7 @@
             </div>
         </div>
         <div class="input-card check-click">
+            <input type="hidden" name="card_type" value="" id="card_type">
             <input type="checkbox" id="checkbox"  onchange="addCreditCard('{{$user->id}}')"   name="saveCard" value="1" > Add card to wallet
             <br>
         </div>

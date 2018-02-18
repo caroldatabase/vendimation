@@ -100,7 +100,7 @@ class AuthController extends Controller
 				                        'email' => "required|email",
 				                        'password' => 'required',
 				                        'name' => 'required',
-				                        'phone_or_mobile' => 'required|numeric',
+				                        'phone_or_mobile' => 'required',
 				                        'dateOfBirth' => 'required'
 		            			]); 
 					    /** Return Error Message * */
@@ -113,7 +113,7 @@ class AuthController extends Controller
 				                        'email' => "required|email|unique:users,email",
 				                        'password' => 'required',
 				                        'name' => 'required',
-				                        'phone_or_mobile' => 'required|numeric',
+				                        'phone_or_mobile' => 'required',
 				                        'dateOfBirth' => 'required'
 		            			]); 
 					    /** Return Error Message * */
@@ -145,7 +145,6 @@ class AuthController extends Controller
 					$validator = Validator::make($request->all(), [
 				                        'companyName' => 'required',
 				                        'designation' => 'required',
-				                        'office_number' => 'numeric',
 				                        'companyLogo' => 'mimes:jpeg,bmp,png,jpg'
 		            			]); 
 			    /** Return Error Message * */

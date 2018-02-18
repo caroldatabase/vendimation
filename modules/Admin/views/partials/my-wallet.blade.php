@@ -8,7 +8,11 @@
                 <p class="wallet-in"><a href="#"><img src="{{ asset('assets/img/circle-right.jpg')}}"></a> <span class="nam-card">{{$result->first_name}}<span>****{{substr($result->card_number,-4)}}</span></span></p>
             </div>
             <div class="col-sm-6 visa">
-                <img src="{{ asset('assets/img/visa.jpg')}}"> <input type="text" class="cvv" placeholder="CVV">
+                @if($result->card_type==null)
+                <img src="{{ asset('assets/img/defaultcard.png')}}"> <input type="text" class="cvv" placeholder="CVV">
+                @else
+                     <img src="{{ asset('assets/img/'.$result->card_type.'.png')}}"> <input type="text" class="cvv" placeholder="CVV">
+                @endif
             </div>
         </div>
     </div>

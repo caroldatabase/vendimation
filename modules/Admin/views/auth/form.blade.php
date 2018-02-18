@@ -22,7 +22,7 @@
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label>Email address</label>
 
-                    {!! Form::email('email',null, ['class' => 'form-control form-control-solid placeholder-no-fix', 'placeholder'=>'Email' ])  !!} 
+                    {!! Form::email('email',null, ['class' => 'form-control form-control-solid placeholder-no-fix', 'placeholder'=>'kroy@programmerlab.com' ])  !!} 
                 </div>
                 <div class="form-group {{ $errors->first('password', ' has-error') }}">
                     <label>Password</label>

@@ -291,7 +291,7 @@ class HomeController extends Controller {
     public function addCard(Request $request)
     {
         $validator = Validator::make($request->all(), [
-           'card_number' => 'required|digits:16',
+           'card_number' => 'required|regex:/^[a-z0-9 .\-]+$/i',
            'card_name' => 'required|string',
            'expire_mm_yy' => 'required',
            'cvv'=> 'required|numeric'
@@ -338,6 +338,7 @@ class HomeController extends Controller {
         $input['expire_month']= isset($expire_mm_yy[1])?$expire_mm_yy[1]:'';
         $input['expire_year'] = isset($expire_mm_yy[1])?$expire_mm_yy[1]:'';
         $input['user_id'] = $request->get('user_id');
+        $input['card_type'] = $request->get('card_type');
 
       $html =  '<div class="personal-box work-detail product-view wallet">
         <div class="row">
@@ -345,7 +346,7 @@ class HomeController extends Controller {
                 <p class="wallet-in"><a href="#"><img src="'.url("assets/img/circle-right.jpg").'"></a> <span class="nam-card">'.$request->get('card_name').'<span>****'.substr($request->get('card_number'), -4).'</span></span></p>
             </div>
             <div class="col-sm-6 visa">
-                <img src="'.url("assets/img/visa.jpg").'"> <input type="text" class="cvv" placeholder="CVV">
+                <img src="'.url('assets/img/'.$request->get('card_type').'.png').'"> <input type="text" class="cvv" placeholder="CVV">
             </div>
         </div>
     </div>';

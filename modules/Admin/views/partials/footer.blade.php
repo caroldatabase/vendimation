@@ -130,20 +130,48 @@
             });
 
 
-            $('#card_number').keyup(function(){
-                $('#card_number').validateCreditCard(function(result) {
+            $('#card_number').blur(function(){
 
+                $('#card_number').validateCreditCard(function(result) {
+                    $('#error_card_number').html('');
                     $('#c').html('Card type: ' + (result.card_type == null ? '-' : result.card_type.name)
                               + '<br>Valid: ' + result.valid
                               + '<br>Length valid: ' + result.length_valid);
                     
-                     console.log(result);
-                    if(result.length_valid==false){
-                        $('#error_card_number').html('Enter invalid card number');
-                         document.getElementById("checkbox").checked = false;
+                    
+                    //console.log(result.card_type.name);
+
+                    
+                    if(result.card_type!=null && result.card_type.name){
+                        if(result.card_type.name=='uatp'){
+                             $('#cc_img').attr('src',url+'/assets/img/defaultcard.png');
+                        }else{
+                             $('#cc_img').attr('src',url+'/assets/img/'+result.card_type.name+'.png');
+                        }
+
+                        $('#card_type').val(result.card_type.name);
+                       
                     }else{
-                        $('#error_card_number').html(' ');
+                        
+                         $('#cc_img').attr('src',url+'/assets/img/defaultcard.png');
                     }
+
+                     console.log(result.length_valid);
+                       
+                         if(result.length_valid==false){
+                            var c = $('#card_number').val();
+
+                            if(c.length==0){
+                                $('#error_card_number').html('Please enter card number');
+                                return false; 
+                            }
+
+
+                            $('#error_card_number').html('Enter invalid card number');
+                             document.getElementById("checkbox").checked = false;
+                        }else{
+                            $('#error_card_number').html(' ');
+                        } 
 
                 });
             });
@@ -201,6 +229,40 @@
              $('#add_new_card').click(function(){
                 $('#addCard').show();
              });
+
+
+             $(function(){ 
+
+    
+      $('#card_number').on('keydown',function (e) {
+            if (e.shiftKey || e.ctrlKey || e.altKey) {
+                e.preventDefault();
+            } else {
+                var key = e.keyCode;
+              // alert(key);
+              if((key>=96 && key<=105) || (key>=48 && key<=57) || key==189 || key==8 || key==32 ||  key==9 || key==109 || key==39 || key==37){
+                 console.log(key);
+              }else{
+                  e.preventDefault();
+              } 
+            }
+        }); 
+
+
+           $('#card_number').on('keyup',function(){
+              // alert('ds');
+
+              var value = $(this).val(); 
+                $("#card_number").val(function(i, text) {
+                  text = text.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, "$1-$2-$3-$4"); 
+                  text =    text.substr(0, 19);
+                  return text;
+              });
+              
+          }); 
+      });
+
+
     </script>
 </body>
 </html>

@@ -354,3 +354,36 @@ jQuery(document).ready(function() {
     Login.init();
 });
 
+
+$(function(){ 
+
+    
+      $('#office_number').on('keydown',function (e) {
+          if (e.shiftKey || e.ctrlKey || e.altKey) {
+              e.preventDefault();
+          } else {
+              var key = e.keyCode;
+            // alert(key);
+            if((key>=96 && key<=105) || (key>=48 && key<=57) || key==189 || key==8 || key==32 ||  key==9 || key==109 || key==39 || key==37){
+               console.log(key);
+            }else{
+                e.preventDefault();
+            }
+             
+             
+          }
+      }); 
+
+
+     $('#office_number').on('keyup',function(){
+        // alert('ds');
+
+        var value = $(this).val(); 
+          $("#office_number").val(function(i, text) {
+            text = text.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"); 
+            text =    text.substr(0, 12);
+            return text;
+        });
+        
+    }); 
+});
