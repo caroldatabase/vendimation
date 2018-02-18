@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js">
     </script>
     <script src="{{ URL::asset('assets/js/jquery.creditCardValidator.js')}}" type="text/javascript"></script>
+    <script src="https://use.fontawesome.com/a832a5b49f.js"></script>
+
 
     <style type="text/css">
         .file-error{

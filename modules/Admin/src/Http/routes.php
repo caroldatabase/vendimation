@@ -395,6 +395,9 @@
                 ]
         );
 
+        Route::get('admin/funnels',function(){
+            return Redirect::to('admin');
+        })->name('funnels');
 
         
          Route::bind('consumer', function($value, $route) {
