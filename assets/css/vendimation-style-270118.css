@@ -90,7 +90,7 @@ margin-top:0px;
 }
 .search-keyword {
     float: left;
-    width: 55%;
+    width: 60%;
     border-right: 1px solid #eaebec;
 }
 .header-right-menu {
@@ -2020,9 +2020,9 @@ opacity: 0.87;
   color: #433e36;
 }
 .Juan-Brooks { 
-  height: 34px;
+  height: 28px;
   font-family: Muli;
-  font-size: 27px;
+  font-size: 17px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -2030,7 +2030,11 @@ opacity: 0.87;
   letter-spacing: normal;
   text-align: center;
   color: #323c47;
+  margin: 0px;
 } 
+.profile-view-desc{
+  margin-top: 15px;
+}
 .box-bg {
  
   border-radius: 4px;
