@@ -994,3 +994,16 @@ upload-btn-wrapper {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
+
+@media (max-width: 1024px){
+.panelBtn >.col-md-6 {
+     width: auto !important;
+}
+.panelBtn >.login-social {
+    margin-top:25px !important;
+}
+}
+.panelBtn >.login-social {
+    margin-top:18px; float:left;
+}

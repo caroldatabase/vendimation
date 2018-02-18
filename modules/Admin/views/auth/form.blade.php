@@ -31,12 +31,12 @@
                     <div class="forgot"><a href="{{url('admin/forgot-password')}}">Forgot?</a></div>
                     </div>
                     <div class="savePass"><input type="checkbox" id="chkBox"> <label for="chkBox">Save my password</label></div>
-                <div class="panelBtn" style="line-height: 5">
+                <div class="panelBtn" >
                     <div class="col-md-6">
                         <input type="submit" value="LOGIN" class="btn-login" />
                         
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 login-social">
                         <ul>
                              <li> <span class="or hidden-xs">Or</span></li>
                             <li><a href="{{url('auth/google')}}" class="gplus"><img src="{{ URL::asset('assets/ven/img/gplus.png')}}"></a></li>
