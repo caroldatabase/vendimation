@@ -386,4 +386,20 @@ $(function(){
         });
         
     }); 
+
+       $('#phone_or_mobile').on('keypress change blur', function () {
+
+              var value = $(this).val(); 
+                $("#phone_or_mobile").val(function(i, text) {
+                  text = value.replace(/[^0-9]+/gi,'').replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"); 
+                  text =    text.substr(0, 12);
+                 return text;
+              });
+
+                  
+              
+          }); 
+
+
+
 });

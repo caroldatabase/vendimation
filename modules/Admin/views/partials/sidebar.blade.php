@@ -2,7 +2,6 @@
 <div class="left-navigation">
     <ul>
 
-        <li class="active"><a href="{{url('admin/account/profile')}}"><i class="fa fa-list" aria-hidden="true"></i> Dashboard</a></li>
         <li class="active"><a href="{{route('funnels')}}"><i class="fa fa-list" aria-hidden="true"></i> Funnels</a></li>
         <li><a href="{{route('contacts')}}"><i class="fa fa-address-book-o" aria-hidden="true"></i> My Contact</a></li>
         <li><a href="{{route('consumer')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Consumer</a></li>

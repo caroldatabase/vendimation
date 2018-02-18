@@ -8,18 +8,18 @@
 <form id="addCard" method="post">
     <div class="personal-box work-detail product-view add-card-process cc">
         <div class="input-card">
-            <input type="text" placeholder="Card number" name="card_number" id="card_number" class="card_number">
+            <input type="text" placeholder="4111-1234-1111-1252" name="card_number" id="card_number" class="card_number" >
             <img src="{{ asset('assets/img/visa.jpg')}}" id="cc_img" style="position:absolute; right:15px; top:15px;max-height: 30px">
             <span id="error_card_number" class="error"></span>
         </div>
         <div class="input-card">
-            <input type="text" placeholder="Name on card" name="card_name" id="card_name" placeholder="4111-1234-1111-1252">
+            <input type="text" placeholder="k roy" name="card_name" id="card_name" >
               <span id="error_card_name" class="error"></span>
         </div>
         <div class="input-card">
             <div class="row">
                 <div class="col-sm-8">
-                    <input type="text" placeholder="MM/YY" name="expire_mm_yy"  maxlength="5" id="expire_mm_yy">
+                    <input type="text" placeholder="02/22" name="expire_mm_yy"  maxlength="5" id="expire_mm_yy">
                      <span id="error_expire_mm_yy" class="error"></span>
                 </div>
                 <div class="col-sm-4">
@@ -30,7 +30,7 @@
         </div>
         <div class="input-card check-click">
             <input type="hidden" name="card_type" value="" id="card_type">
-            <input type="checkbox" id="checkbox"  onchange="addCreditCard('{{$user->id}}')"   name="saveCard" value="1" > Add card to wallet
+            <input type="checkbox" id="checkbox"  onchange="addCreditCard('{{$user->id}}')"   name="saveCard" value="1" > Add card to wallet df
             <br>
         </div>
         

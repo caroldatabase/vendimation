@@ -83,10 +83,9 @@
                                         <thead>
                                             <tr>
                                              <th>   <INPUT type="checkbox" onchange="checkAll(this)" name="chk[]" /> All </th> 
-                                             <th> Title </th>
-                                                <th> Name </th>
+                                              <th> Name </th>
                                                 <th> Email </th> 
-                                                <th> Phone </th>  
+                                                <th> Mobile </th>  
                                                 <th>Created date</th> 
                                                 <th>Action</th> 
                                             </tr>
@@ -95,10 +94,9 @@
                                         @foreach($contacts as $key => $result)
                                             <tr>
                                              <th> <input type="checkbox" value="{{$result->id}}" name="checkAll"  class="checkAll contactChk"> </th>
-                                             <td> {{$result->title }} </td>
                                                 <td> {{$result->firstName.' '.$result->lastName}} </td>
                                                  <td> {{$result->email}} </td>
-                                                 <td> {{$result->phone}} </td> 
+                                                 <td> {{$result->mobile}} </td> 
                                                      <td>
                                                         {!! Carbon\Carbon::parse($result->created_at)->format('Y-m-d'); !!}
                                                     </td>

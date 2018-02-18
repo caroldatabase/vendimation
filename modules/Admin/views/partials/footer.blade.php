@@ -121,7 +121,7 @@
             $('#card_name').keyup(function(){
                 var name = $('#card_name').val(); 
 
-                if((/^\s*$/).test(name)){ console.log('fd');
+                if((/^\s*$/).test(name)){
                     $('#error_card_name').html('Please enter name as written on card');
                      document.getElementById("checkbox").checked = false;
                 }else{
@@ -156,7 +156,6 @@
                          $('#cc_img').attr('src',url+'/assets/img/defaultcard.png');
                     }
 
-                     console.log(result.length_valid);
                        
                          if(result.length_valid==false){
                             var c = $('#card_number').val();
@@ -241,7 +240,7 @@
                 var key = e.keyCode;
               // alert(key);
               if((key>=96 && key<=105) || (key>=48 && key<=57) || key==189 || key==8 || key==32 ||  key==9 || key==109 || key==39 || key==37){
-                 console.log(key);
+                // console.log(key);
               }else{
                   e.preventDefault();
               } 
@@ -249,14 +248,13 @@
         }); 
 
 
-           $('#card_number').on('keyup',function(){
-              // alert('ds');
+           $('#card_number').on('keypress change blur', function () {
 
               var value = $(this).val(); 
                 $("#card_number").val(function(i, text) {
-                  text = text.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, "$1-$2-$3-$4"); 
+                  text = value.replace(/[^0-9]+/gi,'').replace(/(.{4})/g, '$1-');
                   text =    text.substr(0, 19);
-                  return text;
+                 return text;
               });
               
           }); 

@@ -47,7 +47,7 @@
          </div>
  
          <div class="form-group form-group-name {{ $errors->first('phone_or_mobile', ' has-error') }}"> 
-             {!! Form::text('phone_or_mobile',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"placeholder"=>'PHONE/MOBILE','value'=>old('phone_or_mobile'),'field_name'=>"Phone/Mobile"])  !!} 
+             {!! Form::text('phone_or_mobile',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"placeholder"=>'PHONE/MOBILE','value'=>old('phone_or_mobile'),'field_name'=>"Phone/Mobile",'id'=>'phone_or_mobile'])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('phone_or_mobile', ':message') }} </span>
          </div>
 
