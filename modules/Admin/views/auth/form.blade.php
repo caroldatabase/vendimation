@@ -36,7 +36,7 @@
                         <input type="submit" value="LOGIN" class="btn-login" />
                         
                     </div>
-                    <div class="col-md-6 login-social">
+                    <div class="col-md-4 login-social" style="margin-top: 15px !important">
                         <ul>
                              <li> <span class="or hidden-xs">Or</span></li>
                             <li><a href="{{url('auth/google')}}" class="gplus"><img src="{{ URL::asset('assets/ven/img/gplus.png')}}"></a></li>
