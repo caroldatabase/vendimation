@@ -60,8 +60,8 @@
                      <input class="form-control form-control-solid placeholder-no-fix designation" type="text" id="designation" autocomplete="off"  value="{{ (old('designation'))?old('designation'):$user->skills }}" placeholder="Chief Technical Officer" name="designation" field_name="" >  
                 </div>
                 <div class="form-group form-group-name">  
-                    
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Address" name="address" value="{{old('address')}}" field_name="Address"> 
+                    <label>Address</label>
+                    <input class="form-control form-control-solid placeholder-no-fix places-autocomplete" type="text" autocomplete="off" placeholder="New York,US" name="address" value="{{old('address')}}" field_name="Address" id="Street"> 
                </div>
                <div class="col-md-8 col-xs-8">
                    <div class="row">

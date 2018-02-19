@@ -32,17 +32,18 @@
                     </div>
                     <div class="savePass"><input type="checkbox" id="chkBox"> <label for="chkBox">Save my password</label></div>
                 <div class="panelBtn" >
-                    <div class="col-md-6">
-                        <input type="submit" value="LOGIN" class="btn-login" />
-                        
-                    </div>
-                    <div class="col-md-4 login-social" style="margin-top: 15px !important">
-                        <ul>
-                             <li> <span class="or hidden-xs">Or</span></li>
-                            <li><a href="{{url('auth/google')}}" class="gplus"><img src="{{ URL::asset('assets/ven/img/gplus.png')}}"></a></li>
-                            <li><a href="{{url('auth/facebook')}}" class="fb"><img src="{{ URL::asset('assets/ven/img/fb.png')}}"></a></li>
-                        </ul>
-                    </div>
+                        <div class="col-md-6">
+                            <input type="submit" value="LOGIN" class="btn-login" />
+                            
+                        </div>
+                        <div class="col-md-6" style="margin-top: 10px !important; padding: 10px;">
+                            <ul>
+                                 <li> <span class="or hidden-xs">Or</span></li>
+                                <li><a href="{{url('auth/google')}}" class="gplus"><img src="{{ URL::asset('assets/ven/img/gplus.png')}}"></a></li>
+                                <li><a href="{{url('auth/facebook')}}" class="fb"><img src="{{ URL::asset('assets/ven/img/fb.png')}}"></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6"></div>
                 </div>
                 <div class="clearfix"></div>
                 <p class="signup"><span></span><a href="{{url('admin/signup/step_1')}}">Create an account?</a></p>

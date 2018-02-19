@@ -91,7 +91,9 @@
          <div class="form-group form-group-name">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
             <label>Targeting Countries /city /region</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Targeting Countries /city /region" name="region" value="{{$user->region}}" field_name=""> 
+
+             <input class="form-control form-control-solid placeholder-no-fix places-autocomplete" type="text" autocomplete="off" placeholder="New York,US" name="region" value="{{$user->region or old('address')}}" field_name="" id="Street"> 
+
            
         </div>
 
