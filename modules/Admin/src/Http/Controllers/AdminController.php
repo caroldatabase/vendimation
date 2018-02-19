@@ -79,6 +79,17 @@ class AdminController extends Controller {
         $buy_contacts = \DB::table('buy_contacts')->get();
         View::share('buy_contacts',$buy_contacts);  
 
+
+        $tm =  array_map('intval', explode(',', $user->bussiness_nature));
+        $bn = array_map('intval', explode(',', $user->target_market));
+        
+        $targetMarketType   =  TargetMarketType::all();
+        $businessNatureType =  BusinessNatureType::all(); 
+
+        View::share('targetMarketType',$targetMarketType);
+        View::share('businessNatureType',$businessNatureType);
+        View::share('tm',$tm);
+        View::share('bn',$bn);
     }
     /*
     * Dashboard

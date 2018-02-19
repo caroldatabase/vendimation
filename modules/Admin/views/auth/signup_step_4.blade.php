@@ -62,7 +62,7 @@
 
         <div class="form-group natureBusiness targetMkt form-group-name">
               <label>Nature of Your Business</label>   
-           <select id="multiple" class="form-control select2" multiple name="bussiness_nature"> 
+           <select id="multiple" class="form-control select2" multiple name="bussiness_nature[]"> 
 
             <optgroup label="Nature of Business"> 
                 @foreach($businessNatureType as $result)
@@ -76,7 +76,7 @@
         </div>
         <div class="form-group natureBusiness targetMkt form-group-name">
               <label>Targeting Markets</label>   
-           <select id="multiple" class="form-control select2"  multiple  name="target_market_type"> 
+           <select id="multiple" class="form-control select2"  multiple  name="target_market[]"> 
 
                 <optgroup label="Targeting Markets"> 
                      @foreach($targetMarketType as $result)

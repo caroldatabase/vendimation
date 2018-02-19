@@ -32,12 +32,12 @@
             <span> Enter any username and password. </span>
          </div>
          <div class="form-group form-group-name {{ $errors->first('name', ' has-error') }}">
-              {!! Form::text('name',($user->name)?$user->name:$user->first_name, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,'autocomplete'=>"off","placeholder"=>'Full Name','field_name'=>"Full Name"])  !!} 
+              {!! Form::text('name',($user->name)?$user->name:$user->first_name, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,'autocomplete'=>"off","placeholder"=>'Jone Doe','field_name'=>"Full Name"])  !!} 
                <span class="help-block" style="color:red">{{ $errors->first('name', ':message') }} 
          </div> 
 
          <div class="form-group form-group-name {{ $errors->first('email', ' has-error') }}">
-            {!! Form::text('email',$user->email, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'Email Address','field_name'=>"Email Address"])  !!} 
+            {!! Form::text('email',$user->email, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"autocomplete"=>"off","placeholder"=>'john@vendimation.co','field_name'=>"Email Address"])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('email', ':message') }} 
          </div>
 
@@ -47,15 +47,19 @@
          </div>
  
          <div class="form-group form-group-name {{ $errors->first('phone_or_mobile', ' has-error') }}"> 
-             {!! Form::text('phone_or_mobile',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"placeholder"=>'PHONE/MOBILE','value'=>old('phone_or_mobile'),'field_name'=>"Phone/Mobile",'id'=>'phone_or_mobile'])  !!} 
+             {!! Form::text('phone_or_mobile',null, ['class' => 'form-control form-control-solid placeholder-no-fix','data-required'=>1,"placeholder"=>'810-319-4076','value'=>old('phone_or_mobile'),'field_name'=>"Phone/Mobile",'id'=>'phone_or_mobile'])  !!} 
             <span class="help-block" style="color:red">{{ $errors->first('phone_or_mobile', ':message') }} </span>
          </div>
 
 
+
          <div class="form-group form-group-name"> 
             
-             <div class="input-group  date date-picker" data-date="15 Mar,1988" data-date-format="dd M,yyyy" data-date-viewmode="years">
-            <input type="text" id="dateofbday" class="form-control" readonly="" value="{{ old('dateOfBirth') }}"  field_name="Date of Birth"  name="dateOfBirth" placeholder="Date of Birth">
+             <div class="input-group  form-group-name"  >
+
+                          <input type="text" id="dateofbday" class="form-control" readonly="" data-date="15 Mar,1988" data-date-format="dd M,yyyy" value="{{ old('dateOfBirth') }}"  field_name="Date of Birth"  name="dateOfBirth" placeholder="15 Mar,1988">
+
+           
                   <span class="input-group-addon">
                       <button type="button" style="border:0;background:transparent;" onclick="$('#dateofbday').datepicker('show')">
                <img src="{{ asset('assets/img/dob.png')}}">

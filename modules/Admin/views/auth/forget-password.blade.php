@@ -28,7 +28,7 @@
             </div>         
             <div class="form-group natureBusiness targetMkt form-group-name">
               <label>Email Address</label>
-                <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="kroy@programmerlab.com">
+                <input id="email" type="email" class="form-control form-control-solid placeholder-no-fix" name="email" value="{{ old('email') }}" autocomplete="off" placeholder="kroy@programmerlab.com" field_name="">
                 <div class="forgot tickRight"><a href="#">&nbsp;</a></div>
             </div>
           <div class="savePass">

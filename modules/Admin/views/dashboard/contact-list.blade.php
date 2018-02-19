@@ -13,6 +13,41 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/style.css')}}" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/vendimation-style-270118.css')}}" rel="stylesheet">
+        <style type="text/css">
+            .contact-table {
+            float: left;
+            width: 100%;
+            border: 1px solid #e0e5f0;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .excel-iocn.text-center {
+            float: left;
+            width: 100%;
+        }
+        .add-excel {
+            float: left;
+            width: 100%;
+        }
+        .contact-table h3 {
+            opacity: 0.87;
+            font-family: Muli;
+            font-size: 20px;
+            font-weight: 600;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: left;
+            color: #323c47;
+            padding-left: 20px;
+            float: left;
+            width: 100%;
+            margin: 0px;
+            line-height: 60px;
+            border-bottom: 1px solid #e0e5f0;
+        }
+        </style>
     </head>
     <body>
         @include('packages::partials.navigation')
@@ -24,30 +59,35 @@
                     @include('packages::partials.sidebar')
                     <div class="col-sm-10 main-left-content profile-page">
                         <div class="row">
-                            <div class="col-sm-10 box-shadow excel-sec">
+                            <div class="col-sm-12 excel-sec">
                                 <div class="profile-left-main">
                                     <div class="add-excel">
                                         <div class="excel-iocn text-center">
+
                                             <p><img src="{{ asset('assets/img/excel.jpg')}}"></p>
                                             <h3>{{$excel_name}}</h3>
-<!--                                            <p>
-                                                We have detected 4 columns in your file,<br/>please help us relate each column to our standard fields.
-                                            </p>-->
+                                           <p>
+                                                We have detected {{$totalRowsCount}} columns in your file,<br/>
+ 
+                                                please help us relate each column to our standard fields.
+                                            </p>
                                         </div>
 
                                         <div class="contact-table">
-<!--                                            <h3>210 contacts detected (110 acceptable for import)</h3>-->
-                                            <h3>{{$totalRowsCount}} contacts detected({{$totalRows['accepted_count']}}  acceptable for import).</h3>
+
+                                            <h3>{{$totalRowsCount}} contacts detected ({{$totalRows['accepted_count']}}  acceptable for import).</h3>
                                             <form method="post" id="ready_to_report" action="{{url('admin/import-contact')}}">
                                                 <input type="hidden" name="action" value="{{md5('save-excel-import')}}"/>
+
                                             <table width="100%" border="0" style="text-align:center;">
-                                                <thead><tr>
+                                                <tbody>
+                                                    <tr>
                                                     <td><input type="checkbox" onclick="$('input[name*=\'import_selected\']').prop('checked', this.checked);" ></td>
                                                     @foreach($db_contact_fields as $columnKey=>$columnValue)
                                                      <td>{{$columnValue}}</td>
                                                     @endforeach
                                                 </tr>
-                                                </thead><tbody>
+                                                </tbody>
                                                 @foreach($totalRows['items'] as $row_id=>$row)
                                                 <tr class="isvalid-{{$row['valid']}}">
                                                     <td><input type="checkbox" value="{{$row_id}}" name="import_selected[]"></td>
@@ -66,7 +106,7 @@
                                             </table>
                                             </form>
                                         </div>
-                                        <div class="excel-next text-center" style="clear:both; position: relative;">
+                                        <div class="excel-next text-center" style="clear:both; position: relative; margin-top: 10px; ">
                                             <input type="submit" id="import-select-contact" value="IMPORT SELECTED" class="btn-login">
                                         </div>
 

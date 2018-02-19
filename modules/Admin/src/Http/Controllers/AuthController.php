@@ -171,8 +171,8 @@ class AuthController extends Controller
 				case 'step_4':
 				 	break;
 			 	case 'step_5':
-			 		$user->bussiness_nature 	= $request->get('bussiness_nature');
-		            $user->target_market 		= $request->get('target_market');
+			 		$user->bussiness_nature 	= implode(',', $request->get('bussiness_nature'));
+		            $user->target_market 		= implode(',',$request->get('target_market'));
 		            $user->region 				= $request->get('region');
 		            $user->step 				= 5;
 		            $user->save();

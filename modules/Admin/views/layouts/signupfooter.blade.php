@@ -50,7 +50,16 @@
                }
             }); 
          });   
-           $("#dateofbday").datepicker(); 
+         $("#dateofbday").datepicker({
+                 
+                      autoclose: true,
+                    //  startDate: '-5y',
+                      endDate: '+0d' // there's no convenient "right now" notation yet
+         }).on('changeDate', function(){
+
+          //$(this).blur();
+          // $("#dateofbday").datepicker('hide');
+        }); 
            var email_req = "Email is required";
            var password_req = "Password is required";
       </script>

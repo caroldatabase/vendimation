@@ -6,8 +6,14 @@
             <label>Nature of your business</label>
             <p class="pro-tags">
                 @foreach($businessNatureType as $result)
-                <a href="#">{{$result->title}}</a> 
+                @if(in_array($result->id,$bn))
+                 <?php $bnt=1;?>
+                <a href="#" style="float: left; margin: 3px">{{$result->title}}</a> 
+                @endif
                 @endforeach
+                @if(!isset($bnt))
+                 <a href="#">NA</a> 
+                 @endif
             </p>
 
         </div>
@@ -17,8 +23,14 @@
         <label>Targeting Market</label>
         <p class="pro-tags">
         @foreach($targetMarketType as $result)
-                <a href="#">{{$result->title}}</a> 
-                @endforeach
+            @if(in_array($result->id,$tm))
+            <?php $tmy=1;?>
+                <a href="#" style="float: left; margin: 3px">{{$result->title}}</a> 
+            @endif    
+        @endforeach
+        @if(!isset($tmy))
+         <a href="#">NA</a> 
+         @endif
             </p>
         </div>
     </div>

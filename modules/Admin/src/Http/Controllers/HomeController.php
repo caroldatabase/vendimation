@@ -42,11 +42,7 @@ class HomeController extends Controller {
     public function __construct()
     {
         $this->middleware('admin');
-        $targetMarketType   =  TargetMarketType::all();
-        $businessNatureType =  BusinessNatureType::all(); 
-        View::share('targetMarketType',$targetMarketType);
-        View::share('businessNatureType',$businessNatureType);
-        View::share('businessNatureType',$businessNatureType);
+        
         $js_file = [
             'jquery.min.js',
             'bootstrap.min.js',
@@ -72,8 +68,19 @@ class HomeController extends Controller {
         View::share('card',$card);   
 
         $buy_contacts = \DB::table('buy_contacts')->get();
-        View::share('buy_contacts',$buy_contacts);   
+        View::share('buy_contacts',$buy_contacts);
 
+        $tm =  array_map('intval', explode(',', $user->bussiness_nature));
+        $bn = array_map('intval', explode(',', $user->target_market));
+        
+        $targetMarketType   =  TargetMarketType::all();
+        $businessNatureType =  BusinessNatureType::all(); 
+
+        View::share('targetMarketType',$targetMarketType);
+        View::share('businessNatureType',$businessNatureType);
+        
+        View::share('tm',$tm);
+        View::share('bn',$bn);
 
     }
 
