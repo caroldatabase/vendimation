@@ -84,7 +84,7 @@
                                     </div>
 
                                     <div class="clear clearfix"></div>
-                                    <div class="team-contact-excel">
+                                    <div class="team-contact-excel" style="display: none; ">
                                         <h4>You need 95 more contacts to continue</h4>
                                         <div class="personal-box work-detail">
                                             <div class="contact-list">
@@ -136,7 +136,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="excel-product">
+                                    <div class="excel-product" style="margin-top: 20px;"> 
 
                                         <h4>If you dont have enough contacts you can select one of our contact starter packs.</h4>
                                         <div class="personal-box work-detail product-view">

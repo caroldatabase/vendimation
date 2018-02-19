@@ -134,10 +134,30 @@ class UsersController extends Controller {
         $countries = Country::with('state')->get(); 
         $targetMarketType =  TargetMarketType::all();
         $BusinessNatureType =  BusinessNatureType::all();
+
+
+
+        foreach ($countries as $key => $value) { 
+            //dd($value);
+            $county = $value->name;
+
+            foreach ($value->state as $key => $s) {
+                $state = $s->name.','.$county;
+
+                foreach ($s->city as $key => $c) {
+                    $city[$county][] = $c->name.' '.$s->name.' '.$county;
+                }
+
+                //dd($city);
+                
+            }
+        }
+
+
         
         $js_file = ['common.js','bootbox.js','formValidate.js'];
         
-        return view('packages::users.create', compact('js_file','role_id','roles', 'user', 'page_title', 'page_action', 'countries','targetMarketType','BusinessNatureType'));
+        return view('packages::users.create', compact('js_file','role_id','roles', 'user', 'page_title', 'page_action', 'countries','targetMarketType','BusinessNatureType','city'));
     }
 
     /*

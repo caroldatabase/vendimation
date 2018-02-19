@@ -42,11 +42,11 @@
                     <select id="multiple" class="form-control select2" multiple name="regionId">
 
 
-                             @foreach ($countries as $key => $result) 
-                                 <optgroup label="{{$result->name}}">
-                                @foreach ($result->state as $key => $state) 
+                             @foreach ($city as $key => $result) 
+                                 <optgroup label="{{$key}}">
+                                @foreach ($result as $key => $state) 
                                      
-                                <option value="{{$state->id}}">{{$result->name}} {{$state->name}}</option>
+                                <option value="{{$state}}">{{$state}}</option>
                                    
                                  @endforeach
                                  </optgroup>
