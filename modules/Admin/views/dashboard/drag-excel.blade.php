@@ -48,7 +48,10 @@
                                             <h3 class="cart-user-name">{{  $user->name or $user->first_name.' '.$user->last_name}}</h3>
                                             <p class="cart-partner">{{$user->designation}}</p>
                                             <p class="cart-location"><img src="{{asset('assets/img/cart-location.jpg')}}"> 
-                                                {{$user->designation}}
+                                                {{$user->address}}
+                                            </p>
+                                            <p style="text-align: center;padding: 10px">
+                                                we can collect contatcs from your social media accounts please click on the icons to sync your contacts
                                             </p>
                                         </div>
                                     </div>
