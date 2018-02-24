@@ -286,13 +286,48 @@ class Helper {
     public  function sendNotificationMail($email_content, $template)
     {        
         
-        return  Mail::send('emails.'.$template, array('content' => $email_content), function($message) use($email_content)
-          {
-            $name = $_SERVER['SERVER_NAME'];
-            $message->from('no-reply@indianic.com',$name);  
-            $message->to($email_content['receipent_email'])->subject($email_content['subject']);
-            
-          });
+       $mail       = new PHPMailer;
+        $email_content['verification_token'] =  Hash::make($email_content['receipent_email']);
+        
+        $html       = view::make('emails.'.$template,['content' => $email_content]);
+        $html       = $html->render(); 
+        $subject    = $email_content['subject'];
+
+        try {
+            $mail->isSMTP(); // tell to use smtp
+            $mail->CharSet = "utf-8"; // set charset to utf8
+                         
+
+            $mail->SMTPAuth   = true;                  // enable SMTP authentication
+            $mail->Host       = "smtp.zoho.com"; // sets the SMTP server
+            $mail->Port       = 587;   
+            $mail->SMTPSecure = 'false';                 // set the SMTP port for the GMAIL server
+            $mail->Username   = "admin@vendimation.xyz"; // SMTP account username
+            $mail->Password   = "admin@123"; 
+
+            $mail->setFrom("admin@vendimation.xyz", "Vendimation");
+            $mail->Subject = $subject;
+            $mail->MsgHTML($html);
+            $mail->addAddress($email_content['receipent_email'], "Vendimation");
+            $mail->addAddress("kroy@mailinator.com","admin"); 
+           // $mail->addReplyTo("kroy.iips@mailinator.com","admin");
+            //$mail->addBCC(‘examle@examle.net’);
+            //$mail->addAttachment(‘/home/kundan/Desktop/abc.doc’, ‘abc.doc’); // Optional name
+            $mail->SMTPOptions= array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
+            );
+
+            $mail->send();
+            //echo "success";
+            } catch (phpmailerException $e) {
+             
+            } catch (Exception $e) {
+             
+            }
     }
 
     public static function send_ios_notification($deviceToken,$message)

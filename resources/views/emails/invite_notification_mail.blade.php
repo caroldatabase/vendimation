@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Udex Join Invitation</title>
+<title>Vendimation Join Invitation</title>
 <style type="text/css">
  
 table {
@@ -16,7 +16,7 @@ table {
   <tr>
      <!-- <td width="197" align="right" valign="top" style="background-color:#17DA8A"><img src="https://www.wiaipi.com/public/assets/front-end/images/logo.png" width="197" height="61" style="display:block;"></td> -->
       <td align="center" valign="middle" bgcolor="" style="background-color:#17DA8A ; padding:20px; color:#332C41;font-size:28px; ">
-      <div style="font-size:24px;">UDEX</div>
+      <div style="font-size:24px;">Vendimation</div>
     </td>
   </tr>
 </table>
@@ -27,10 +27,10 @@ table {
               <tr>
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000;"> 
                   <div>
-                      <p>Dear {{ucfirst($content['name'])}},</p>
-                      <p> {{ ucwords($content['invite_by'])}} has invited you to join a Udex. <a href="https://itunes.apple.com/en/app/apple-store/id375380948?mt=8">Click here to join</a>!</p>
+                      <p>Dear User,</p>
+                      <p> {{ ucwords($content['invite_by'])}} has invited you to join a Vendimation. <a href="{{url('admin/signup/step_1')}}">Click here to join</a>!</p>
                       <p>Enjoy! <p> 
-                      <p>Team Udex</p>
+                      <p>Team Vendimation</p>
                   </div>
                 </td>
               </tr>

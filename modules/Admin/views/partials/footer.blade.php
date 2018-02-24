@@ -260,6 +260,36 @@
               });
               
           }); 
+
+
+           //admin/inviteUser
+
+           $('form#invite_user').on('submit',function(){
+              var data =  $('form#invite_user').serialize(); 
+              $.ajax({
+                    type: "GET",
+                    data: data,
+                    url: url+'/admin/inviteUser',
+                    beforeSend: function() {
+                        $('#inviteBtn').html('sending..');
+                    },
+                    success: function(response) {
+                       if(response.status==0){
+                            $('#inviteError').html(response.message).css('color','red');
+                            $('#inviteBtn').html('Invite');
+                       }else{
+                            $('#inviteError').html(response.message).css('color','green');
+                            $('#inviteBtn').html('Invite');
+                            setTimeout(function(){
+                                $('#inviteError').fadeIn(1000).hide();
+                            },5000);
+                            $('input[type="email"]').val("");
+                       }
+                    }
+                });
+            });
+
+
       });
 
 

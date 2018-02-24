@@ -25,6 +25,7 @@ use Modules\Admin\Models\TargetMarketType;
 use Modules\Admin\Models\BusinessNatureType;
 use Modules\Admin\Models\Contact;
 use Response;
+use App\Helpers\Helper as Helper;
 
 /**
  * Class AdminController
@@ -370,6 +371,55 @@ class HomeController extends Controller {
                 )
             );
 
+    }
+
+    public function inviteUser(Request $request)
+    {   
+        $user_id = $request->input('userId'); 
+        $invited_user = User::find($user_id); 
+        
+        $user_first_name = $invited_user->first_name ;
+        $download_link = url('admin/signup/step_1');
+        $user_email = $request->input('email');
+
+        $validator = Validator::make($request->all(), [
+           'email' => 'required|email'
+        ]);
+        /** Return Error Message **/
+        if ($validator->fails()) {
+                    $error_msg  =   [];
+            foreach ( $validator->messages()->all() as $key => $value) {
+                        array_push($error_msg, $value);     
+                    }
+                            
+            return Response::json(array(
+                'status' => 0,
+                'code'=>500,
+                'message' => $error_msg[0],
+                'data'  =>  ''
+                )
+            );
+        } 
+       
+        /** --Send Mail after Sign Up-- **/
+       
+        $user_data      = User::find($user_id); 
+        $sender_name    = ($user_data->name)?$user_data->name:$user_data->first_name.' '.$last_name;
+        $invited_by     = $sender_name; //$invited_user->first_name.' '.$invited_user->last_name;
+        $receipent_name = "User";
+        $subject        = ucfirst($sender_name)." has invited you to join vendimation";   
+        $email_content  = array('receipent_email'=> $user_email,'subject'=>$subject,'name'=>'User','invite_by'=>$invited_by,'receipent_name'=>ucwords($receipent_name));
+       
+        $helper = new Helper;
+        $invite_notification_mail = $helper->sendNotificationMail($email_content,'invite_notification_mail',['name'=> 'User']);
+        
+        return  response()->json([ 
+                    "status"=>1,
+                    "code"=> 200,
+                    "message"=>"You've successfully invited",
+                    'data' => ['receipentEmail'=>$user_email]
+                   ]
+                );
     }
 
 }

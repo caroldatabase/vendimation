@@ -30,7 +30,29 @@ class AuthController extends Controller
     {
         try{
             $user = Socialite::driver($provider)->stateless()->user();
-            $socialUser = null;
+            $socialUser = null;  
+           // dd($user);
+            // $facebook = new \Facebook\Facebook([
+            //   'app_id' => '190283904895721',
+            //   'app_secret' => 'cf587141278d5a231a673e59f55a2be0',
+            //   'default_graph_version' => 'v2.12',
+            //   ]);
+
+            //   if ($user) {
+            //   try {
+            //     $response = $fb->get('/me', '{access-token}');
+
+            //     $user_profile = $facebook->get('/me');
+            //     $user_friends = $facebook->get('/me/friends');
+            //     dd($user_friends);
+            //     $access_token = $facebook->getAccessToken();
+
+            //   } catch (FacebookApiException $e) {
+            //     d($e); 
+            //     $user = null;
+            //   }
+            // }
+
             //Check is this email present
             $checkUser = User::where($provider.'_id', '=', $user->id)->first(); 
             $data = [];
